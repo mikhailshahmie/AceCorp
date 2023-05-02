@@ -1,0 +1,11 @@
+@import "~bootstrap/scss/bootstrap";
+$bootstrap-icons-font-dir: "~bootstrap-icons/font/fonts";
+@import "~bootstrap-icons/font/bootstrap-icons.scss";
+@import "variables";
+
+@import "general";
+@import "header";
+@import "nav";
+@import "hero";
+@import "sections";
+@import "footer";
