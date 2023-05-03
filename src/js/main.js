@@ -38,13 +38,14 @@ export const usersDB = collection(db, "users");
 
 //FIREAUTH
 //Check auth when auth is changed, need reconfiguration and rename...
+/*
 export const currentUser = onAuthStateChanged(auth, (user) => {
     if (!user) {
         console.log(user);
         return true;
     }
 });
-
+*/
 //Export necessary functions from firebase
 export { getDoc, getDocs, addDoc, deleteDoc, updateDoc, doc, onSnapshot, query, where, orderBy, serverTimestamp } from "firebase/firestore";
 export { createUserWithEmailAndPassword, sendEmailVerification, signOut, signInWithEmailAndPassword } from "firebase/auth";
