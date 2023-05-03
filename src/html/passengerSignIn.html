@@ -1,14 +1,16 @@
-
+<!DOCTYPE html>
 <head>
-    <link rel="stylesheet" href="">
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
   </head>
-  <form action="">
+   <body>
+    <form action="" onsubmit="return signIn()">
     <div class="container">
       <h1>Sign In</h1>
       <hr>
   
-      <label for="username"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" id="username" required>
+      <label for="email"><b>Email</b></label>
+      <input type="text" placeholder="Enter Email" id="email" required>
   
       <label for="password"><b>Password</b></label>
       <input type="password" placeholder="Enter Password"  id="password" required>
@@ -17,9 +19,11 @@
   
       <button type="submit" class="SignInbtn">Enter</button>
     </div>
-  
+    
     <div class="container signin">
-      <p>Not Yet Registered? <a href="SignUp.html">Sign Up</a>.</p>
+      <p>Not Yet Registered? <a href="SignUp.html">Sign Up</a></p>
+      <a href="forgotPassword.html">Forgot Password</a>
     </div>
+  </body>
   </form>
   
