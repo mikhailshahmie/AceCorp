@@ -4,26 +4,43 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
   </head>
    <body>
-    <form action="" onsubmit="return signIn()">
+    <form action="">
+  <center>
+  <section id="breadcrumbs" class="breadcrumbs">
     <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
       <h1>Sign In</h1>
-      <hr>
-  
-      <label for="email"><b>Email</b></label>
-      <input type="text" placeholder="Enter Email" id="email" required>
-  
-      <label for="password"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password"  id="password" required>
-  
-      <hr>
-  
-      <button type="submit" class="SignInbtn">Enter</button>
+      </div>
     </div>
-    
+  </div>
+    </section>
+    <body>
+      <div class="container mt-5">
+        <div class="row justify-content-center">
+          <div class="col-lg-4 col-md-6 col-sm-8">
+            <div class="border p-3">
+              <form>
+                <div class="form-group">
+                  <label for="username">Email:</label>
+                  <input type="text" class="form-control" id="email" placeholder="Enter Email"><br>
+                </div>
+                <div class="form-group">
+                  <label for="password">Password:</label>
+                  <input type="password" class="form-control" id="password" placeholder="Enter Password"><br>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </body>
     <div class="container signin">
       <p>Not Yet Registered? <a href="SignUp.html">Sign Up</a></p>
       <a href="forgotPassword.html">Forgot Password</a>
     </div>
+  </center>
   </body>
   </form>
   
