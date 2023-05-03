@@ -10,7 +10,6 @@ module.exports = {
         index: path.resolve(__dirname, "src/js/index.js"),
         portfoliodetails: path.resolve(__dirname, "src/js/portfolio-details.js"),
         innerpage: path.resolve(__dirname, "src/js/inner-page.js"),
-        signin: path.resolve(__dirname, "src/js/signin.js"),
 
         //home: path.resolve(__dirname, "src/js/home.js"),
         //index: path.resolve(__dirname, "src/js/index.js"),
@@ -68,6 +67,11 @@ module.exports = {
     },
     //plugins
     plugins: [
+        //do not touch
+        new MiniCssExtractPlugin({
+            filename: "[name].css",
+        }),
+
         /*ADD NEW HTMLWEBPACKPLUGIN WHEN NEW HTML ADDED (COPY PASTE)
             new HtmlWebpackPlugin({
             filename: "index.html",
@@ -89,15 +93,6 @@ module.exports = {
             filename: "portfolio-details.html",
             template: path.resolve(__dirname, "src/html/portfolio-details.html"),
             chunks: ["portfoliodetails"],
-        }),
-        new HtmlWebpackPlugin({
-            filename: "signin.html",
-            template: path.resolve(__dirname, "src/html/signin.html"),
-            chunks: ["signin"],
-        }),
-
-        new MiniCssExtractPlugin({
-            filename: "[name].css",
         }),
     ],
 };
