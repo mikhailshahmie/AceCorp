@@ -12,6 +12,7 @@ module.exports = {
         innerpage: path.resolve(__dirname, "src/js/inner-page.js"),
         signin: path.resolve(__dirname, "src/js/signin.js"),
         loginadmin: path.resolve(__dirname, "src/js/loginadmin.js"),
+        adminmain: path.resolve(__dirname, "src/js/adminmain.js"),
 
         //home: path.resolve(__dirname, "src/js/home.js"),
         //index: path.resolve(__dirname, "src/js/index.js"),
@@ -105,6 +106,11 @@ module.exports = {
             filename: "loginadmin.html",
             template: path.resolve(__dirname, "src/html/loginadmin.html"),
             chunks: ["loginadmin"],
+        }),
+        new HtmlWebpackPlugin({
+            filename: "adminmain.html",
+            template: path.resolve(__dirname, "src/html/adminmain.html"),
+            chunks: ["adminmain"],
         }),
     ],
 };
