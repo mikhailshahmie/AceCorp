@@ -1,1 +1,1 @@
-import main from "./main.js";
+const main = require("./main.js"); //MUST HAVE

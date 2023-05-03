@@ -1,6 +1,5 @@
 //ALL JAVASCRIPT MUST HAVE THIS CODE
-
-import "./vendor.js";
+import "jquery";
 import "../scss/style.scss";
 
 import AOS from "aos";
@@ -8,6 +7,48 @@ import Isotope from "isotope-layout";
 import Waypoint from "waypoints/lib/noframework.waypoints.min.js";
 import GLightbox from "glightbox";
 import Swiper from "swiper/bundle";
+
+import "boxicons/css/boxicons.min.css";
+import "remixicon/fonts/remixicon.css";
+import "swiper/css/bundle";
+
+import { initializeApp } from "firebase/app";
+import { getFirestore, collection } from "firebase/firestore";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+    apiKey: "AIzaSyDLmGRTL9jU4UKYW3dgZBGx_HXWCZngoCc",
+    authDomain: "utm-transporter.firebaseapp.com",
+    databaseURL: "https://utm-transporter-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "utm-transporter",
+    storageBucket: "utm-transporter.appspot.com",
+    messagingSenderId: "1014706948593",
+    appId: "1:1014706948593:web:772eb6406865597c285c50",
+    measurementId: "G-EWSPE5TS7F",
+};
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+export const db = getFirestore();
+export const auth = getAuth();
+
+//FIRESTORE
+//Database collections (aka tables)
+export const usersDB = collection(db, "users");
+
+//FIREAUTH
+//Check auth when auth is changed, need reconfiguration and rename...
+export const currentUser = onAuthStateChanged(auth, (user) => {
+    if (!user) {
+        console.log(user);
+        return true;
+    }
+});
+
+//Export necessary functions from firebase
+export { getDoc, getDocs, addDoc, deleteDoc, updateDoc, doc, onSnapshot, query, where, orderBy, serverTimestamp } from "firebase/firestore";
+export { createUserWithEmailAndPassword, sendEmailVerification, signOut, signInWithEmailAndPassword } from "firebase/auth";
+
 /**
  * Template Name: Arsha
  * Updated: Mar 10 2023 with Bootstrap v5.2.3
