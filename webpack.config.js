@@ -10,6 +10,7 @@ module.exports = {
         index: path.resolve(__dirname, "src/js/index.js"),
         portfoliodetails: path.resolve(__dirname, "src/js/portfolio-details.js"),
         innerpage: path.resolve(__dirname, "src/js/inner-page.js"),
+        signin: path.resolve(__dirname, "src/js/signin.js"),
 
         //home: path.resolve(__dirname, "src/js/home.js"),
         //index: path.resolve(__dirname, "src/js/index.js"),
@@ -93,6 +94,11 @@ module.exports = {
             filename: "portfolio-details.html",
             template: path.resolve(__dirname, "src/html/portfolio-details.html"),
             chunks: ["portfoliodetails"],
+        }),
+        new HtmlWebpackPlugin({
+            filename: "signin.html",
+            template: path.resolve(__dirname, "src/html/signin.html"),
+            chunks: ["signin"],
         }),
     ],
 };
