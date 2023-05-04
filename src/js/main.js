@@ -35,6 +35,7 @@ export const auth = getAuth();
 //FIRESTORE
 //Database collections (aka tables)
 export const usersDB = collection(db, "users");
+export const adminDB = collection(db, "admins");
 
 //FIREAUTH
 //Check auth when auth is changed, need reconfiguration and rename...
