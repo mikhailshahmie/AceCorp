@@ -15,7 +15,6 @@ main.onAuthStateChanged(main.auth, (user) => {
 const loginForm = document.querySelector("#loginForm");
 
 loginForm.addEventListener("submit", (e) => {
-    console.log(userData);
     e.preventDefault();
     const email = loginForm.email.value;
     const password = loginForm.password.value;
