@@ -14,7 +14,7 @@ import "swiper/css/bundle";
 
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection } from "firebase/firestore";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -38,8 +38,10 @@ export const usersDB = collection(db, "users");
 export const adminDB = collection(db, "admins");
 
 //FIREAUTH
+
 //Check auth when auth is changed, need reconfiguration and rename...
 /*
+
 export const currentUser = onAuthStateChanged(auth, (user) => {
     if (!user) {
         console.log(user);
@@ -49,7 +51,7 @@ export const currentUser = onAuthStateChanged(auth, (user) => {
 */
 //Export necessary functions from firebase
 export { getDoc, getDocs, addDoc, deleteDoc, updateDoc, setDoc, doc, onSnapshot, query, where, orderBy, serverTimestamp } from "firebase/firestore";
-export { createUserWithEmailAndPassword, sendEmailVerification, signOut, signInWithEmailAndPassword } from "firebase/auth";
+export { createUserWithEmailAndPassword, sendEmailVerification, signOut, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 
 /**
  * Template Name: Arsha

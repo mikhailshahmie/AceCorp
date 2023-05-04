@@ -1,15 +1,27 @@
-const main = require("./main.js"); //MUST HAVE
+////////////////////////////MUST HAVE////////////////////////////
+const main = require("./main.js");
+let userData;
+main.onAuthStateChanged(main.auth, (user) => {
+    if (user) {
+        main.getDoc(main.doc(main.db, "users", user.uid)).then((doc) => {
+            userData = doc.data();
+        });
+    } else {
+    }
+});
+/////////////////////////////////////////////////////////////////
 
-const loginbtn = document.querySelector("#loginbtn");
-const email = document.querySelector("#email");
-const password = document.querySelector("#password");
+const loginForm = document.querySelector("#loginForm");
 
-loginbtn.addEventListener("click", (e) => {
+loginForm.addEventListener("submit", (e) => {
+    console.log(userData);
     e.preventDefault();
-    console.log(email.value + " " + password.value);
-    main.signInWithEmailAndPassword(main.auth, email.value, password.value)
+    const email = loginForm.email.value;
+    const password = loginForm.password.value;
+    main.signInWithEmailAndPassword(main.auth, email, password)
         .then((cred) => {
             alert(cred.user.email);
+            console.log(main.auth.currentUser);
         })
         .catch((error) => {
             alert(error.message);

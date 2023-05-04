@@ -1,9 +1,21 @@
-const main = require("./main.js"); //MUST HAVE
+////////////////////////////MUST HAVE////////////////////////////
+const main = require("./main.js");
+let userData;
+main.onAuthStateChanged(main.auth, (user) => {
+    if (user) {
+        main.getDoc(main.doc(main.db, "users", user.uid)).then((doc) => {
+            userData = doc.data();
+        });
+    } else {
+    }
+});
+/////////////////////////////////////////////////////////////////
 
 const signupForm = document.querySelector("#signupForm");
 
 signupForm.addEventListener("submit", (e) => {
     e.preventDefault();
+
     const terms = signupForm.terms.checked;
     const fullname = signupForm.fullname.value;
     const email = signupForm.email.value.toLowerCase();
