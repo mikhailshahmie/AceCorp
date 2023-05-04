@@ -1,82 +1,82 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Admin Panel</title>
-	<style>
-		body {
-			margin: 0;
-			padding: 0;
-			font-family: Arial, sans-serif;
-			background-color: #f1f1f1;
-		}
+    <head>
+        <title>Admin Panel</title>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: Arial, sans-serif;
+                background-color: #f1f1f1;
+            }
 
-		.header {
-			background-color: #333;
-			color: #fff;
-			padding: 20px;
-			text-align: center;
-		}
+            .header {
+                background-color: #333;
+                color: #fff;
+                padding: 20px;
+                text-align: center;
+            }
 
-		.container {
-			display: flex;
-			flex-wrap: wrap;
-			margin: 20px;
-		}
+            .container {
+                display: flex;
+                flex-wrap: wrap;
+                margin: 20px;
+            }
 
-		.card {
-			flex: 1 1 250px;
-			background-color: #fff;
-			border-radius: 5px;
-			box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-			margin: 10px;
-			padding: 20px;
-		}
+            .card {
+                flex: 1 1 250px;
+                background-color: #fff;
+                border-radius: 5px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                margin: 10px;
+                padding: 20px;
+            }
 
-		.card h2 {
-			margin-top: 0;
-			font-size: 24px;
-			font-weight: bold;
-			color: #333;
-		}
+            .card h2 {
+                margin-top: 0;
+                font-size: 24px;
+                font-weight: bold;
+                color: #333;
+            }
 
-		.card p {
-			margin: 10px 0;
-			font-size: 16px;
-			color: #666;
-		}
+            .card p {
+                margin: 10px 0;
+                font-size: 16px;
+                color: #666;
+            }
 
-		.btn {
-			display: inline-block;
-			background-color: #333;
-			color: #fff;
-			padding: 10px 20px;
-			border-radius: 5px;
-			text-decoration: none;
-			margin-top: 10px;
-			font-size: 16px;
-			cursor: pointer;
-		}
+            .btn {
+                display: inline-block;
+                background-color: #333;
+                color: #fff;
+                padding: 10px 20px;
+                border-radius: 5px;
+                text-decoration: none;
+                margin-top: 10px;
+                font-size: 16px;
+                cursor: pointer;
+            }
 
-		.btn:hover {
-			background-color: #555;
-		}
-	</style>
-</head>
-<body>
-	<div class="header">
-		<h1>Admin Panel</h1>
-	</div>
-	<div class="container">
-		<div class="card">
-			<h2>Dashboard</h2>
-			<p>View the summary of the current status of the system.</p>
-			<a href="#" class="btn">View Dashboard</a>
-		</div>
-		<div class="card">
-			<h2>Logout</h2>
-			<p>Click this button to logout from the system.</p>
-			<a href="loginadmin.html" class="btn">Logout</a>
-		</div>
-	</div>
-</body>
+            .btn:hover {
+                background-color: #555;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Admin Panel</h1>
+        </div>
+        <div class="container">
+            <div class="card">
+                <h2>Dashboard</h2>
+                <p>View the summary of the current status of the system.</p>
+                <a href="#" class="btn">View Dashboard</a>
+            </div>
+            <div class="card">
+                <h2>Logout</h2>
+                <p>Click this button to logout from the system.</p>
+                <a id="signoutbtn" class="btn">Logout</a>
+            </div>
+        </div>
+    </body>
 </html>

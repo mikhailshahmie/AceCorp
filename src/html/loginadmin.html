@@ -50,15 +50,15 @@
         </style>
     </head>
     <body>
-        <form>
+        <form id="loginForm">
             <h1>Admin Panel</h1>
             <label for="username">Username:</label>
-            <input type="text" id="username" name="username" placeholder="Enter your username" />
+            <input type="text" id="username" name="username" placeholder="Enter your username" required />
             <br /><br />
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" placeholder="Enter your password" />
+            <input type="password" id="password" name="password" placeholder="Enter your password" required />
             <br /><br />
-            <input type="submit" value="Login" />
+            <input type="submit" name="loginbtn" value="Login" />
             <input type="button" value="Return to Login Page" onclick="location.href='signin.html'" />
         </form>
     </body>

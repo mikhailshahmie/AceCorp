@@ -7,6 +7,7 @@ main.onAuthStateChanged(main.auth, (user) => {
             userData = doc.data();
         });
     } else {
+        window.location.href = "/signin.html";
     }
 });
 /////////////////////////////////////////////////////////////////
@@ -17,7 +18,7 @@ signoutbtn.addEventListener("click", (e) => {
     main.signOut(main.auth)
         .then(() => {
             alert("Signing out...");
-            window.location.href = "/index.html";
+            window.location.href = "/signin.html";
         })
         .catch((error) => {
             console.log(error.message);
