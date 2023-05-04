@@ -31,17 +31,4 @@ loginForm.addEventListener("submit", (e) => {
         .catch((error) => {
             alert(error);
         });
-    /*
-    if (emailRegEx.test(email)) {
-        main.signInWithEmailAndPassword(main.auth, email, password)
-            .then((cred) => {
-                alert("Sign in successful");
-                window.location.href = "/index.html";
-            })
-            .catch((error) => {
-                alert(error.message);
-            });
-    } else {
-        alert("Please enter valid UTM student email");
-    }*/
 });

@@ -20,7 +20,7 @@ const loginForm = document.querySelector("#loginForm");
 loginForm.addEventListener("submit", (e) => {
     e.preventDefault();
     const email = loginForm.email.value;
-    let emailRegEx = /[A-Za-z]+@graduate.utm.my\i*$/;
+    let emailRegEx = /[^ ]@graduate.utm.my\i*$/;
     const password = loginForm.password.value;
     if (emailRegEx.test(email)) {
         main.signInWithEmailAndPassword(main.auth, email, password)
