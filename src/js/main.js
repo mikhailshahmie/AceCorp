@@ -48,7 +48,7 @@ export const currentUser = onAuthStateChanged(auth, (user) => {
 });
 */
 //Export necessary functions from firebase
-export { getDoc, getDocs, addDoc, deleteDoc, updateDoc, doc, onSnapshot, query, where, orderBy, serverTimestamp } from "firebase/firestore";
+export { getDoc, getDocs, addDoc, deleteDoc, updateDoc, setDoc, doc, onSnapshot, query, where, orderBy, serverTimestamp } from "firebase/firestore";
 export { createUserWithEmailAndPassword, sendEmailVerification, signOut, signInWithEmailAndPassword } from "firebase/auth";
 
 /**

@@ -69,32 +69,32 @@
         <div class="row justify-content-center">
           <div class="col-lg-4 col-md-6 col-sm-8">
             <div class="border p-3">
-              <form>
+              <form id="signupForm">
                 <div class="form-group">
                     <label for="email" >Name:</label>
-                    <input type="text" class="form-control" id="email" placeholder="Enter Full Name" required><br>
+                    <input type="text" class="form-control" name="fullname" placeholder="Enter Full Name" required><br>
                   </div>
                 <div class="form-group">
                   <label for="email" >Email:</label>
-                  <input type="text" class="form-control" id="email" placeholder="Enter UTM Official Email" required><br>
+                  <input type="text" class="form-control" name="email" placeholder="Enter UTM Official Email" required><br>
                 </div>
                 <div class="form-group">
                     <label for="email" >Matrics Number:</label>
-                    <input type="text" class="form-control" id="email" placeholder="Enter Matrics Number" required><br>
+                    <input type="text" class="form-control" name="matric" placeholder="Enter Matrics Number" required><br>
                   </div>
                 <div class="form-group">
                   <label for="password" >Password:</label>
-                  <input type="password" class="form-control" id="password" placeholder="Enter Password" required><br>
+                  <input type="password" class="form-control" name="password" placeholder="Enter Password" required><br>
                 </div>
                 <div class="form-group">
                     <label for="password" >Repeat Password:</label>
-                    <input type="password" class="form-control" id="password" placeholder="ReEnter Password" required><br>
+                    <input type="password" class="form-control" name="password2" placeholder="ReEnter Password" required><br>
                   </div>
                   <label>
-                    <input type="checkbox" name="agree"required>
+                    <input type="checkbox" name ="terms" required>
                     I agree to the terms and conditions
                   </label>
-                <hr><button type="submit" class="btn btn-primary btn-block rounded-pill" required>Sign Up</button>
+                <hr><button type="submit" class="btn btn-primary btn-block rounded-pill" name="signupbtn" required>Sign Up</button>
               </form>
             </div>
           </div>
