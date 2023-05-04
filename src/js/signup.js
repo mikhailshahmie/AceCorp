@@ -1,13 +1,7 @@
 const main = require("./main.js"); //MUST HAVE
 
-const signupForm = document.querySelector("#signupForm"); /*
-const signupbtn = document.querySelector("#signupbtn");
-const fullnamebox = document.querySelector("#fullname");
-const emailbox = document.querySelector("#email");
-const matricbox = document.querySelector("#matric");
-const passwordbox = document.querySelector("#password");
-const passwordConfirmbox = document.querySelector("#password2");
-*/
+const signupForm = document.querySelector("#signupForm");
+
 signupForm.addEventListener("submit", (e) => {
     e.preventDefault();
     const terms = signupForm.terms.checked;
