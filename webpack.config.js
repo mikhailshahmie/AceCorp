@@ -16,6 +16,7 @@ module.exports = {
     adminmain: path.resolve(__dirname, "src/js/adminmain.js"),
     passengerhome: path.resolve(__dirname, "src/js/passenger-home.js"),
     driverhome: path.resolve(__dirname, "src/js/driver-home.js"),
+    resetpasswordadmin: path.resolve(__dirname, "src/js/resetpasswordadmin.js"),
 
     //home: path.resolve(__dirname, "src/js/home.js"),
     //index: path.resolve(__dirname, "src/js/index.js"),
@@ -130,6 +131,11 @@ module.exports = {
       filename: "adminmain.html",
       template: path.resolve(__dirname, "src/html/adminmain.html"),
       chunks: ["adminmain"],
+    }),
+    new HtmlWebpackPlugin({
+      filename: "resetpasswordadmin.html",
+      template: path.resolve(__dirname, "src/html/resetpasswordadmin.html"),
+      chunks: ["resetpasswordadmin"],
     }),
   ],
 };
