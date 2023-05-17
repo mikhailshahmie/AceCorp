@@ -6,7 +6,7 @@ main.onAuthStateChanged(main.auth, (user) => {
         main.getDoc(main.doc(main.db, "users", user.uid)).then((doc) => {
             userData = doc.data();
             if (user.emailVerified) {
-                /*window.location.href = "/index.html";*/
+                window.location.href = "/passenger-home.html";
             }
         });
     } else {
