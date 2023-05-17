@@ -51,7 +51,7 @@ export const currentUser = onAuthStateChanged(auth, (user) => {
 */
 //Export necessary functions from firebase
 export { getDoc, getDocs, addDoc, deleteDoc, updateDoc, setDoc, doc, onSnapshot, query, where, orderBy, serverTimestamp } from "firebase/firestore";
-export { createUserWithEmailAndPassword, sendEmailVerification, signOut, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+export { createUserWithEmailAndPassword, sendEmailVerification, sendPasswordResetEmail, signOut, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 
 /**
  * Template Name: Arsha

@@ -17,6 +17,7 @@ resetForm.addEventListener("submit", (e) => {
                         } else {
                             alert("Reset Form has been send to you!. Please check your email.");
                             resetForm.reset();
+                            main.signOut(main.auth);
                         }
                     } else {
                     }
