@@ -2,9 +2,9 @@
 const main = require("./main.js");
 main.onAuthStateChanged(main.auth, (user) => {
     if (user) {
+        //MAY NEED TO CHANGE
         main.getDoc(main.doc(main.db, "users", user.uid)).then((doc) => {
             userData = doc.data();
-            console.log(userData);
             if (userData.type != "admin") {
                 main.signOut(main.auth)
                     .then(() => {
@@ -45,6 +45,8 @@ newAdminBtn.addEventListener("click", (e) => {
     e.preventDefault();
     newAdminForm.classList.add("show");
     newAdminBtn.style.visibility = "hidden";
+    console.log(main.auth.currentUser);
+    console.log(main.auth2.currentUser);
 });
 
 newAdminForm.addEventListener("submit", (e) => {
@@ -54,10 +56,33 @@ newAdminForm.addEventListener("submit", (e) => {
     const password = newAdminForm.password.value;
 
     // Logic to save the new admin here
-    alert("New admin saved successfully!");
 
-    // Clear the form and hide the new admin form
-    newAdminForm.reset;
-    newAdminForm.classList.remove("show");
-    newAdminBtn.style.visibility = "visible";
+    main.createUserWithEmailAndPassword(main.auth2, email, password)
+        .then((cred) => {
+            if (cred.user != null) {
+                main.updateProfile(main.auth2.currentUser, {
+                    displayName: username,
+                })
+                    .then(() => {
+                        main.setDoc(main.doc(main.db, "admins", username), {
+                            email: email,
+                            type: "admin",
+                            uid: cred.user.uid,
+                        }).then(() => {
+                            // Clear the form and hide the new admin form
+                            alert("New admin saved successfully!");
+                            newAdminForm.reset;
+                            newAdminForm.classList.remove("show");
+                            newAdminBtn.style.visibility = "visible";
+                            main.signOut(main.auth2);
+                        });
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            }
+        })
+        .catch((err) => {
+            alert(err.message);
+        });
 });

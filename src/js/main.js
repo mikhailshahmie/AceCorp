@@ -17,6 +17,7 @@ import { getFirestore, collection } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+//MAIN CONFIG
 const firebaseConfig = {
     apiKey: "AIzaSyDLmGRTL9jU4UKYW3dgZBGx_HXWCZngoCc",
     authDomain: "utm-transporter.firebaseapp.com",
@@ -27,10 +28,13 @@ const firebaseConfig = {
     appId: "1:1014706948593:web:772eb6406865597c285c50",
     measurementId: "G-EWSPE5TS7F",
 };
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const app2 = initializeApp(firebaseConfig, "Secondary");
 export const db = getFirestore();
-export const auth = getAuth();
+export const auth = getAuth(app);
+export const auth2 = getAuth(app2);
 
 //FIRESTORE
 //Database collections (aka tables)
@@ -51,7 +55,7 @@ export const currentUser = onAuthStateChanged(auth, (user) => {
 */
 //Export necessary functions from firebase
 export { getDoc, getDocs, addDoc, deleteDoc, updateDoc, setDoc, doc, onSnapshot, query, where, orderBy, serverTimestamp } from "firebase/firestore";
-export { createUserWithEmailAndPassword, sendEmailVerification, sendPasswordResetEmail, signOut, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+export { createUserWithEmailAndPassword, sendEmailVerification, sendPasswordResetEmail, signOut, signInWithEmailAndPassword, onAuthStateChanged, updateProfile } from "firebase/auth";
 
 /**
  * Template Name: Arsha
