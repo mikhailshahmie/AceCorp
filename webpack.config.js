@@ -18,7 +18,7 @@ module.exports = {
     driverhome: path.resolve(__dirname, "src/js/driver-home.js"),
     resetpasswordadmin: path.resolve(__dirname, "src/js/resetpasswordadmin.js"),
     forgotpassword: path.resolve(__dirname, "src/js/forgotpassword.js"),
-    
+    driverapplication: path.resolve(__dirname, "src/js/driver-application.js"),
 
     //home: path.resolve(__dirname, "src/js/home.js"),
     //index: path.resolve(__dirname, "src/js/index.js"),
@@ -143,6 +143,11 @@ module.exports = {
       filename: "forgotpassword.html",
       template: path.resolve(__dirname, "src/html/forgotpassword.html"),
       chunks: ["forgotpassword"],
+    }),
+    new HtmlWebpackPlugin({
+      filename: "driver-application.html",
+      template: path.resolve(__dirname, "src/html/driver-application.html"),
+      chunks: ["driverapplication"],
     }),
   ],
 };
