@@ -15,12 +15,15 @@ main.onAuthStateChanged(main.auth, (user) => {
 const signoutbtn = document.querySelector("#signoutbtn");
 
 signoutbtn.addEventListener("click", (e) => {
-    main.signOut(main.auth)
-        .then(() => {
-            alert("Signing out...");
-            window.location.href = "/signin.html";
-        })
-        .catch((error) => {
-            console.log(error.message);
-        });
+    e.preventDefault();
+    if (confirm("Are you sure you want to sign out?")) {
+        main.signOut(main.auth)
+            .then(() => {
+                alert("Signing out...");
+                window.location.href = "/signin.html";
+            })
+            .catch((error) => {
+                console.log(error.message);
+            });
+    }
 });
