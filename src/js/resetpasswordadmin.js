@@ -1,17 +1,23 @@
 ////////////////////////////MUST HAVE////////////////////////////
 const main = require("./main.js");
-let userData;
-main.onAuthStateChanged(main.auth, (user) => {
-    if (user) {
-        main.getDoc(main.doc(main.db, "users", user.uid)).then((doc) => {
-            userData = doc.data();
-            if (userData.type == "passenger") {
-                window.location.href = "/passenger-home.html";
-            } else if (userData.type == "driver") {
-                window.location.href = "/driver-home.html";
-            }
-        });
+/////////////////////////////////////////////////////////////////
+
+const resetForm = document.querySelector("#resetForm");
+
+resetForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const email = resetForm.email.value;
+    let emailRegEx = /[^ ]@graduate.utm.my\i*$/;
+    if (emailRegEx.test(email)) {
+        alert("UTM email is not accepted");
     } else {
+        main.sendPasswordResetEmail(main.auth, email)
+            .then((cred) => {
+                alert("Reset Form has been send to you!. Please check your email.");
+                resetForm.reset();
+            })
+            .catch((error) => {
+                alert(error.message);
+            });
     }
 });
-/////////////////////////////////////////////////////////////////
