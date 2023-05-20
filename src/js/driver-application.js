@@ -5,7 +5,19 @@ main.onAuthStateChanged(main.auth, (user) => {
     if (user) {
         main.getDoc(main.doc(main.db, "users", user.uid)).then((doc) => {
             userData = doc.data();
-            ////////////////
+            main.getDoc(main.doc(main.db, "driverRequest", user.uid))
+                .then((request) => {
+                    if (request == null) {
+                        console.log("No pending request");
+                    } else {
+                        requestData = request.data();
+                        if (requestData.status == "pending") {
+                            alert("You have pending request, please wait for your verification status");
+                            window.location.href = "/passenger-home.html";
+                        }
+                    }
+                })
+                .catch((err) => {});
         });
     } else {
         window.location.href = "/signin.html";
@@ -33,8 +45,29 @@ const requestForm = document.querySelector("#requestForm");
 
 requestForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    const test = requestForm.licenseImg.files;
-    console.log(test[0].name);
-    //${URL.createObjectURL(test[0])};
-    console.log();
+    const licenseImg = requestForm.licenseImg.files[0];
+    const matricImg = requestForm.matricImg.files[0];
+    const licenseRef = main.ref(main.storage, "driver/" + main.auth.currentUser.uid + "/license");
+    const matricRef = main.ref(main.storage, "driver/" + main.auth.currentUser.uid + "/matric");
+    main.uploadBytes(licenseRef, licenseImg)
+        .then((license) => {
+            main.uploadBytes(matricRef, matricImg).then((matric) => {
+                main.getDownloadURL(license.ref).then((licenseUrl) => {
+                    main.getDownloadURL(matric.ref).then((matricUrl) => {
+                        main.setDoc(main.doc(main.db, "driverRequest", main.auth.currentUser.uid), {
+                            license: licenseUrl,
+                            matric: matricUrl,
+                            status: "pending",
+                        }).then(() => {
+                            alert("Request sent successfully");
+                            window.location.href = "/passenger-home.html";
+                        });
+                    });
+                });
+            });
+        })
+        .catch((err) => {
+            console.log(err.message);
+            alert("Error uploading images");
+        });
 });
