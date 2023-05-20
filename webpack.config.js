@@ -19,6 +19,7 @@ module.exports = {
     resetpasswordadmin: path.resolve(__dirname, "src/js/resetpasswordadmin.js"),
     forgotpassword: path.resolve(__dirname, "src/js/forgotpassword.js"),
     driverapplication: path.resolve(__dirname, "src/js/driver-application.js"),
+    bookride: path.resolve(__dirname, "src/js/book-ride.js"),
 
     //home: path.resolve(__dirname, "src/js/home.js"),
     //index: path.resolve(__dirname, "src/js/index.js"),
@@ -148,6 +149,11 @@ module.exports = {
       filename: "driver-application.html",
       template: path.resolve(__dirname, "src/html/driver-application.html"),
       chunks: ["driverapplication"],
+    }),
+    new HtmlWebpackPlugin({
+      filename: "book-ride.html",
+      template: path.resolve(__dirname, "src/html/book-ride.html"),
+      chunks: ["bookride"],
     }),
   ],
 };
