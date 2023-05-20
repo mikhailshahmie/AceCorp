@@ -15,6 +15,7 @@ import "swiper/css/bundle";
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
+import { getStorage } from "firebase/storage";
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 //MAIN CONFIG
@@ -35,11 +36,14 @@ const app2 = initializeApp(firebaseConfig, "Secondary");
 export const db = getFirestore();
 export const auth = getAuth(app);
 export const auth2 = getAuth(app2);
+export const storage = getStorage(app);
 
 //FIRESTORE
 //Database collections (aka tables)
 export const usersDB = collection(db, "users");
 export const adminDB = collection(db, "admins");
+export const bookingDB = collection(db, "bookings");
+export const driverReqDB = collection(db, "driverRequest");
 
 //FIREAUTH
 
