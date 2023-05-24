@@ -155,5 +155,10 @@ module.exports = {
       template: path.resolve(__dirname, "src/html/book-ride.html"),
       chunks: ["bookride"],
     }),
+    new HtmlWebpackPlugin({
+      filename: "profile.html",
+      template: path.resolve(__dirname, "src/html/profile.html"),
+      chunks: ["profile"],
+    }),
   ],
 };
