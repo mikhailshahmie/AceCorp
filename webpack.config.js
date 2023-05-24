@@ -20,6 +20,7 @@ module.exports = {
     forgotpassword: path.resolve(__dirname, "src/js/forgotpassword.js"),
     driverapplication: path.resolve(__dirname, "src/js/driver-application.js"),
     bookride: path.resolve(__dirname, "src/js/book-ride.js"),
+    profile: path.resolve(__dirname, "src/js/profile.js"),
 
     //home: path.resolve(__dirname, "src/js/home.js"),
     //index: path.resolve(__dirname, "src/js/index.js"),
