@@ -1,113 +1,123 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Admin Panel</title>
+<head>
+    <title>Admin Panel</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f1f1f1;
+        }
 
-        <style>
-            body {
-                margin: 0;
-                padding: 0;
-                font-family: Arial, sans-serif;
-                background-color: #f1f1f1;
-            }
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
 
-            .header {
-                background-color: #333;
-                color: #fff;
-                padding: 20px;
-                text-align: center;
-            }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 20px;
+        }
 
-            .container {
-                display: flex;
-                flex-wrap: wrap;
-                margin: 20px;
-            }
+        .card {
+            flex: 1 1 250px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            padding: 20px;
+        }
 
-            .card {
-                flex: 1 1 250px;
-                background-color: #fff;
-                border-radius: 5px;
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-                margin: 10px;
-                padding: 20px;
-            }
+        .card h2 {
+            margin-top: 0;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
 
-            .card h2 {
-                margin-top: 0;
-                font-size: 24px;
-                font-weight: bold;
-                color: #333;
-            }
+        .card p {
+            margin: 10px 0;
+            font-size: 16px;
+            color: #666;
+        }
 
-            .card p {
-                margin: 10px 0;
-                font-size: 16px;
-                color: #666;
-            }
+        .btn {
+            display: inline-block;
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
 
-            .btn {
-                display: inline-block;
-                background-color: #333;
-                color: #fff;
-                padding: 10px 20px;
-                border-radius: 5px;
-                text-decoration: none;
-                margin-top: 10px;
-                font-size: 16px;
-                cursor: pointer;
-            }
+        .btn:hover {
+            background-color: #555;
+        }
 
-            .btn:hover {
-                background-color: #555;
-            }
+        .new-admin-form {
+            display: none;
+        }
 
-            .new-admin-form {
-                display: none;
-            }
+        .new-admin-form.show {
+            display: block;
+        }
 
-            .new-admin-form.show {
-                display: block;
-            }
-        </style>
-    </head>
+        .navigation {
+            background-color: #333;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+        }
 
-    <body>
-        <div class="header">
-            <h1>Admin Panel</h1>
+        .navigation a {
+            color: #fff;
+            margin: 0 10px;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .navigation a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Admin Panel</h1>
+    </div>
+
+    <div class="navigation">
+        <a href="adminprofile.html">View My Profile</a>
+        <a href="#" id="signoutbtn">Logout</a>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <h2>Add New Admin</h2>
+            <p>Click this button to add a new admin to the system.</p>
+            <a href="#" class="btn" id="newAdminBtn">Add New Admin</a>
+
+            <form class="new-admin-form" id="newAdminForm">
+                <label for="adminName">Username:</label>
+                <input type="text" name="username" placeholder="Enter admin username" required />
+                <br /><br />
+                <label for="adminEmail">Email:</label>
+                <input type="email" name="email" placeholder="Enter admin email" required />
+                <br /><br />
+                <label for="adminPassword">Password:</label>
+                <input type="password" name="password" placeholder="Enter admin password" required />
+                <br /><br />
+                <button type="submit" class="btn">Save Admin</button>
+            </form>
         </div>
-
-        <div class="container">
-            <div class="card">
-                <h2>Dashboard</h2>
-                <p>View the summary of the current status of the system.</p>
-                <a href="#" class="btn">View Dashboard </a>
-            </div>
-
-            <div class="card">
-                <h2>Logout</h2>
-                <p>Click this button to logout from the system.</p>
-                <a id="signoutbtn" class="btn">Logout</a>
-            </div>
-
-            <div class="card">
-                <h2>Add New Admin</h2>
-                <p>Click this button to add a new admin to the system.</p>
-                <a href="#" class="btn" id="newAdminBtn">Add New Admin</a>
-
-                <form class="new-admin-form" id="newAdminForm">
-                    <label for="adminName">Username:</label>
-                    <input type="text" name="username" placeholder="Enter admin username" required />
-                    <br /><br />
-                    <label for="adminEmail">Email:</label>
-                    <input type="email" name="email" placeholder="Enter admin email" required />
-                    <br /><br />
-                    <label for="adminPassword">Password:</label>
-                    <input type="password" name="password" placeholder="Enter admin password" required />
-                    <br /><br />
-                    <button type="submit" class="btn">Save Admin</button>
-                </form>
-            </div>
-        </div>
-    </body>
+    </div>
+</body>
 </html>
