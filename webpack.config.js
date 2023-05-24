@@ -21,6 +21,7 @@ module.exports = {
     driverapplication: path.resolve(__dirname, "src/js/driver-application.js"),
     bookride: path.resolve(__dirname, "src/js/book-ride.js"),
     adminprofile: path.resolve(__dirname, "src/js/adminprofile.js"),
+    profile: path.resolve(__dirname, "src/js/profile.js"),
 
     //home: path.resolve(__dirname, "src/js/home.js"),
     //index: path.resolve(__dirname, "src/js/index.js"),
@@ -161,5 +162,10 @@ module.exports = {
       template: path.resolve(__dirname, "src/html/adminprofile.html"),
       chunks: ["adminprofile"],
     }),
+    new HtmlWebpackPlugin({
+      filename: "profile.html",
+      template: path.resolve(__dirname, "src/html/profile.html"),
+      chunks: ["profile"],
+    }),    
   ],
 };
