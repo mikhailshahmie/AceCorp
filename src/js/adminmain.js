@@ -53,7 +53,7 @@ newAdminForm.addEventListener("submit", (e) => {
     e.preventDefault();
     const username = newAdminForm.username.value;
     const email = newAdminForm.email.value;
-    const password = newAdminForm.password.value;
+    const password = "123456";
 
     // Logic to save the new admin here
 
