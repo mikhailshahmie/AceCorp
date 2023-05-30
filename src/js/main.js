@@ -17,6 +17,8 @@ import { getFirestore, collection } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { getStorage } from "firebase/storage";
 
+import { Loader } from "@googlemaps/js-api-loader";
+
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 //MAIN CONFIG
 const firebaseConfig = {
@@ -45,18 +47,12 @@ export const adminDB = collection(db, "admins");
 export const bookingDB = collection(db, "bookings");
 export const driverReqDB = collection(db, "driverRequest");
 
-//FIREAUTH
-
-//Check auth when auth is changed, need reconfiguration and rename...
-/*
-
-export const currentUser = onAuthStateChanged(auth, (user) => {
-    if (!user) {
-        console.log(user);
-        return true;
-    }
+//GOOGLE MAP API
+export const loader = new Loader({
+    apiKey: "AIzaSyDk-9aGVswjq_hTsEewyHQXa6zo1JOTUZQ",
+    version: "weekly",
 });
-*/
+
 //Export necessary functions from firebase
 export { getDoc, getDocs, addDoc, deleteDoc, updateDoc, setDoc, doc, onSnapshot, query, where, orderBy, serverTimestamp } from "firebase/firestore";
 export { createUserWithEmailAndPassword, sendEmailVerification, sendPasswordResetEmail, signOut, signInWithEmailAndPassword, onAuthStateChanged, updateProfile } from "firebase/auth";

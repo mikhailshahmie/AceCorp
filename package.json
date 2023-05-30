@@ -28,6 +28,7 @@
         "webpack-dev-server": "^4.13.3"
     },
     "dependencies": {
+        "@googlemaps/js-api-loader": "^1.15.2",
         "@popperjs/core": "^2.11.7",
         "aos": "^2.3.4",
         "bootstrap-icons": "^1.10.5",
