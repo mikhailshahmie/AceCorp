@@ -8,8 +8,6 @@ module.exports = {
     entry: {
         main: path.resolve(__dirname, "src/js/main.js"),
         index: path.resolve(__dirname, "src/js/index.js"),
-        portfoliodetails: path.resolve(__dirname, "src/js/portfolio-details.js"),
-        innerpage: path.resolve(__dirname, "src/js/inner-page.js"),
         signin: path.resolve(__dirname, "src/js/signin.js"),
         signup: path.resolve(__dirname, "src/js/signup.js"),
         loginadmin: path.resolve(__dirname, "src/js/loginadmin.js"),
@@ -96,16 +94,6 @@ module.exports = {
             filename: "index.html",
             template: path.resolve(__dirname, "src/html/index.html"),
             chunks: ["index"],
-        }),
-        new HtmlWebpackPlugin({
-            filename: "inner-page.html",
-            template: path.resolve(__dirname, "src/html/inner-page.html"),
-            chunks: ["innerpage"],
-        }),
-        new HtmlWebpackPlugin({
-            filename: "portfolio-details.html",
-            template: path.resolve(__dirname, "src/html/portfolio-details.html"),
-            chunks: ["portfoliodetails"],
         }),
         new HtmlWebpackPlugin({
             filename: "signin.html",
