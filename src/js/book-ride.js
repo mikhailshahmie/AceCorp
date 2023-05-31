@@ -34,6 +34,7 @@ main.onAuthStateChanged(main.auth, (user) => {
             }
         });
     } else {
+        window.location.href = "/signin.html";
     }
 });
 /////////////////////////////////////////////////////////////////
