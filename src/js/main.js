@@ -8,10 +8,6 @@ import Waypoint from "waypoints/lib/noframework.waypoints.min.js";
 import GLightbox from "glightbox";
 import Swiper from "swiper/bundle";
 
-import "boxicons/css/boxicons.min.css";
-import "remixicon/fonts/remixicon.css";
-import "swiper/css/bundle";
-
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
