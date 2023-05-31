@@ -132,6 +132,24 @@ main.loader.load().then(async () => {
             });
     });
 
+    //LOGOUT
+    const signoutbtn = document.querySelector("#signoutbtn");
+
+    signoutbtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (confirm("Are you sure you want to sign out?")) {
+            main.signOut(main.auth)
+                .then(() => {
+                    alert("Signing out...");
+                    window.location.href = "/signin.html";
+                })
+                .catch((error) => {
+                    console.log(error.message);
+                });
+        }
+    });
+
+    //UPDATE ROUTE WHEN ORIGIN AND DESTINATION ADDRESS IS SUBMITTED
     function getRoute() {
         if (bookingForm.from.value == "" || bookingForm.to.value == "") {
         } else {
