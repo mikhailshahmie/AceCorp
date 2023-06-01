@@ -50,7 +50,6 @@ bookingForm.datetime.min = today;
 //GOOGLE MAP SETTINGS
 main.loader.load().then(async () => {
   const { Map } = await google.maps.importLibrary("maps");
-  const { Autocomplete } = await google.maps.importLibrary("places");
   const { DirectionsService, DirectionsRenderer } =
     await google.maps.importLibrary("routes");
 
@@ -72,22 +71,7 @@ main.loader.load().then(async () => {
     west: center.lng - 0.1,
   };
 
-  const autoCompleteOptions = {
-    bounds: defaultBounds,
-    componentRestrictions: { country: "my" },
-    fields: ["address_components", "geometry", "icon", "name"],
-    strictBounds: false,
-  };
-
-  let map = new Map(document.getElementById("googlemap"), mapOptions);
-  let originAutocomplete = new Autocomplete(
-    bookingForm.from,
-    autoCompleteOptions
-  );
-  let destinationAutocomplete = new Autocomplete(
-    bookingForm.to,
-    autoCompleteOptions
-  );
+  let map = new Map(document.getElementById("currentgooglemap"), mapOptions);
   let directionService = new DirectionsService();
   let directionDisplay = new DirectionsRenderer();
   directionDisplay.setMap(map);
@@ -95,55 +79,7 @@ main.loader.load().then(async () => {
   // originAutocomplete.addListener("place_changed", getRoute);
   // destinationAutocomplete.addListener("place_changed", getRoute);
 
-  bookingForm.from.addEventListener("focusout", (e) => {
-    e.preventDefault();
-    getRoute();
-  });
-
-  bookingForm.to.addEventListener("focusout", (e) => {
-    e.preventDefault();
-    getRoute();
-  });
-
-  //SUBMIT BOOKING FORM
-  bookingForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const submitBtn = bookingForm.submitBtn;
-
-    submitBtn.disabled = true;
-
-    const from = bookingForm.from.value;
-    const destination = bookingForm.to.value;
-    const person = bookingForm.person.value;
-    const datetime = bookingForm.datetime.value.replace("T", " ");
-    const notes = bookingForm.notes.value;
-    const passengerId = main.auth.currentUser.uid;
-    //ADD PRICE VARIABLE HERE
-
-    main
-      .addDoc(main.bookingDB, {
-        from: from,
-        destination: destination,
-        person: person,
-        datetime: datetime,
-        notes: notes,
-        passengerId: passengerId,
-        driverId: "",
-        preStatus: "",
-        price: "",
-        status: "waiting",
-      })
-      .then((success) => {
-        alert("Book successfully");
-        //go to current booking page
-        window.location.href = "/page.html";
-      })
-      .catch((err) => {
-        alert(err.message);
-        submitBtn.disabled = false;
-      });
-  });
-
+  //ADD PRICE VARIABLE HER
   function getRoute() {
     if (bookingForm.from.value == "" || bookingForm.to.value == "") {
     } else {

@@ -74,8 +74,16 @@
   </div>
     </section>
     <body>
-      <div class="container mt-5">
+      <div class="container mt-10"> 
         <div class="row justify-content-center">
+          
+          <hr>
+          <div class="col-lg-4 col-md-6 col-sm-8">            
+            <div class="border p-3">
+              <div id="currentgooglemap"></div>
+            </div>
+            
+          </div>
           <div class="col-lg-4 col-md-6 col-sm-8">            
             <div class="border p-3">
               <form id="bookingForm">
@@ -99,10 +107,6 @@
                     <label for="person" >Extra notes :</label>
                     <input type="text" class="form-control" name="notes" disabled ><br>
                   </div>
-                  <div class="form-group">
-                    <label for="person" >Status :</label>
-                    <input type="text" class="form-control" name="notes" placeholder="" disabled><br>
-                  </div>
               </form>
             </div>
             
@@ -114,9 +118,10 @@
                     <label for="person" >Status :</label>
                     <input type="text" class="form-control" name="notes" placeholder="" disabled><br>
                   </div>
-              </form>
+                  <button type="submit" style="color: rgb(255, 255, 255); background-color: red;" class="btn btn-primary btn-block rounded-pill" name="submitBtn">Cancel Booking</button>
+
+                </form>
             </div>
-            
           </div>
         </div>
       </div>
