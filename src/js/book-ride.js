@@ -30,7 +30,7 @@ main.onAuthStateChanged(main.auth, (user) => {
             });
             if (bookingQuery.length > 0) {
                 //go to current booking page
-                window.location.href = "/page.html";
+                window.location.href = "/book-current.html";
             }
         });
     } else {
@@ -125,7 +125,7 @@ main.loader.load().then(async () => {
             .then((success) => {
                 alert("Book successfully");
                 //go to current booking page
-                window.location.href = "/page.html";
+                window.location.href = "/book-current.html";
             })
             .catch((err) => {
                 alert(err.message);
