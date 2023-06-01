@@ -1,46 +1,7 @@
 ////////////////////////////MUST HAVE////////////////////////////
-const { connectStorageEmulator } = require("firebase/storage");
 const main = require("./main.js");
 let userData;
-main.onAuthStateChanged(main.auth, (user) => {
-    if (user) {
-        let emailRegEx = /[^ ]@graduate.utm.my\i*$/;
-        if (!emailRegEx.test(user.email)) {
-            window.location.href = "/adminmain.html";
-        }
-        main.getDoc(main.doc(main.db, "users", user.uid)).then((doc) => {
-            userData = doc.data();
-            const redirectBtn = document.querySelector("#redirect");
-            if (userData.type == "passenger") {
-                redirectBtn.href = "driver-application.html";
-                redirectBtn.text = "Be a Driver";
-            } else if (userData.type == "driver") {
-                //NEED CHANGING
-                redirectBtn.href = "driver-home.html";
-                redirectBtn.text = "Driver dashboard";
-            }
-        });
-
-        //CHECK IF THE CURRENT USER HAVE AN ACTIVE BOOKING
-        const q = main.query(main.bookingDB, main.where("passengerId", "==", user.uid), main.where("status", "in", ["waiting", "ongoing"]));
-        main.getDocs(q).then((snapshot) => {
-            let bookingQuery = [];
-            snapshot.docs.forEach((doc) => {
-                bookingQuery.push({ ...doc.data(), id: doc.id });
-            });
-            if (bookingQuery.length > 0) {
-            }
-        });
-    } else {
-        window.location.href = "/signin.html";
-    }
-});
-/////////////////////////////////////////////////////////////////
-
-const bookingForm = document.querySelector("#bookingForm");
-//SET MINIMUM DATE FOR BOOKING
-const today = new Date().toISOString().slice(0, 16);
-bookingForm.datetime.min = today;
+let currentBooking;
 
 //GOOGLE MAP SETTINGS
 main.loader.load().then(async () => {
@@ -70,8 +31,77 @@ main.loader.load().then(async () => {
     let directionDisplay = new DirectionsRenderer();
     directionDisplay.setMap(map);
     ///////////////////////////////////////////////////////////////////////////// END GOOGLE MAP SETTINGS
-    // originAutocomplete.addListener("place_changed", getRoute);
-    // destinationAutocomplete.addListener("place_changed", getRoute);
+    const cancelbtn = document.querySelector("#cancelbtn");
+
+    main.onAuthStateChanged(main.auth, (user) => {
+        if (user) {
+            let emailRegEx = /[^ ]@graduate.utm.my\i*$/;
+            if (!emailRegEx.test(user.email)) {
+                window.location.href = "/adminmain.html";
+            }
+            main.getDoc(main.doc(main.db, "users", user.uid)).then((doc) => {
+                userData = doc.data();
+                const redirectBtn = document.querySelector("#redirect");
+                if (userData.type == "passenger") {
+                    redirectBtn.href = "driver-application.html";
+                    redirectBtn.text = "Be a Driver";
+                } else if (userData.type == "driver") {
+                    //NEED CHANGING
+                    redirectBtn.href = "driver-home.html";
+                    redirectBtn.text = "Driver dashboard";
+                }
+            });
+
+            //CHECK IF THE CURRENT USER HAVE AN ACTIVE BOOKING
+            const q = main.query(main.bookingDB, main.where("passengerId", "==", user.uid), main.where("status", "in", ["waiting", "ongoing"]));
+            main.onSnapshot(q, (snapshot) => {
+                if (!snapshot.empty) {
+                    let bookingQuery = [];
+                    snapshot.docs.forEach((doc) => {
+                        bookingQuery.push({ ...doc.data(), id: doc.id });
+                    });
+
+                    currentBooking = bookingQuery[0];
+
+                    const bookingDetails = document.querySelector("#bookingDetails");
+                    const bookingStatus = document.querySelector("#bookingStatus");
+
+                    bookingDetails.from.value = currentBooking.from;
+                    bookingDetails.to.value = currentBooking.destination;
+                    bookingDetails.person.value = currentBooking.person;
+                    bookingDetails.datetime.value = currentBooking.datetime;
+                    bookingDetails.notes.value = currentBooking.notes;
+                    bookingStatus.status.value = currentBooking.status.toUpperCase();
+
+                    //IF CURRENT STATUS IS ONGOING, DISABLE CANCEL BUTTON
+                    if (currentBooking.status == "ongoing") {
+                        cancelbtn.disabled = true;
+                    } else {
+                        getRoute(currentBooking.from, currentBooking.destination);
+                        cancelbtn.disabled = false;
+                    }
+                } else {
+                    setTimeout(function () {
+                        window.location.href = "/book-ride.html";
+                    }, 500);
+                }
+            });
+        } else {
+            window.location.href = "/signin.html";
+        }
+    });
+    /////////////////////////////////////////////////////////////////
+
+    //CANCEL BOOKING
+    cancelbtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        const cancelRef = main.doc(main.db, "bookings", currentBooking.id);
+        if (confirm("Are you sure you want to cancel?")) {
+            main.updateDoc(cancelRef, {
+                status: "cancelled",
+            });
+        }
+    });
 
     //LOGOUT
     const signoutbtn = document.querySelector("#signoutbtn");
@@ -90,27 +120,24 @@ main.loader.load().then(async () => {
         }
     });
 
-    //ADD PRICE VARIABLE HER
-    function getRoute() {
-        if (bookingForm.from.value == "" || bookingForm.to.value == "") {
-        } else {
-            let request = {
-                origin: bookingForm.from.value,
-                destination: bookingForm.to.value,
-                travelMode: google.maps.TravelMode.DRIVING,
-                unitSystem: google.maps.UnitSystem.IMPERIAL,
-            };
+    //UPDATE ROUTE WHEN ORIGIN AND DESTINATION ADDRESS IS SUBMITTED
+    function getRoute(origin, destination) {
+        let request = {
+            origin: origin,
+            destination: destination,
+            travelMode: google.maps.TravelMode.DRIVING,
+            unitSystem: google.maps.UnitSystem.IMPERIAL,
+        };
 
-            directionService.route(request, (result, status) => {
-                if (status == google.maps.DirectionsStatus.OK) {
-                    directionDisplay.setDirections(result);
-                } else {
-                    directionDisplay.setDirections({ routes: [] });
-                    map.setCenter(center);
-                    map.setZoom(zoom);
-                    alert("Invalid addresses");
-                }
-            });
-        }
+        directionService.route(request, (result, status) => {
+            if (status == google.maps.DirectionsStatus.OK) {
+                directionDisplay.setDirections(result);
+            } else {
+                directionDisplay.setDirections({ routes: [] });
+                map.setCenter(center);
+                map.setZoom(zoom);
+                alert("Invalid addresses");
+            }
+        });
     }
 });
