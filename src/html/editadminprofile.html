@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Profile</title>
+    <title>Edit Profile</title>
     <style>
         body {
             margin: 0;
@@ -44,6 +44,30 @@
             margin: 0;
         }
 
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            width: 120px;
+            font-weight: bold;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"] {
+            width: 100%;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
         .btn {
             background-color: #333;
             color: #fff;
@@ -51,7 +75,7 @@
             border-radius: 5px;
             text-decoration: none;
             font-size: 16px;
-            
+            cursor: pointer;
         }
 
         .btn:hover {
@@ -80,32 +104,32 @@
 
 <body>
     <div class="header">
-        <h1>My Profile</h1>
+        <h1>Edit Profile</h1>
     </div>
 
     <div class="container">
-        
+        <form action="#" method="post">
+            <div class="form-group">
+                <label>Email:</label>
+                <input type="email" name="email" value="johndoe@example.com">
+            </div>
 
-        <div class="profile-info">
-            <label>Email:</label>
-            <p>johndoe@example.com</p>
-        </div>
+            <div class="form-group">
+                <label>Username:</label>
+                <input type="text" name="username" value="johndoe123">
+            </div>
 
-        <div class="profile-info">
-            <label>Username:</label>
-            <p>johndoe123</p>
-        </div>
+            <div class="form-group">
+                <label>Role:</label>
+                <p>Admin</p>
+            </div>
 
-        <div class="profile-info">
-            <label>Role:</label>
-            <p>Admin</p>
-        </div>
+            <div class="back-btn">
+                <a href="adminprofile.html">Back</a>
+            </div>
 
-        <div class="back-btn">
-            <a href="adminmain.html">Back</a>
-        </div>
-
-        <a href="editadminprofile.html" class="btn">Edit Profile</a>
+            <button type="submit" class="btn">Save Changes</button>
+        </form>
     </div>
 </body>
 </html>

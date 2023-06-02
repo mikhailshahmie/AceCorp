@@ -20,6 +20,7 @@ module.exports = {
         bookride: path.resolve(__dirname, "src/js/book-ride.js"),
         adminprofile: path.resolve(__dirname, "src/js/adminprofile.js"),
         profile: path.resolve(__dirname, "src/js/profile.js"),
+        editadminprofile: path.resolve(__dirname, "src/js/editadminprofile.js"),
 
         //home: path.resolve(__dirname, "src/js/home.js"),
         //index: path.resolve(__dirname, "src/js/index.js"),
@@ -155,5 +156,10 @@ module.exports = {
             template: path.resolve(__dirname, "src/html/profile.html"),
             chunks: ["profile"],
         }),
+        new HtmlWebpackPlugin({
+          filename: "editadminprofile.html",
+          template: path.resolve(__dirname, "src/html/editadminprofile.html"),
+          chunks: ["editadminprofile"],
+      }),
     ],
 };
