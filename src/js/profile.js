@@ -14,6 +14,12 @@ main.onAuthStateChanged(main.auth, (user) => {
             if (userData.type == "passenger") {
                 redirectBtn.href = "driver-application.html";
                 redirectBtn.text = "Be a Driver";
+                //display profile
+                document.querySelector("#displayName").value = userData.fullname;
+                document.querySelector("#displayEmail").value = userData.email;
+                document.querySelector("#displayMatric").value = userData.matric;
+                document.querySelector("#displayPhone").value = userData.phone;
+                console.log( userData.password);
             } else if (userData.type == "driver") {
                 //NEED CHANGING
                 redirectBtn.href = "driver-home.html";
@@ -25,6 +31,35 @@ main.onAuthStateChanged(main.auth, (user) => {
     }
 });
 /////////////////////////////////////////////////////////////////
+//Display User Data
+/*
+main.onAuthStateChanged(main.auth, async (user) => {
+    if (user) {
+      const dbRef = main.ref(main.db, `users/${user.uid}`);
+      main.get(dbRef).then((snapshot) => {
+        const userData = snapshot.val();
+        if (userData) {
+          // Display user data
+          document.querySelector("#displayName").value = userData.fullname;
+          document.querySelector("#displayEmail").value = userData.email;
+          document.querySelector("#displayMatric").value = userData.matric;
+          document.querySelector("#displayPassword").value = userData.password;
+        }
+      });
+    } else {
+      window.location.href = "/signin.html";
+    }
+  });*/
+
+  
+//Display User Data Experimenting
+/*const user = firebase.auth().currentUser;
+if ( user !== null){
+    const name = document.getElementById("displayName");
+    const email = document.getElementById("displayEmail");
+    const matric = document.getElementById("displayEmail");
+}*/
+
 
 //Sign Out Functionality
 const signoutbtn = document.querySelector("#signoutbtn");

@@ -55,7 +55,7 @@
                     <ul>
                       <li><a href="profile.html">User Profile</a></li>
                       <li><a href="#">User Record</a></li>
-                      <li><a href="driver-application.html">Be a Driver</a></li>
+                      <li><a id="redirect"></a></li>
                       <li><a id="signoutbtn" style="color: red">Sign Out</a></li>
                     </ul>
                   </li>
@@ -97,10 +97,19 @@
                     <label for="email" >Matrics Number:</label>
                     <input type="text" class="form-control" id="displayMatric"><br>
                   </div>
-                <div class="form-group">
+                  <div class="form-group">
+                    <label for="email" >Phone Number:</label>
+                    <input type="text" class="form-control" id="displayPhone"><br>
+                  </div>
+                <!--<div class="form-group">
                   <label for="password" >Password:</label>
                   <input type="password" class="form-control" id="displayPassword"><br>
+                </div>-->
+                <div class="form-group">
+                  <label for="profilePicture">Profile Picture:</label>
+                  <input type="file" class="form-control" id="profilePicture"><br>
                 </div>
+
                 <button type="submit" class="btn btn-primary btn-block rounded-pill" name="updatebtn">Update</button>
               </form>
             </div>
