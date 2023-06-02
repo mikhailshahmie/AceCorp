@@ -35,9 +35,10 @@ main.onAuthStateChanged(main.auth, (user) => {
             const updateBtn = document.querySelector("updatebtn");
             updateBtn.addEventListener("submit", () => {
               const updateName = displayName.value.trim();
-              //phone date not inserted yet
+              const updatePhone = displayPhone.value.trim();
               main.updateDoc(main.doc(main.db, "users", user.uid), {
                 fullname: updateName
+                //phone: updatePhone
               })
                 .then(() => {
                   console.log("Update Successful");
