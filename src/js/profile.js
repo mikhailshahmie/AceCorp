@@ -20,7 +20,6 @@ main.onAuthStateChanged(main.auth, (user) => {
                 document.querySelector("#displayEmail").value = userData.email;
                 document.querySelector("#displayMatric").value = userData.matric;
                 document.querySelector("#displayPhone").value = userData.phone;
-                console.log( userData.password);
             } else if (userData.type == "driver") {
                 //NEED CHANGING
                 redirectBtn.href = "driver-home.html";
@@ -33,6 +32,22 @@ main.onAuthStateChanged(main.auth, (user) => {
                 document.querySelector("#displayMatric").value = userData.matric;
                 document.querySelector("#displayPhone").value = userData.phone;
             }
+            const updateBtn = document.querySelector("updatebtn");
+            updateBtn.addEventListener("submit", () => {
+              const updateName = displayName.value.trim();
+              //phone date not inserted yet
+              main.updateDoc(main.doc(main.db, "users", user.uid), {
+                fullname: updateName
+              })
+                .then(() => {
+                  console.log("Update Successful");
+                })
+                .catch((error) => {
+                  console.log("Error", error);
+                });
+            });
+            
+            
         });
     } else {
         window.location.href = "/signin.html";
