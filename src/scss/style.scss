@@ -1,6 +1,11 @@
 @import "~bootstrap/scss/bootstrap";
+@import "~aos/dist/aos.css";
 $bootstrap-icons-font-dir: "~bootstrap-icons/font/fonts";
 @import "~bootstrap-icons/font/bootstrap-icons.scss";
+@import "~boxicons/css/boxicons.min.css";
+@import "~remixicon/fonts/remixicon.css";
+@import "~swiper/css/bundle";
+
 @import "variables";
 
 @import "general";
@@ -11,6 +16,11 @@ $bootstrap-icons-font-dir: "~bootstrap-icons/font/fonts";
 @import "footer";
 
 #googlemap {
-    width: 100%;
-    height: 200px;
+  width: 100%;
+  height: 200px;
+}
+
+#currentgooglemap {
+  width: 100%;
+  height: 425px;
 }

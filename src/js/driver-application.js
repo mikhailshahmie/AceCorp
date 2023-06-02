@@ -17,7 +17,7 @@ main.onAuthStateChanged(main.auth, (user) => {
                         requestData = request.data();
                         if (requestData.status == "pending") {
                             alert("You have pending request, please wait for your verification status");
-                            window.location.href = "/passenger-home.html";
+                            window.location.href = "/home.html";
                         }
                     }
                 })
@@ -64,7 +64,7 @@ requestForm.addEventListener("submit", (e) => {
                             status: "pending",
                         }).then(() => {
                             alert("Request sent successfully");
-                            window.location.href = "/passenger-home.html";
+                            window.location.href = "/home.html";
                         });
                     });
                 });

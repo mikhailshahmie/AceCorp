@@ -8,18 +8,17 @@ module.exports = {
   entry: {
     main: path.resolve(__dirname, "src/js/main.js"),
     index: path.resolve(__dirname, "src/js/index.js"),
-    portfoliodetails: path.resolve(__dirname, "src/js/portfolio-details.js"),
-    innerpage: path.resolve(__dirname, "src/js/inner-page.js"),
     signin: path.resolve(__dirname, "src/js/signin.js"),
     signup: path.resolve(__dirname, "src/js/signup.js"),
     loginadmin: path.resolve(__dirname, "src/js/loginadmin.js"),
     adminmain: path.resolve(__dirname, "src/js/adminmain.js"),
-    passengerhome: path.resolve(__dirname, "src/js/passenger-home.js"),
+    home: path.resolve(__dirname, "src/js/home.js"),
     driverhome: path.resolve(__dirname, "src/js/driver-home.js"),
     resetpasswordadmin: path.resolve(__dirname, "src/js/resetpasswordadmin.js"),
     forgotpassword: path.resolve(__dirname, "src/js/forgotpassword.js"),
     driverapplication: path.resolve(__dirname, "src/js/driver-application.js"),
     bookride: path.resolve(__dirname, "src/js/book-ride.js"),
+    bookcurrent: path.resolve(__dirname, "src/js/book-current.js"),
     adminprofile: path.resolve(__dirname, "src/js/adminprofile.js"),
     profile: path.resolve(__dirname, "src/js/profile.js"),
 
@@ -98,16 +97,6 @@ module.exports = {
       chunks: ["index"],
     }),
     new HtmlWebpackPlugin({
-      filename: "inner-page.html",
-      template: path.resolve(__dirname, "src/html/inner-page.html"),
-      chunks: ["innerpage"],
-    }),
-    new HtmlWebpackPlugin({
-      filename: "portfolio-details.html",
-      template: path.resolve(__dirname, "src/html/portfolio-details.html"),
-      chunks: ["portfoliodetails"],
-    }),
-    new HtmlWebpackPlugin({
       filename: "signin.html",
       template: path.resolve(__dirname, "src/html/signin.html"),
       chunks: ["signin"],
@@ -123,9 +112,9 @@ module.exports = {
       chunks: ["loginadmin"],
     }),
     new HtmlWebpackPlugin({
-      filename: "passenger-home.html",
-      template: path.resolve(__dirname, "src/html/passenger-home.html"),
-      chunks: ["passengerhome"],
+      filename: "home.html",
+      template: path.resolve(__dirname, "src/html/home.html"),
+      chunks: ["home"],
     }),
     new HtmlWebpackPlugin({
       filename: "driver-home.html",
@@ -158,6 +147,11 @@ module.exports = {
       chunks: ["bookride"],
     }),
     new HtmlWebpackPlugin({
+      filename: "book-current.html",
+      template: path.resolve(__dirname, "src/html/book-current.html"),
+      chunks: ["bookcurrent"],
+    }),
+    new HtmlWebpackPlugin({
       filename: "adminprofile.html",
       template: path.resolve(__dirname, "src/html/adminprofile.html"),
       chunks: ["adminprofile"],
@@ -166,6 +160,6 @@ module.exports = {
       filename: "profile.html",
       template: path.resolve(__dirname, "src/html/profile.html"),
       chunks: ["profile"],
-    }),    
+    }),
   ],
 };

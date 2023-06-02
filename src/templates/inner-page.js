@@ -1,5 +1,5 @@
 ////////////////////////////MUST HAVE////////////////////////////
-const main = require("./main.js");
+const main = require("../js/main.js");
 let userData;
 main.onAuthStateChanged(main.auth, (user) => {
     if (user) {

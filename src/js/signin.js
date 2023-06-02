@@ -6,7 +6,7 @@ main.onAuthStateChanged(main.auth, (user) => {
         main.getDoc(main.doc(main.db, "users", user.uid)).then((doc) => {
             userData = doc.data();
             if (user.emailVerified) {
-                window.location.href = "/passenger-home.html";
+                window.location.href = "/home.html";
             }
         });
     } else {
@@ -30,7 +30,7 @@ loginForm.addEventListener("submit", (e) => {
                             alert("Please check your email for verification (Please check in spam too if you don't see it)");
                         } else {
                             alert("Sign in successful");
-                            window.location.href = "/passenger-home.html";
+                            window.location.href = "/home.html";
                         }
                     } else {
                     }
