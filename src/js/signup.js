@@ -25,7 +25,7 @@ signupForm.addEventListener("submit", (e) => {
     const passwordConfirm = signupForm.password2.value;
     let emailRegEx = /[^ ]@graduate.utm.my\i*$/;
     let matricRegEx = /[A-Za-z]\d\d[A-Za-z][A-Za-z]\d\d\d\d\i*$/;
-    var phoneRegEx = /^\d+$/;
+    let phoneRegEx = /^\d+$/;
 
     if (!fullname) {
         alert("Name is missing");

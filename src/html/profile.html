@@ -1,140 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-    <title>UTM TRANSPORTER | Profile</title>
-    <meta content="" name="description" />
-    <meta content="" name="keywords" />
+        <title>UTM TRANSPORTER | Profile</title>
+        <meta content="" name="description" />
+        <meta content="" name="keywords" />
 
-    <!-- Favicons -->
-    <link href="../img/favicon.png" rel="icon" />
-    <link href="../img/apple-touch-icon.png" rel="apple-touch-icon" />
+        <!-- Favicons -->
+        <link href="../img/favicon.png" rel="icon" />
+        <link href="../img/apple-touch-icon.png" rel="apple-touch-icon" />
 
-    <!-- Google Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-      rel="stylesheet"
-    />
-  </head>
-  <style>
-    .btn-primary {
-      background-color: skyblue;
-      color: white;
-      display: block;
-      margin: 0 auto;
-    }
-    #signoutbtn:hover {
-            cursor: pointer;
-        }
-  </style>
-  
-  <body>
-    <!-- ======= Header ======= -->
-    <header id="header" class="fixed-top header-inner-pages">
-        <div class="container d-flex align-items-center">
-            <h1 class="logo me-auto"><a href="home.html">Passenger</a></h1>
-            <!-- Uncomment below if you prefer to use an image logo -->
-            <!-- <a href="index.html" class="logo me-auto"><img src="../img/logo.png" alt="" class="img-fluid"></a>-->
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet" />
 
-            <nav id="navbar" class="navbar">
-                <ul>
-                  <li><a class="nav-link scrollto active" href="home.html">Home</a></li>
-                  <li><a class="nav-link scrollto" href="#about">About</a></li>
-                  <li><a class="nav-link scrollto" href="#services">Services</a></li>
-                  <li><a class="nav-link scrollto" href="#team">Team</a></li>
-                  <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-                  <li>
-                    <a class="getstarted scrollto" href="./book-ride.html">Book A Ride</a>
-                  </li>
-                  <li class="dropdown">
-                    <a href="#"
-                      ><span>Activity</span> <i class="bi bi-chevron-down"></i
-                    ></a>
+        <style>
+            .btn-primary {
+                background-color: skyblue;
+                color: white;
+                display: block;
+                margin: 0 auto;
+            }
+            #signoutbtn:hover {
+                cursor: pointer;
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- ======= Header ======= -->
+        <header id="header" class="fixed-top header-inner-pages">
+            <div class="container d-flex align-items-center">
+                <h1 class="logo me-auto"><a href="home.html">Passenger</a></h1>
+                <!-- Uncomment below if you prefer to use an image logo -->
+                <!-- <a href="index.html" class="logo me-auto"><img src="../img/logo.png" alt="" class="img-fluid"></a>-->
+
+                <nav id="navbar" class="navbar">
                     <ul>
-                      <li><a href="profile.html">User Profile</a></li>
-                      <li><a href="#">User Record</a></li>
-                      <li><a id="redirect"></a></li>
-                      <li><a id="signoutbtn" style="color: red">Sign Out</a></li>
-                    </ul>
-                  </li>
-                  <!--<li>
+                        <li><a class="nav-link scrollto active" href="home.html">Home</a></li>
+                        <li><a class="nav-link scrollto" href="#about">About</a></li>
+                        <li><a class="nav-link scrollto" href="#services">Services</a></li>
+                        <li><a class="nav-link scrollto" href="#team">Team</a></li>
+                        <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+                        <li>
+                            <a class="getstarted scrollto" href="./book-ride.html">Book A Ride</a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#"><span>Activity</span> <i class="bi bi-chevron-down"></i></a>
+                            <ul>
+                                <li><a href="profile.html">User Profile</a></li>
+                                <li><a href="#">User Record</a></li>
+                                <li><a id="redirect"></a></li>
+                                <li><a id="signoutbtn" style="color: red">Sign Out</a></li>
+                            </ul>
+                        </li>
+                        <!--<li>
                                   <a class="getstarted scrollto" id="signoutbtn" style="color: red">Sign Out</a>
                               </li>-->
-                </ul>
-                <i class="bi bi-list mobile-nav-toggle"></i>
-              </nav>
-            <!-- .navbar -->
-        </div>
-    </header>
-    <!-- End Header -->
-  
-  <section id="breadcrumbs" class="breadcrumbs">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-6">
-         <h1 style="text-align: center;">Profile</h1>
-      </div>
-    </div>
-  </div>
-    </section>
-    <body>
-      <div class="container mt-5">
-        <div class="row justify-content-center">
-          <div class="col-lg-4 col-md-6 col-sm-8">
-            <div class="border p-3">
-              <form id="profileForm">
-                <h3>Personal Details</h3>
-                <div class="form-group">
-                    <label for="email" >Name:</label>
-                    <input type="text" class="form-control" id="displayName"><br>
-                  </div>
-                <div class="form-group">
-                  <label for="email" >Email:</label>
-                  <input type="text" class="form-control" id="displayEmail"><br>
-                </div>
-                <div class="form-group">
-                    <label for="email" >Matrics Number:</label>
-                    <input type="text" class="form-control" id="displayMatric"><br>
-                  </div>
-                  <div class="form-group">
-                    <label for="email" >Phone Number:</label>
-                    <input type="text" class="form-control" id="displayPhone"><br>
-                  </div>
-                <div class="form-group">
-                  <label for="profilePicture">Profile Picture:</label>
-                  <input type="file" class="form-control" id="profilePicture"><br>
-                </div>
-
-                <div id="vehicleForm" style="display: none;">
-                  <h3>Vehicle Details</h3>
-                  <div class="form-group">
-                    <label for="vehicleColor">Vehicle Color:</label>
-                    <input type="text" class="form-control" id="vehicleColor"><br>
-                  </div>
-                  <div class="form-group">
-                    <label for="plateNumber">Plate Number:</label>
-                    <input type="text" class="form-control" id="plateNumber"><br>
-                  </div>
-                  <div class="form-group">
-                    <label for="vehicleType">Vehicle Type:</label>
-                    <input type="text" class="form-control" id="vehicleType"><br>
-                  </div>
-                </div>
-                <div id="documentForm" style="display: none;">
-                  <div class="form-group">
-                    <h3>Document Details</h3>
-                </div>
-                </div>
-              </form>
-              <button type="submit" class="btn btn-primary btn-block rounded-pill" name="updatebtn">Update</button>
+                    </ul>
+                    <i class="bi bi-list mobile-nav-toggle"></i>
+                </nav>
+                <!-- .navbar -->
             </div>
-          </div>
+        </header>
+        <!-- End Header -->
+
+        <section id="breadcrumbs" class="breadcrumbs">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <h1 style="text-align: center">Profile</h1>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-6 col-sm-8">
+                    <div class="border p-3">
+                        <form id="detailsForm">
+                            <div id="basicForm">
+                                <h3>Personal Details</h3>
+                                <div class="form-group">
+                                    <div class="profile-pic">
+                                        <label class="-label" for="file">
+                                            <span class="glyphicon glyphicon-camera"></span>
+                                            <span>Change Image</span>
+                                        </label>
+                                        <input id="file" name="fileUploaded" type="file" accept=".png, .jpg, .jpeg" />
+                                        <img id="profileImg" width="200" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="fullname">Full Name:</label>
+                                    <input type="text" class="form-control" name="fullname" /><br />
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email:</label>
+                                    <input type="text" class="form-control" name="email" disabled /><br />
+                                </div>
+                                <div class="form-group">
+                                    <label for="matric">Matrics Number:</label>
+                                    <input type="text" class="form-control" name="matric" disabled /><br />
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Phone Number:</label>
+                                    <input type="text" class="form-control" name="phoneNumber" minlength="9" maxlength="11" /><br />
+                                </div>
+                            </div>
+                            <div id="driverForm" style="display: none">
+                                <hr />
+                                <h3>Vehicle Details</h3>
+                                <div class="form-group">
+                                    <label for="vehicleColor">Vehicle Color:</label>
+                                    <input type="text" class="form-control" name="vehicleColour" /><br />
+                                </div>
+                                <div class="form-group">
+                                    <label for="plateNumber">Plate Number:</label>
+                                    <input type="text" class="form-control" name="plateNumber" /><br />
+                                </div>
+                                <div class="form-group">
+                                    <label for="vehicleType">Vehicle Type:</label>
+                                    <input type="text" class="form-control" name="vehicleType" /><br />
+                                </div>
+                                <!-- NEED TO CHANGE/UPDATE -->
+                                <div class="form-group">
+                                    <h3>Document Details</h3>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block rounded-pill" name="submitbtn">Update</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </body>
-  
-  </body>
-  </form>
-  
+</html>
