@@ -15,6 +15,7 @@ main.onAuthStateChanged(main.auth, (user) => {
                 redirectBtn.href = "driver-application.html";
                 redirectBtn.text = "Be a Driver";
                 //display profile
+                document.getElementById("profileForm").style.display = "block";
                 document.querySelector("#displayName").value = userData.fullname;
                 document.querySelector("#displayEmail").value = userData.email;
                 document.querySelector("#displayMatric").value = userData.matric;
@@ -24,6 +25,13 @@ main.onAuthStateChanged(main.auth, (user) => {
                 //NEED CHANGING
                 redirectBtn.href = "driver-home.html";
                 redirectBtn.text = "Driver dashboard";
+                document.getElementById("profileForm").style.display = "block";
+                document.getElementById("vehicleForm").style.display = "block";
+                document.getElementById("documentForm").style.display = "block";
+                document.querySelector("#displayName").value = userData.fullname;
+                document.querySelector("#displayEmail").value = userData.email;
+                document.querySelector("#displayMatric").value = userData.matric;
+                document.querySelector("#displayPhone").value = userData.phone;
             }
         });
     } else {

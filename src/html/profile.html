@@ -85,6 +85,7 @@
           <div class="col-lg-4 col-md-6 col-sm-8">
             <div class="border p-3">
               <form id="profileForm">
+                <h3>Personal Details</h3>
                 <div class="form-group">
                     <label for="email" >Name:</label>
                     <input type="text" class="form-control" id="displayName"><br>
@@ -101,15 +102,31 @@
                     <label for="email" >Phone Number:</label>
                     <input type="text" class="form-control" id="displayPhone"><br>
                   </div>
-                <!--<div class="form-group">
-                  <label for="password" >Password:</label>
-                  <input type="password" class="form-control" id="displayPassword"><br>
-                </div>-->
                 <div class="form-group">
                   <label for="profilePicture">Profile Picture:</label>
                   <input type="file" class="form-control" id="profilePicture"><br>
                 </div>
 
+                <div id="vehicleForm" style="display: none;">
+                  <h3>Vehicle Details</h3>
+                  <div class="form-group">
+                    <label for="vehicleColor">Vehicle Color:</label>
+                    <input type="text" class="form-control" id="vehicleColor"><br>
+                  </div>
+                  <div class="form-group">
+                    <label for="plateNumber">Plate Number:</label>
+                    <input type="text" class="form-control" id="plateNumber"><br>
+                  </div>
+                  <div class="form-group">
+                    <label for="vehicleType">Vehicle Type:</label>
+                    <input type="text" class="form-control" id="vehicleType"><br>
+                  </div>
+                </div>
+
+                <div id="documentForm" style="display: none;">
+                  <div class="form-group">
+                    <h3>Document Details</h3>
+                </div>
                 <button type="submit" class="btn btn-primary btn-block rounded-pill" name="updatebtn">Update</button>
               </form>
             </div>
