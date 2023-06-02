@@ -56,6 +56,10 @@ signupForm.addEventListener("submit", (e) => {
                         signupForm.reset;
                     });
 
+                    main.updateProfile(cred.user, {
+                        photoURL: "https://firebasestorage.googleapis.com/v0/b/utm-transporter.appspot.com/o/profilePicture%2Fdefault.jpg?alt=media&token=5d309385-bd0e-44fd-b69f-5362d6f8eee6",
+                    });
+
                     main.sendEmailVerification(cred.user)
                         .then(() => {
                             alert("Account created successfully, please check your email for verification");
