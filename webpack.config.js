@@ -19,6 +19,7 @@ module.exports = {
     driverapplication: path.resolve(__dirname, "src/js/driver-application.js"),
     bookride: path.resolve(__dirname, "src/js/book-ride.js"),
     bookcurrent: path.resolve(__dirname, "src/js/book-current.js"),
+    bookhistory: path.resolve(__dirname, "src/js/book-history.js"),
     adminprofile: path.resolve(__dirname, "src/js/adminprofile.js"),
     profile: path.resolve(__dirname, "src/js/profile.js"),
 
@@ -150,6 +151,11 @@ module.exports = {
       filename: "book-current.html",
       template: path.resolve(__dirname, "src/html/book-current.html"),
       chunks: ["bookcurrent"],
+    }),
+    new HtmlWebpackPlugin({
+      filename: "book-history.html",
+      template: path.resolve(__dirname, "src/html/book-history.html"),
+      chunks: ["bookhistory"],
     }),
     new HtmlWebpackPlugin({
       filename: "adminprofile.html",
