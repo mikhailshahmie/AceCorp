@@ -3,20 +3,19 @@ const main = require("./main.js");
 main.onAuthStateChanged(main.auth, (user) => {
     if (user) {
         //MAY NEED TO CHANGE
-        main.getDoc(main.doc(main.db, "users", user.uid)).then((doc) => {
+        let emailRegEx = /[^ ]@graduate.utm.my\i*$/;
+        if (emailRegEx.test(user.email)) {
+            main.signOut(main.auth)
+                .then(() => {
+                    alert("Logging out...");
+                    window.location.href = "/loginadmin.html";
+                })
+                .catch((error) => {
+                    console.log(error.message);
+                });
+        }
+        main.getDoc(main.doc(main.db, "admins", user.displayName)).then((doc) => {
             userData = doc.data();
-            if (userData.type != "admin") {
-                main.signOut(main.auth)
-                    .then(() => {
-                        alert("Logging out...");
-                        window.location.href = "/loginadmin.html";
-                    })
-                    .catch((error) => {
-                        console.log(error.message);
-                    });
-            } else {
-                window.location.href = "/adminmain.html";
-            }
         });
     } else {
         window.location.href = "/loginadmin.html";
