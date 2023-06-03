@@ -23,13 +23,52 @@ main.onAuthStateChanged(main.auth, (user) => {
 
         //CHECK IF THE CURRENT USER HAVE AN ACTIVE BOOKING
         const q = main.query(main.bookingDB, main.where("passengerId", "==", main.auth.currentUser.uid));
-        main.onSnapshot(q, (snapshot) => {
+        main.getDocs(q).then((snapshot) => {
             let history = [];
+            const historyList = document.querySelector("#historyList");
             if (!snapshot.empty) {
                 snapshot.docs.forEach((doc) => {
                     history.push({ ...doc.data(), bookingId: doc.id });
                 });
-                console.log(history);
+                history.forEach((booking) => {
+                    historyList.innerHTML +=
+                        '<div class="' +
+                        booking.bookingId +
+                        ' border p-3"><div class="row"><div class="col text-center"><span class="d-inline-block">' +
+                        booking.datetime +
+                        ' </span></div><div class="col text-"><span class="d-inline-block"> ' +
+                        booking.status.toUpperCase() +
+                        ' </span></div></div><div class="row"><div class="col text-center"><span class="d-inline-block text-truncate" id="origin" style="max-width: 300px">' +
+                        booking.from +
+                        '</span><br /><i class="bi bi-arrow-down-circle"></i><br /><span class="d-inline-block text-truncate" id="destination" style="max-width: 300px">' +
+                        booking.destination +
+                        "</span></div></div></div>";
+
+                    //REFERENCE FOR ABOVE CODE
+                    // <div class="border p-3">
+                    //     <div class="row">
+                    //         <div class="col text-center">
+                    //             <span class="d-inline-block"> Datetime </span>
+                    //         </div>
+                    //         <div class="col text-center">
+                    //             <span class="d-inline-block"> Status </span>
+                    //         </div>
+                    //     </div>
+                    //     <div class="row">
+                    //         <div class="col text-center">
+                    //             <span class="d-inline-block text-truncate" id="origin" style="max-width: 300px">
+                    //                 Origin
+                    //             </span>
+                    //             <br />
+                    //             <i class="bi bi-arrow-down-circle"></i>
+                    //             <br />
+                    //             <span class="d-inline-block text-truncate" id="destination" style="max-width: 300px">
+                    //                 Destination
+                    //             </span>
+                    //         </div>
+                    //     </div>
+                    // </div>;
+                });
             }
         });
     } else {
