@@ -1,5 +1,4 @@
 ////////////////////////////MUST HAVE////////////////////////////
-const { connectStorageEmulator } = require("firebase/storage");
 const main = require("./main.js");
 let userData;
 main.onAuthStateChanged(main.auth, (user) => {
@@ -23,14 +22,12 @@ main.onAuthStateChanged(main.auth, (user) => {
 
         //CHECK IF THE CURRENT USER HAVE AN ACTIVE BOOKING
         const q = main.query(main.bookingDB, main.where("passengerId", "==", user.uid), main.where("status", "in", ["waiting", "ongoing"]));
-        main.getDocs(q).then((snapshot) => {
-            let bookingQuery = [];
-            snapshot.docs.forEach((doc) => {
-                bookingQuery.push({ ...doc.data(), id: doc.id });
-            });
-            if (bookingQuery.length > 0) {
-                //go to current booking page
-                window.location.href = "/page.html";
+
+        main.onSnapshot(q, (snapshot) => {
+            if (!snapshot.empty) {
+                setTimeout(function () {
+                    window.location.href = "/book-current.html";
+                }, 500);
             }
         });
     } else {
@@ -125,7 +122,7 @@ main.loader.load().then(async () => {
             .then((success) => {
                 alert("Book successfully");
                 //go to current booking page
-                window.location.href = "/page.html";
+                window.location.href = "/book-current.html";
             })
             .catch((err) => {
                 alert(err.message);

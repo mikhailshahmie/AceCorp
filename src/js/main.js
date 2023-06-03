@@ -51,7 +51,7 @@ export const loader = new Loader({
 
 //Export necessary functions from firebase
 export { getDoc, getDocs, addDoc, deleteDoc, updateDoc, setDoc, doc, onSnapshot, query, where, orderBy, serverTimestamp } from "firebase/firestore";
-export { createUserWithEmailAndPassword, sendEmailVerification, sendPasswordResetEmail, signOut, signInWithEmailAndPassword, onAuthStateChanged, updateProfile } from "firebase/auth";
+export { createUserWithEmailAndPassword, sendEmailVerification, sendPasswordResetEmail, signOut, signInWithEmailAndPassword, onAuthStateChanged, updateProfile, getAuth  } from "firebase/auth";
 export { ref, uploadBytes, listAll, getDownloadURL } from "firebase/storage";
 
 /**
