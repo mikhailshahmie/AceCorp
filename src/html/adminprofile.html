@@ -1,111 +1,108 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>My Profile</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f1f1f1;
-        }
+    <head>
+        <title>My Profile</title>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: Arial, sans-serif;
+                background-color: #f1f1f1;
+            }
 
-        .header {
-            background-color: #333;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
+            .header {
+                background-color: #333;
+                color: #fff;
+                padding: 20px;
+                text-align: center;
+            }
 
-        .container {
-            max-width: 600px;
-            margin: 20px auto;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-        }
+            .container {
+                max-width: 600px;
+                margin: 20px auto;
+                background-color: #fff;
+                border-radius: 5px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+            }
 
-        .container h1 {
-            margin-top: 0;
-        }
+            .container h1 {
+                margin-top: 0;
+            }
 
-        .profile-info {
-            display: flex;
-            margin-bottom: 20px;
-        }
+            .profile-info {
+                display: flex;
+                margin-bottom: 20px;
+            }
 
-        .profile-info label {
-            width: 120px;
-            font-weight: bold;
-        }
+            .profile-info label {
+                width: 120px;
+                font-weight: bold;
+            }
 
-        .profile-info p {
-            margin: 0;
-        }
+            .profile-info p {
+                margin: 0;
+            }
 
-        .btn {
-            background-color: #333;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 16px;
-            
-        }
+            .btn {
+                background-color: #333;
+                color: #fff;
+                padding: 10px 20px;
+                border-radius: 5px;
+                text-decoration: none;
+                font-size: 16px;
+            }
 
-        .btn:hover {
-            background-color: #555;
-        }
+            .btn:hover {
+                background-color: #555;
+            }
 
-        .back-btn {
-            text-align: right;
-            margin-top: 20px;
-        }
+            .back-btn {
+                text-align: right;
+                margin-top: 20px;
+            }
 
-        .back-btn a {
-            background-color: #333;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 16px;
-        }
+            .back-btn a {
+                background-color: #333;
+                color: #fff;
+                padding: 10px 20px;
+                border-radius: 5px;
+                text-decoration: none;
+                font-size: 16px;
+            }
 
-        .back-btn a:hover {
-            background-color: #555;
-        }
-    </style>
-</head>
+            .back-btn a:hover {
+                background-color: #555;
+            }
+        </style>
+    </head>
 
-<body>
-    <div class="header">
-        <h1>My Profile</h1>
-    </div>
-
-    <div class="container">
-        
-
-        <div class="profile-info">
-            <label>Email:</label>
-            <p>johndoe@example.com</p>
+    <body>
+        <div class="header">
+            <h1>My Profile</h1>
         </div>
 
-        <div class="profile-info">
-            <label>Username:</label>
-            <p>johndoe123</p>
-        </div>
+        <div class="container">
+            <div class="profile-info">
+                <label>Email:</label>
+                <p id="email"></p>
+            </div>
 
-        <div class="profile-info">
-            <label>Role:</label>
-            <p>Admin</p>
-        </div>
+            <div class="profile-info">
+                <label>Username:</label>
+                <p id="username"></p>
+            </div>
 
-        <div class="back-btn">
-            <a href="adminmain.html">Back</a>
-        </div>
+            <div class="profile-info">
+                <label>Role:</label>
+                <p>Admin</p>
+            </div>
 
-        <a href="editadminprofile.html" class="btn">Edit Profile</a>
-    </div>
-</body>
+            <div class="back-btn">
+                <a href="adminmain.html">Back</a>
+            </div>
+
+            <a href="editadminprofile.html" class="btn">Edit Profile</a>
+        </div>
+    </body>
 </html>
