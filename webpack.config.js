@@ -23,6 +23,7 @@ module.exports = {
         adminprofile: path.resolve(__dirname, "src/js/adminprofile.js"),
         profile: path.resolve(__dirname, "src/js/profile.js"),
         editadminprofile: path.resolve(__dirname, "src/js/editadminprofile.js"),
+        transaction: path.resolve(__dirname, "src/js/transaction.js"),
 
     //home: path.resolve(__dirname, "src/js/home.js"),
     //index: path.resolve(__dirname, "src/js/index.js"),
@@ -173,5 +174,10 @@ module.exports = {
           template: path.resolve(__dirname, "src/html/editadminprofile.html"),
           chunks: ["editadminprofile"],
       }),
+      new HtmlWebpackPlugin({
+        filename: "transaction.html",
+        template: path.resolve(__dirname, "src/html/transaction.html"),
+        chunks: ["transaction"],
+    }),
     ],
 };
