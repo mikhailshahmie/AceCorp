@@ -13,7 +13,8 @@ module.exports = {
         loginadmin: path.resolve(__dirname, "src/js/loginadmin.js"),
         adminmain: path.resolve(__dirname, "src/js/adminmain.js"),
         home: path.resolve(__dirname, "src/js/home.js"),
-        driverhome: path.resolve(__dirname, "src/js/driver-home.js"),
+      driverhome: path.resolve(__dirname, "src/js/driver-home.js"),
+      driverhistory: path.resolve(__dirname, "src/js/driver-history.js"),
         resetpasswordadmin: path.resolve(__dirname, "src/js/resetpasswordadmin.js"),
         forgotpassword: path.resolve(__dirname, "src/js/forgotpassword.js"),
         driverapplication: path.resolve(__dirname, "src/js/driver-application.js"),
@@ -124,6 +125,11 @@ module.exports = {
             template: path.resolve(__dirname, "src/html/driver-home.html"),
             chunks: ["driverhome"],
         }),
+        new HtmlWebpackPlugin({
+          filename: "driver-history.html",
+          template: path.resolve(__dirname, "src/html/driver-history.html"),
+          chunks: ["driverhistory"],
+      }),
         new HtmlWebpackPlugin({
             filename: "adminmain.html",
             template: path.resolve(__dirname, "src/html/adminmain.html"),
