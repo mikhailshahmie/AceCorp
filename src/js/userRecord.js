@@ -17,6 +17,10 @@ main.getDocs(q).then((snapshot) => {
               <th>Matric Number</th>
               <th>Email</th>
               <th>Phone Number</th>
+              <th>User Type</th>
+              <th>Vehicle Color</th>
+              <th>Plate Number</th>
+              <th>Vehicle Type</th>
             </tr>
           </thead>
           <tbody>
@@ -26,6 +30,16 @@ main.getDocs(q).then((snapshot) => {
                 <td>${users.personalDetails.matric}</td>
                 <td>${users.personalDetails.email}</td>
                 <td>${users.personalDetails.phoneNumber}</td>
+                <td>${users.type.toUpperCase()}</td>
+                ${
+                  users.driverDetails && users.driverDetails.vehicle ? `
+                    <td>${users.driverDetails.vehicle.color}</td>
+                    <td>${users.driverDetails.vehicle.type}</td>
+                    <td>${users.driverDetails.vehicle.plateNumber}</td>
+                  ` : `
+                    <td colspan="3">NO INFORMATION</td>
+                  `
+                }
               </tr>
             `).join('')}
           </tbody>
