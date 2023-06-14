@@ -19,8 +19,8 @@ main.getDocs(q).then((snapshot) => {
               <th>Phone Number</th>
               <th>User Type</th>
               <th>Vehicle Color</th>
-              <th>Plate Number</th>
               <th>Vehicle Type</th>
+              <th>Plate Number</th>
             </tr>
           </thead>
           <tbody>
@@ -33,7 +33,7 @@ main.getDocs(q).then((snapshot) => {
                 <td>${users.type.toUpperCase()}</td>
                 ${
                   users.driverDetails && users.driverDetails.vehicle ? `
-                    <td>${users.driverDetails.vehicle.color}</td>
+                    <td>${users.driverDetails.vehicle.colour}</td>
                     <td>${users.driverDetails.vehicle.type}</td>
                     <td>${users.driverDetails.vehicle.plateNumber}</td>
                   ` : `
