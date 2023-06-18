@@ -10,20 +10,20 @@
             font-family: Arial, sans-serif;
             background-color: #f1f1f1;
         }
-
+    
         .header {
             background-color: #333;
             color: #fff;
             padding: 20px;
             text-align: center;
         }
-
+    
         .container {
             display: flex;
             flex-wrap: wrap;
             margin: 20px;
         }
-
+    
         .sidebar {
             flex: 0 0 200px;
             background-color: #333;
@@ -32,18 +32,42 @@
             height: calc(100vh - 84px);
             overflow-y: auto;
         }
-
+    
         .sidebar a {
-            display: block;
+            display: table;
+            width: 100%;
+            padding: 10px 0;
             color: #fff;
-            margin-bottom: 10px;
             text-decoration: none;
         }
-
+    
         .sidebar a:hover {
+            background-color: #555;
+        }
+    
+        .sidebar .sidebar-link {
+            display: table-row;
+        }
+    
+        .sidebar .sidebar-link .sidebar-icon,
+        .sidebar .sidebar-link .sidebar-text {
+            display: table-cell;
+            vertical-align: middle;
+            padding-right: 10px;
+        }
+    
+        .sidebar .sidebar-link .sidebar-icon {
+            font-size: 18px;
+        }
+    
+        .sidebar .sidebar-link .sidebar-text {
+            font-size: 16px;
+        }
+    
+        .sidebar .sidebar-link:hover .sidebar-text {
             text-decoration: underline;
         }
-
+    
         .content {
             flex: 1;
             background-color: #fff;
@@ -51,32 +75,27 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             margin: 10px;
             padding: 20px;
-            height: 0;
-            padding-bottom: 20%; /* Updated padding-bottom value */
             position: relative;
+            overflow: auto; /* Added overflow property */
         }
-
+    
         .content-inner {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
+            position: relative; /* Removed absolute positioning */
         }
-
+    
         .content h2 {
             margin-top: 0;
             font-size: 24px;
             font-weight: bold;
             color: #333;
         }
-
+    
         .content p {
             margin: 10px 0;
             font-size: 16px;
             color: #666;
         }
-
+    
         .btn {
             display: inline-block;
             background-color: #333;
@@ -88,19 +107,45 @@
             font-size: 16px;
             cursor: pointer;
         }
-
+    
         .btn:hover {
             background-color: #555;
         }
-
+    
         .new-admin-form {
             display: none;
         }
-
+    
         .new-admin-form.show {
             display: block;
         }
+    
+        /* Added CSS */
+        .content form {
+            max-width: 400px; /* Adjust the maximum width as needed */
+            margin: auto;
+        }
+    
+        .content form label {
+            margin-bottom: 10px;
+        }
+    
+        .content form input[type="text"],
+        .content form input[type="email"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+        }
+    
+        .content form .btn {
+            margin-top: 20px;
+            align-self: flex-start;
+        }
     </style>
+    
+
 </head>
 
 <body>
@@ -110,13 +155,34 @@
 
 <div class="container">
     <div class="sidebar">
-        <a href="adminmain.html">Dashboard</a>
-        <a href="adminprofile.html">View My Profile</a>
-        <a href="userRecord.html">User List</a>
-        <a href="transaction.html">Transition List</a>
-        <a href="adminlist.html">Admin List</a>
-        <a href="driverrequest.html">Driver Request</a>
-        <a href="#" id="signoutbtn">Logout</a>
+        <a href="adminmain.html" class="sidebar-link">
+            <span class="sidebar-icon">&#x1F3E0;</span>
+            <span class="sidebar-text">Dashboard</span>
+        </a>
+        <a href="adminprofile.html" class="sidebar-link">
+            <span class="sidebar-icon">&#x1F464;</span>
+            <span class="sidebar-text">View My Profile</span>
+        </a>
+        <a href="userRecord.html" class="sidebar-link">
+            <span class="sidebar-icon">&#x1F464;</span>
+            <span class="sidebar-text">User List</span>
+        </a>
+        <a href="transaction.html" class="sidebar-link">
+            <span class="sidebar-icon">&#x1F4B8;</span>
+            <span class="sidebar-text">Transaction List</span>
+        </a>
+        <a href="adminlist.html" class="sidebar-link">
+            <span class="sidebar-icon">&#x1F464;</span>
+            <span class="sidebar-text">Admin List</span>
+        </a>
+        <a href="driverrequest.html" class="sidebar-link">
+            <span class="sidebar-icon">&#x1F697;</span>
+            <span class="sidebar-text">Driver Request</span>
+        </a>
+        <a href="#" id="signoutbtn" class="sidebar-link">
+            <span class="sidebar-icon">&#x1F6AA;</span>
+            <span class="sidebar-text">Logout</span>
+        </a>
     </div>
 
     <div class="content">
