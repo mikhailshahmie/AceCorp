@@ -76,11 +76,11 @@
             margin: 10px;
             padding: 20px;
             position: relative;
-            overflow: auto; /* Added overflow property */
+            overflow: auto;
         }
     
         .content-inner {
-            position: relative; /* Removed absolute positioning */
+            position: relative;
         }
     
         .content h2 {
@@ -120,14 +120,15 @@
             display: block;
         }
     
-        /* Added CSS */
         .content form {
-            max-width: 400px; /* Adjust the maximum width as needed */
+            max-width: 400px;
             margin: auto;
         }
     
         .content form label {
             margin-bottom: 10px;
+            font-weight: bold;
+            display: block;
         }
     
         .content form input[type="text"],
@@ -142,6 +143,28 @@
         .content form .btn {
             margin-top: 20px;
             align-self: flex-start;
+        }
+        
+        /* Updated CSS */
+        .content .admin-section {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 20px;
+        }
+    
+        .content .admin-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+    
+        .content .admin-section h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+    
+        .content .admin-section p {
+            margin-bottom: 15px;
         }
     </style>
     
@@ -187,51 +210,40 @@
 
     <div class="content">
         <div class="content-inner">
-            <h2>Add New Admin</h2>
-            <p>Click this button to add a new admin to the system.</p>
-            <a href="#" class="btn" id="newAdminBtn">Add New Admin</a>
-
-            <form class="new-admin-form" id="newAdminForm">
-                <label for="adminName">Username:</label>
-                <input type="text" name="username" placeholder="Enter admin username" required />
-                <br /><br />
-                <label for="adminEmail">Email:</label>
-                <input type="email" name="email" placeholder="Enter admin email" required />
-                <br /><br />
-                <button type="submit" class="btn">Save Admin</button>
-            </form>
-        </div>
-    </div>
-
-    <div class="content">
-        <div class="content-inner">
-            <h2>User List</h2>
-            <p>Click this button to see the user list.</p>
-            <a href="userRecord.html" class="btn">View User List</a>
-        </div>
-    </div>
-
-    <div class="content">
-        <div class="content-inner">
-            <h2>Transaction List</h2>
-            <p>Click this button to see the transaction list.</p>
-            <a href="transaction.html" class="btn">View Transaction List</a>
-        </div>
-    </div>
-
-    <div class="content">
-        <div class="content-inner">
-            <h2>Admin List</h2>
-            <p>Click this button to see the admin list.</p>
-            <a href="adminlist.html" class="btn">View Admin List</a>
-        </div>
-    </div>
-
-    <div class="content">
-        <div class="content-inner">
-            <h2>Driver Request</h2>
-            <p>Click this button to see the driver request list.</p>
-            <a href="driverrequest.html" class="btn">View Driver Request List</a>
+            <div class="admin-section">
+                <h2>Add New Admin</h2>
+                <p>Click this button to add a new admin to the system.</p>
+                <a href="#" class="btn" id="newAdminBtn">Add New Admin</a>
+                <form class="new-admin-form" id="newAdminForm">
+                    <label for="adminName">Username:</label>
+                    <input type="text" name="username" placeholder="Enter admin username" required />
+                    <br /><br />
+                    <label for="adminEmail">Email:</label>
+                    <input type="email" name="email" placeholder="Enter admin email" required />
+                    <br /><br />
+                    <button type="submit" class="btn">Save Admin</button>
+                </form>
+            </div>
+            <div class="admin-section">
+                <h2>User List</h2>
+                <p>Click this button to see the user list.</p>
+                <a href="userRecord.html" class="btn">View User List</a>
+            </div>
+            <div class="admin-section">
+                <h2>Transaction List</h2>
+                <p>Click this button to see the transaction list.</p>
+                <a href="transaction.html" class="btn">View Transaction List</a>
+            </div>
+            <div class="admin-section">
+                <h2>Admin List</h2>
+                <p>Click this button to see the admin list.</p>
+                <a href="adminlist.html" class="btn">View Admin List</a>
+            </div>
+            <div class="admin-section">
+                <h2>Driver Request</h2>
+                <p>Click this button to see the driver request list.</p>
+                <a href="driverrequest.html" class="btn">View Driver Request List</a>
+            </div>
         </div>
     </div>
 </div>
