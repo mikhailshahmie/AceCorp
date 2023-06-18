@@ -13,9 +13,15 @@
     
         .header {
             background-color: #333;
-            color: #fff;
             padding: 20px;
             text-align: center;
+        }
+    
+        .header h1 {
+            font-size: 28px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+            margin: 0;
         }
     
         .container {
@@ -166,6 +172,26 @@
         .content .admin-section p {
             margin-bottom: 15px;
         }
+        
+        /* Back Button CSS */
+        .back-btn,
+        .btn-back,
+        .btn-add-admin {
+            display: inline-block;
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .back-btn:hover,
+        .btn-back:hover,
+        .btn-add-admin:hover {
+            background-color: #555;
+        }
     </style>
     
 
@@ -213,7 +239,7 @@
             <div class="admin-section">
                 <h2>Add New Admin</h2>
                 <p>Click this button to add a new admin to the system.</p>
-                <a href="#" class="btn" id="newAdminBtn">Add New Admin</a>
+                <a href="#" class="btn-add-admin" id="newAdminBtn">Add New Admin</a>
                 <form class="new-admin-form" id="newAdminForm">
                     <label for="adminName">Username:</label>
                     <input type="text" name="username" placeholder="Enter admin username" required />
@@ -221,28 +247,29 @@
                     <label for="adminEmail">Email:</label>
                     <input type="email" name="email" placeholder="Enter admin email" required />
                     <br /><br />
-                    <button type="submit" class="btn">Save Admin</button>
+                    <button type="submit" class="btn-back">Save Admin</button>
+                    <a href="adminmain.html" class="back-btn" id="backBtn">Back</a>
                 </form>
             </div>
             <div class="admin-section">
                 <h2>User List</h2>
                 <p>Click this button to see the user list.</p>
-                <a href="userRecord.html" class="btn">View User List</a>
+                <a href="userRecord.html" class="btn-back">View User List</a>
             </div>
             <div class="admin-section">
                 <h2>Transaction List</h2>
                 <p>Click this button to see the transaction list.</p>
-                <a href="transaction.html" class="btn">View Transaction List</a>
+                <a href="transaction.html" class="btn-back">View Transaction List</a>
             </div>
             <div class="admin-section">
                 <h2>Admin List</h2>
                 <p>Click this button to see the admin list.</p>
-                <a href="adminlist.html" class="btn">View Admin List</a>
+                <a href="adminlist.html" class="btn-back">View Admin List</a>
             </div>
             <div class="admin-section">
                 <h2>Driver Request</h2>
                 <p>Click this button to see the driver request list.</p>
-                <a href="driverrequest.html" class="btn">View Driver Request List</a>
+                <a href="driverrequest.html" class="btn-back">View Driver Request List</a>
             </div>
         </div>
     </div>
