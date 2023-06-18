@@ -3,24 +3,27 @@ const main = require("./main.js");
 
 const q = main.query(main.bookingDB);
 main.getDocs(q).then((snapshot) => {
-    let Trecord = [];
-    const TRecordTable = document.querySelector("#TRecordTable");
-    if (!snapshot.empty) {
-      snapshot.docs.forEach((doc) => {
-        Trecord.push({ ...doc.data(), bookingId: doc.id });
-      });
+  let Trecord = [];
+  const TRecordTable = document.querySelector("#TRecordTable");
+
+  if (!snapshot.empty) {
+    snapshot.docs.forEach((doc) => {
+      Trecord.push({ ...doc.data(), bookingId: doc.id });
+    });
+
+    const renderTable = (data) => {
       TRecordTable.innerHTML = `
-      <table class="table table-bordered">
+        <table class="table table-bordered">
           <thead>
             <tr>
-              <th>Date</th>
+              <th>Date and Time</th>
               <th>Status</th>
               <th>Origin</th>
               <th>Destination</th>
             </tr>
           </thead>
           <tbody>
-            ${Trecord.map((booking) => `
+            ${data.map((booking) => `
               <tr class="${booking.bookingId}">
                 <td>${booking.datetime}</td>
                 <td>${booking.status.toUpperCase()}</td>
@@ -31,7 +34,22 @@ main.getDocs(q).then((snapshot) => {
           </tbody>
         </table>
       `;
-    }
-  });
+    };
 
-  
+    const filterData = (status) => {
+      let filteredData = Trecord;
+      if (status !== 'all') {
+        filteredData = Trecord.filter((booking) => booking.status === status);
+      }
+      renderTable(filteredData);
+    };
+
+    const Filter = document.querySelector("#Filter");
+    Filter.addEventListener("change", () => {
+      const selectedStatus = Filter.value;
+      filterData(selectedStatus);
+    });
+
+    renderTable(Trecord); 
+  }
+});
