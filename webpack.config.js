@@ -26,6 +26,9 @@ module.exports = {
         editadminprofile: path.resolve(__dirname, "src/js/editadminprofile.js"),
         transaction: path.resolve(__dirname, "src/js/transaction.js"),
         userRecord: path.resolve(__dirname, "src/js/userRecord.js"),
+        driverrequest: path.resolve(__dirname, "src/js/driverrequest.js"),
+        admindash: path.resolve(__dirname, "src/js/admindash.js"),
+        adminlist: path.resolve(__dirname, "src/js/adminlist.js"),
     //home: path.resolve(__dirname, "src/js/home.js"),
     //index: path.resolve(__dirname, "src/js/index.js"),
   },
@@ -190,5 +193,20 @@ module.exports = {
           template: path.resolve(__dirname, "src/html/userRecord.html"),
           chunks: ["userRecord"],
       }),
+      new HtmlWebpackPlugin({
+        filename: "driverrequest.html",
+        template: path.resolve(__dirname, "src/html/driverrequest.html"),
+        chunks: ["driverrequest"],
+    }),
+    new HtmlWebpackPlugin({
+      filename: "admindash.html",
+      template: path.resolve(__dirname, "src/html/admindash.html"),
+      chunks: ["admindash"],
+  }),
+  new HtmlWebpackPlugin({
+    filename: "adminlist.html",
+    template: path.resolve(__dirname, "src/html/adminlist.html"),
+    chunks: ["adminlist"],
+}),
     ],
 };

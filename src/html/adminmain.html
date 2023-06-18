@@ -1,128 +1,173 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Admin Panel</title>
+<head>
+    <title>Admin Panel</title>
 
-        <style>
-            body {
-                margin: 0;
-                padding: 0;
-                font-family: Arial, sans-serif;
-                background-color: #f1f1f1;
-            }
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f1f1f1;
+        }
 
-            .header {
-                background-color: #333;
-                color: #fff;
-                padding: 20px;
-                text-align: center;
-            }
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
 
-            .container {
-                display: flex;
-                flex-wrap: wrap;
-                margin: 20px;
-            }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 20px;
+        }
 
-            .sidebar {
-                flex: 0 0 200px;
-                background-color: #333;
-                color: #fff;
-                padding: 20px;
-                height: calc(100vh - 84px);
-                overflow-y: auto;
-            }
+        .sidebar {
+            flex: 0 0 200px;
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            height: calc(100vh - 84px);
+            overflow-y: auto;
+        }
 
-            .sidebar a {
-                display: block;
-                color: #fff;
-                margin-bottom: 10px;
-                text-decoration: none;
-            }
+        .sidebar a {
+            display: block;
+            color: #fff;
+            margin-bottom: 10px;
+            text-decoration: none;
+        }
 
-            .sidebar a:hover {
-                text-decoration: underline;
-            }
+        .sidebar a:hover {
+            text-decoration: underline;
+        }
 
-            .content {
-                flex: 1;
-                background-color: #fff;
-                border-radius: 5px;
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-                margin: 10px;
-                padding: 20px;
-            }
+        .content {
+            flex: 1;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            padding: 20px;
+            height: 0;
+            padding-bottom: 20%; /* Updated padding-bottom value */
+            position: relative;
+        }
 
-            .content h2 {
-                margin-top: 0;
-                font-size: 24px;
-                font-weight: bold;
-                color: #333;
-            }
+        .content-inner {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
 
-            .content p {
-                margin: 10px 0;
-                font-size: 16px;
-                color: #666;
-            }
+        .content h2 {
+            margin-top: 0;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
 
-            .btn {
-                display: inline-block;
-                background-color: #333;
-                color: #fff;
-                padding: 10px 20px;
-                border-radius: 5px;
-                text-decoration: none;
-                margin-top: 10px;
-                font-size: 16px;
-                cursor: pointer;
-            }
+        .content p {
+            margin: 10px 0;
+            font-size: 16px;
+            color: #666;
+        }
 
-            .btn:hover {
-                background-color: #555;
-            }
+        .btn {
+            display: inline-block;
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
 
-            .new-admin-form {
-                display: none;
-            }
+        .btn:hover {
+            background-color: #555;
+        }
 
-            .new-admin-form.show {
-                display: block;
-            }
+        .new-admin-form {
+            display: none;
+        }
 
-            
-        </style>
-    </head>
+        .new-admin-form.show {
+            display: block;
+        }
+    </style>
+</head>
 
-    <body>
-        <div class="header">
-            <h1>Admin Panel</h1>
+<body>
+<div class="header">
+    <h1>Admin Panel</h1>
+</div>
+
+<div class="container">
+    <div class="sidebar">
+        <a href="adminmain.html">Dashboard</a>
+        <a href="adminprofile.html">View My Profile</a>
+        <a href="userRecord.html">User List</a>
+        <a href="transaction.html">Transition List</a>
+        <a href="adminlist.html">Admin List</a>
+        <a href="driverrequest.html">Driver Request</a>
+        <a href="#" id="signoutbtn">Logout</a>
+    </div>
+
+    <div class="content">
+        <div class="content-inner">
+            <h2>Add New Admin</h2>
+            <p>Click this button to add a new admin to the system.</p>
+            <a href="#" class="btn" id="newAdminBtn">Add New Admin</a>
+
+            <form class="new-admin-form" id="newAdminForm">
+                <label for="adminName">Username:</label>
+                <input type="text" name="username" placeholder="Enter admin username" required />
+                <br /><br />
+                <label for="adminEmail">Email:</label>
+                <input type="email" name="email" placeholder="Enter admin email" required />
+                <br /><br />
+                <button type="submit" class="btn">Save Admin</button>
+            </form>
         </div>
+    </div>
 
-        <div class="container">
-            <div class="sidebar">
-                <a href="#">Dashboard</a>
-                <a href="adminprofile.html">View My Profile</a>
-                <a href="userRecord.html">User List</a>
-                <a href="transaction.html">Transition list</a>
-                <a href="#" id="signoutbtn">Logout</a>
-            </div>
-
-            <div class="content">
-                <h2>Add New Admin</h2>
-                <p>Click this button to add a new admin to the system.</p>
-                <a href="#" class="btn" id="newAdminBtn">Add New Admin</a>
-
-                <form class="new-admin-form" id="newAdminForm">
-                    <label for="adminName">Username:</label>
-                    <input type="text" name="username" placeholder="Enter admin username" required />
-                    <br /><br />
-                    <label for="adminEmail">Email:</label>
-                    <input type="email" name="email" placeholder="Enter admin email" required />
-                    <br /><br />
-                    <button type="submit" class="btn">Save Admin</button>
-                </form>
-            </div>
+    <div class="content">
+        <div class="content-inner">
+            <h2>User List</h2>
+            <p>Click this button to see the user list.</p>
+            <a href="userRecord.html" class="btn">View User List</a>
         </div>
-    </body>
+    </div>
+
+    <div class="content">
+        <div class="content-inner">
+            <h2>Transaction List</h2>
+            <p>Click this button to see the transaction list.</p>
+            <a href="transaction.html" class="btn">View Transaction List</a>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="content-inner">
+            <h2>Admin List</h2>
+            <p>Click this button to see the admin list.</p>
+            <a href="adminlist.html" class="btn">View Admin List</a>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="content-inner">
+            <h2>Driver Request</h2>
+            <p>Click this button to see the driver request list.</p>
+            <a href="driverrequest.html" class="btn">View Driver Request List</a>
+        </div>
+    </div>
+</div>
+</body>
 </html>

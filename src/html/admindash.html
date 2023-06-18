@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <style>
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .dashboard-summary {
+            margin: 20px;
+            padding: 20px;
+            background-color: #f2f2f2;
+            border-radius: 5px;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .summary-item span {
+            font-weight: bold;
+        }
+
+        .summary-item p {
+            margin: 0;
+        }
+
+        .back-button {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .back-button a {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .back-button a:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Admin Dashboard</h1>
+    </div>
+
+    <div class="dashboard-summary">
+        <h2>Dashboard Summary</h2>
+
+        <div class="summary-item">
+            <span>Total Users:</span>
+            <p>500</p>
+        </div>
+
+        <div class="summary-item">
+            <span>Active Sessions:</span>
+            <p>50</p>
+        </div>
+
+        <div class="summary-item">
+            <span>Pending Tasks:</span>
+            <p>10</p>
+        </div>
+
+        <div class="summary-item">
+            <span>Recent Activities:</span>
+            <ul>
+                <li>User registration</li>
+                <li>Content published</li>
+                <li>Login attempts</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="back-button">
+        <a href="adminmain.html">Back</a>
+    </div>
+</body>
+</html>
