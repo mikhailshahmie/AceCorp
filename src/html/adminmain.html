@@ -15,6 +15,16 @@
             background-color: #333;
             padding: 20px;
             text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    
+        .header .header-icon {
+            font-size: 28px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+            margin-right: 10px;
         }
     
         .header h1 {
@@ -22,6 +32,14 @@
             color: #fff;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
             margin: 0;
+        }
+        
+        .header .header-icon-left,
+        .header .header-icon-right {
+            font-size: 28px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+            margin-right: 10px;
         }
     
         .container {
@@ -199,7 +217,9 @@
 
 <body>
 <div class="header">
-    <h1>Admin Panel</h1>
+    <span class="header-icon-left">&#x1F680;</span>
+    <h1><span class="header-icon-left">&#x1F680;</span>Admin Panel<span class="header-icon-right">&#x1F680;</span></h1>
+    <span class="header-icon-right">&#x1F680;</span>
 </div>
 
 <div class="container">
