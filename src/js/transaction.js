@@ -24,33 +24,39 @@ main.onAuthStateChanged(main.auth, (user) => {
                     Trecord.push({ ...doc.data(), bookingId: doc.id });
                 });
 
+                Trecord.sort((a, b) => {
+                    const dateA = new Date(a.datetime);
+                    const dateB = new Date(b.datetime);
+                    return dateB - dateA;
+                });
+
                 const renderTable = (data) => {
                     TRecordTable.innerHTML = `
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th>Date and Time</th>
-              <th>Status</th>
-              <th>Origin</th>
-              <th>Destination</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${data
-                .map(
-                    (booking) => `
-              <tr class="${booking.bookingId}">
-                <td>${booking.datetime}</td>
-                <td>${booking.status.toUpperCase()}</td>
-                <td>${booking.from}</td>
-                <td>${booking.destination}</td>
-              </tr>
-            `
-                )
-                .join("")}
-          </tbody>
-        </table>
-      `;
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Date and Time</th>
+                                    <th>Status</th>
+                                    <th>Origin</th>
+                                    <th>Destination</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${data
+                                    .map(
+                                        (booking) => `
+                                            <tr class="${booking.bookingId}">
+                                                <td>${booking.datetime}</td>
+                                                <td>${booking.status.toUpperCase()}</td>
+                                                <td>${booking.from}</td>
+                                                <td>${booking.destination}</td>
+                                            </tr>
+                                        `
+                                    )
+                                    .join("")}
+                            </tbody>
+                        </table>
+                    `;
                 };
 
                 const filterData = (status) => {
