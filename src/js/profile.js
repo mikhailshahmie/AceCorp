@@ -113,10 +113,10 @@ detailsForm.addEventListener("submit", (e) => {
                     plateNumber: plateNumber,
                     type: vehicleType,
                 },
-                //NEED CHANGING
                 documents: {
                     license: license,
                     matric: matric,
+                    //NEED CHANGING
                     paymentQR: "",
                 },
             };
