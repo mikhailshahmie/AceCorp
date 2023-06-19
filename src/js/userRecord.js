@@ -50,7 +50,7 @@ main.onAuthStateChanged(main.auth, (user) => {
                 <tr class="${user.userId}">
                   <td>${user.personalDetails.fullname}</td>
                   <td><span class="editable" data-field="matric">${user.personalDetails.matric}</span></td>
-                  <td><span class="editable" data-field="email">${user.personalDetails.email}</span></td>
+                  <td>${user.personalDetails.email}</td>
                   <td>${user.personalDetails.phoneNumber}</td>
                   ${
                       selectedValue === "driver" && user.driverDetails && user.driverDetails.vehicle
