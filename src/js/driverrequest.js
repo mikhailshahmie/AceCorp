@@ -114,7 +114,7 @@ function updateRequest(userId, status) {
                     documents: {
                         license: licenseURL,
                         matric: matricURL,
-                        paymentQR: "",
+                        paymentQR: "https://firebasestorage.googleapis.com/v0/b/utm-transporter.appspot.com/o/qr%2B.png?alt=media&token=e537fa69-a401-4210-b283-3f03ba6e8cf1",
                     },
                 };
 
