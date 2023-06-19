@@ -104,6 +104,8 @@ detailsForm.addEventListener("submit", (e) => {
             const vehicleColour = detailsForm.vehicleColour.value;
             const plateNumber = detailsForm.plateNumber.value.toUpperCase();
             const vehicleType = detailsForm.vehicleType.value;
+            const license = userData.driverDetails.documents.license;
+            const matric = userData.driverDetails.documents.matric;
 
             driverDetails = {
                 vehicle: {
@@ -113,8 +115,8 @@ detailsForm.addEventListener("submit", (e) => {
                 },
                 //NEED CHANGING
                 documents: {
-                    license: "",
-                    matric: "",
+                    license: license,
+                    matric: matric,
                     paymentQR: "",
                 },
             };
