@@ -1,4 +1,5 @@
 ////////////////////////////MUST HAVE////////////////////////////
+import $ from "jquery";
 const main = require("./main.js");
 let userData;
 main.onAuthStateChanged(main.auth, (user) => {
@@ -14,11 +15,25 @@ main.onAuthStateChanged(main.auth, (user) => {
                     console.log(error.message);
                 });
         }
-        main.getDoc(main.doc(main.db, "users", user.uid)).then((doc) => {
-            userData = doc.data();
-            
+        main.onSnapshot(main.adminDB, (snapshot) => {
+            let admins = [];
+            const adminListTable = document.querySelector("#adminListTable");
+            if (!snapshot.empty) {
+                snapshot.docs.forEach((doc) => {
+                    admins.push({ ...doc.data(), username: doc.id });
+                });
+                $("#adminListTable tr").remove();
+                adminListTable.innerHTML = "<tr><th>Username</th><th>Email</th></tr>";
+
+                admins.forEach((admin) => {
+                    adminListTable.innerHTML += "<tr><td>" + admin.username + "</td><td>" + admin.email + "</td></tr>";
+                });
+            } else {
+                adminListTable.innerHTML = '<tr><th>Username</th><th>Email</th></tr><tr><td colspan="2" style="text-align: center">NO ADMIN FOUND</td></tr>';
+            }
         });
     } else {
+        window.location.href = "/loginadmin.html";
     }
 });
 /////////////////////////////////////////////////////////////////

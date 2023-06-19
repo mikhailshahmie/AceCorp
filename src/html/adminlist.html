@@ -1,81 +1,73 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Admin List</title>
-    <style>
-        .header {
-            background-color: #333;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
+    <head>
+        <title>Admin List</title>
+        <style>
+            .header {
+                background-color: #333;
+                color: #fff;
+                padding: 20px;
+                text-align: center;
+            }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
 
-        table td, table th {
-            border: 1px solid #ddd;
-            padding: 8px;
-        }
+            table td,
+            table th {
+                border: 1px solid #ddd;
+                padding: 8px;
+            }
 
-        table tr:nth-child(even) {background-color: #f2f2f2;}
+            table tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
 
-        table tr:hover {background-color: #ddd;}
+            table tr:hover {
+                background-color: #ddd;
+            }
 
-        table th {
-            padding-top: 12px;
-            padding-bottom: 12px;
-            text-align: left;
-            background-color: #333;
-            color: white;
-        }
+            table th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color: #333;
+                color: white;
+            }
 
-        .back-button {
-            margin-top: 20px;
-            text-align: center;
-        }
+            .back-button {
+                margin-top: 20px;
+                text-align: center;
+            }
 
-        .back-button a {
-            background-color: #333;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 16px;
-        }
+            .back-button a {
+                background-color: #333;
+                color: #fff;
+                padding: 10px 20px;
+                border-radius: 5px;
+                text-decoration: none;
+                font-size: 16px;
+            }
 
-        .back-button a:hover {
-            background-color: #555;
-        }
-    </style>
-</head>
+            .back-button a:hover {
+                background-color: #555;
+            }
+        </style>
+    </head>
 
-<body>
-<div class="header">
-    <h1>Admin List</h1>
-</div>
+    <body>
+        <div class="header">
+            <h1>Admin List</h1>
+        </div>
 
-<table>
-    <tr>
-        <th>Username</th>
-        <th>Email</th>
-    </tr>
-    <tr>
-        <td>admin1</td>
-        <td>admin1@example.com</td>
-    </tr>
-    <tr>
-        <td>admin2</td>
-        <td>admin2@example.com</td>
-    </tr>
-    <!-- Add more rows for each admin -->
-</table>
+        <table id="adminListTable">
+            <!-- Add more rows for each admin -->
+        </table>
 
-<div class="back-button">
-    <a href="adminmain.html">Back</a>
-</div>
-
-</body>
+        <div class="back-button">
+            <a href="adminmain.html">Back</a>
+        </div>
+    </body>
 </html>
