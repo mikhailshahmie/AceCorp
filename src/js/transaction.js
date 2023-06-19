@@ -36,6 +36,8 @@ main.onAuthStateChanged(main.auth, (user) => {
                             <thead>
                                 <tr>
                                     <th>Date and Time</th>
+                                    <th>Passenger ID</th>
+                                    <th>Driver ID</th>
                                     <th>Status</th>
                                     <th>Origin</th>
                                     <th>Destination</th>
@@ -47,6 +49,8 @@ main.onAuthStateChanged(main.auth, (user) => {
                                         (booking) => `
                                             <tr class="${booking.bookingId}">
                                                 <td>${booking.datetime}</td>
+                                                <td>${booking.passengerID}</td>
+                                                <td>${booking.driverID}</td>
                                                 <td>${booking.status.toUpperCase()}</td>
                                                 <td>${booking.from}</td>
                                                 <td>${booking.destination}</td>
