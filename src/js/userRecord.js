@@ -1,23 +1,37 @@
 ////////////////////////////MUST HAVE////////////////////////////
 const main = require("./main.js");
 
-const q = main.query(main.usersDB);
-main.getDocs(q).then((snapshot) => {
-  let userT = [];
-  const userTable = document.querySelector("#userTable");
-  if (!snapshot.empty) {
-    snapshot.forEach((doc) => {
-      userT.push({ ...doc.data(), userId: doc.id });
-    });
+main.onAuthStateChanged(main.auth, (user) => {
+    if (user) {
+        let emailRegEx = /[^ ]@graduate.utm.my\i*$/;
+        if (emailRegEx.test(user.email)) {
+            main.signOut(main.auth)
+                .then(() => {
+                    alert("Logging out...");
+                    window.location.href = "/loginadmin.html";
+                })
+                .catch((error) => {
+                    console.log(error.message);
+                });
+        }
 
-    const filterDropdown = document.querySelector("#Filter");
-    filterDropdown.addEventListener("change", handleFilterChange);
+        const q = main.query(main.usersDB);
+        main.getDocs(q).then((snapshot) => {
+            let userT = [];
+            const userTable = document.querySelector("#userTable");
+            if (!snapshot.empty) {
+                snapshot.forEach((doc) => {
+                    userT.push({ ...doc.data(), userId: doc.id });
+                });
 
-    function handleFilterChange() {
-      const selectedValue = filterDropdown.value;
-      const filteredUsers = userT.filter((user) => user.type === selectedValue || selectedValue === "all");
+                const filterDropdown = document.querySelector("#Filter");
+                filterDropdown.addEventListener("change", handleFilterChange);
 
-      userTable.innerHTML = `
+                function handleFilterChange() {
+                    const selectedValue = filterDropdown.value;
+                    const filteredUsers = userT.filter((user) => user.type === selectedValue || selectedValue === "all");
+
+                    userTable.innerHTML = `
         <table class="table table-bordered">
           <thead>
             <tr>
@@ -31,62 +45,74 @@ main.getDocs(q).then((snapshot) => {
           </thead>
           <tbody>
             ${filteredUsers
-              .map((user) => `
+                .map(
+                    (user) => `
                 <tr class="${user.userId}">
                   <td>${user.personalDetails.fullname}</td>
                   <td><span class="editable" data-field="matric">${user.personalDetails.matric}</span></td>
                   <td><span class="editable" data-field="email">${user.personalDetails.email}</span></td>
                   <td>${user.personalDetails.phoneNumber}</td>
-                  ${selectedValue === "driver" && user.driverDetails && user.driverDetails.vehicle ? `
+                  ${
+                      selectedValue === "driver" && user.driverDetails && user.driverDetails.vehicle
+                          ? `
                     <td>${user.driverDetails.vehicle.colour}</td>
                     <td>${user.driverDetails.vehicle.type}</td>
                     <td>${user.driverDetails.vehicle.plateNumber}</td>
-                  ` : ""}
+                  `
+                          : ""
+                  }
                   <td><button class="updateBtn">Update</button></td>
                 </tr>
-              `)
-              .join("")}
+              `
+                )
+                .join("")}
           </tbody>
         </table>
       `;
 
-      // Add event listeners to editable fields
-      const editableFields = document.querySelectorAll(".editable");
-      editableFields.forEach((field) => {
-        field.addEventListener("click", handleFieldClick);
-      });
+                    // Add event listeners to editable fields
+                    const editableFields = document.querySelectorAll(".editable");
+                    editableFields.forEach((field) => {
+                        field.addEventListener("click", handleFieldClick);
+                    });
 
-      // Add event listeners to update buttons
-      const updateButtons = document.querySelectorAll(".updateBtn");
-      updateButtons.forEach((button) => {
-        button.addEventListener("click", handleUpdateButtonClick);
-      });
-    }
+                    // Add event listeners to update buttons
+                    const updateButtons = document.querySelectorAll(".updateBtn");
+                    updateButtons.forEach((button) => {
+                        button.addEventListener("click", handleUpdateButtonClick);
+                    });
+                }
 
-    function handleFieldClick(event) {
-      event.target.contentEditable = true;
-      event.target.focus();
-    }
+                function handleFieldClick(event) {
+                    event.target.contentEditable = true;
+                    event.target.focus();
+                }
 
-    function handleUpdateButtonClick(event) {
-      const userId = event.target.closest("tr").classList[0];
-      const editableFields = event.target.closest("tr").querySelectorAll(".editable");
+                function handleUpdateButtonClick(event) {
+                    const userId = event.target.closest("tr").classList[0];
+                    const editableFields = event.target.closest("tr").querySelectorAll(".editable");
 
-      editableFields.forEach((field) => {
-        field.contentEditable = false;
-        const updatedValue = field.innerText.trim();
-        const fieldName = field.getAttribute("data-field");
+                    editableFields.forEach((field) => {
+                        field.contentEditable = false;
+                        const updatedValue = field.innerText.trim();
+                        const fieldName = field.getAttribute("data-field");
 
-        // Update the user's data in the database
-        main.updateDoc(main.usersDB, userId, fieldName, updatedValue).then(() => {
-          console.log(`User ${userId} ${fieldName} updated to ${updatedValue}`);
-        }).catch((error) => {
-          console.error(`Error updating user ${userId} ${fieldName}:`, error);
+                        // Update the user's data in the database
+                        main.updateDoc(main.usersDB, userId, fieldName, updatedValue)
+                            .then(() => {
+                                console.log(`User ${userId} ${fieldName} updated to ${updatedValue}`);
+                            })
+                            .catch((error) => {
+                                console.error(`Error updating user ${userId} ${fieldName}:`, error);
+                            });
+                    });
+                }
+
+                // Initial rendering
+                handleFilterChange();
+            }
         });
-      });
+    } else {
+        window.location.href = "/loginadmin.html";
     }
-
-    // Initial rendering
-    handleFilterChange();
-  }
 });
