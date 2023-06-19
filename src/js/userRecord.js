@@ -1,4 +1,5 @@
 ////////////////////////////MUST HAVE////////////////////////////
+import $ from "jquery";
 const main = require("./main.js");
 
 main.onAuthStateChanged(main.auth, (user) => {
@@ -16,7 +17,7 @@ main.onAuthStateChanged(main.auth, (user) => {
         }
 
         const q = main.query(main.usersDB);
-        main.getDocs(q).then((snapshot) => {
+        main.onSnapshot(q, (snapshot) => {
             let userT = [];
             const userTable = document.querySelector("#userTable");
             if (!snapshot.empty) {
@@ -47,9 +48,9 @@ main.onAuthStateChanged(main.auth, (user) => {
             ${filteredUsers
                 .map(
                     (user) => `
-                <tr class="${user.userId}">
+                <tr id="${user.userId}">
                   <td>${user.personalDetails.fullname}</td>
-                  <td><span class="editable" data-field="matric">${user.personalDetails.matric}</span></td>
+                  <td><span class="editable matric" data-field="matric">${user.personalDetails.matric}</span></td>
                   <td>${user.personalDetails.email}</td>
                   <td>${user.personalDetails.phoneNumber}</td>
                   ${
@@ -74,12 +75,6 @@ main.onAuthStateChanged(main.auth, (user) => {
                     const editableFields = document.querySelectorAll(".editable");
                     editableFields.forEach((field) => {
                         field.addEventListener("click", handleFieldClick);
-                    });
-
-                    // Add event listeners to update buttons
-                    const updateButtons = document.querySelectorAll(".updateBtn");
-                    updateButtons.forEach((button) => {
-                        button.addEventListener("click", handleUpdateButtonClick);
                     });
                 }
 
@@ -116,3 +111,39 @@ main.onAuthStateChanged(main.auth, (user) => {
         window.location.href = "/loginadmin.html";
     }
 });
+
+$(document).on("click", ".updateBtn", function (e) {
+    let userDetails = null;
+    let userId = $(this).closest("tr")[0].id;
+    let rowId = $(this).closest("tr");
+    let matric = rowId.find(".matric").text();
+    console.log(getUserDetails(userId));
+    main.getDoc(main.doc(main.db, "users", userId)).then((userDoc) => {
+        let personalDetails = userDoc.data().personalDetails;
+
+        userDetails = {
+            email: personalDetails.email,
+            fullname: personalDetails.fullname,
+            matric: matric,
+            phoneNumber: personalDetails.phoneNumber,
+        };
+
+        updateMatric(userId, userDetails);
+    });
+});
+
+function updateMatric(userId, userDetails) {
+    main.updateDoc(main.doc(main.db, "users", userId), {
+        personalDetails: userDetails,
+    }).then(() => {
+        alert("Update successful");
+    });
+}
+
+function getUserDetails(id) {
+    let personalDetails = null;
+    main.getDoc(main.doc(main.db, "users", id)).then((userDoc) => {
+        personalDetails = userDoc.data().personalDetails;
+    });
+    return personalDetails;
+}
