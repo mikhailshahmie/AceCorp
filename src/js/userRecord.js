@@ -83,26 +83,6 @@ main.onAuthStateChanged(main.auth, (user) => {
                     event.target.focus();
                 }
 
-                function handleUpdateButtonClick(event) {
-                    const userId = event.target.closest("tr").classList[0];
-                    const editableFields = event.target.closest("tr").querySelectorAll(".editable");
-
-                    editableFields.forEach((field) => {
-                        field.contentEditable = false;
-                        const updatedValue = field.innerText.trim();
-                        const fieldName = field.getAttribute("data-field");
-
-                        // Update the user's data in the database
-                        main.updateDoc(main.usersDB, userId, fieldName, updatedValue)
-                            .then(() => {
-                                console.log(`User ${userId} ${fieldName} updated to ${updatedValue}`);
-                            })
-                            .catch((error) => {
-                                console.error(`Error updating user ${userId} ${fieldName}:`, error);
-                            });
-                    });
-                }
-
                 // Initial rendering
                 handleFilterChange();
             }
