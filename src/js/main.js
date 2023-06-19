@@ -1,5 +1,5 @@
 //ALL JAVASCRIPT MUST HAVE THIS CODE
-import "jquery";
+import $ from "jquery";
 import "../scss/style.scss";
 
 import AOS from "aos";

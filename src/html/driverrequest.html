@@ -1,88 +1,76 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Driver Request List</title>
-    <style>
-        .header {
-            background-color: #333;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
+    <head>
+        <title>Driver Request List</title>
+        <style>
+            .header {
+                background-color: #333;
+                color: #fff;
+                padding: 20px;
+                text-align: center;
+            }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
 
-        table td, table th {
-            border: 1px solid #ddd;
-            padding: 8px;
-        }
+            table td,
+            table th {
+                border: 1px solid #ddd;
+                padding: 8px;
+            }
 
-        table tr:nth-child(even){background-color: #f2f2f2;}
+            table tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
 
-        table tr:hover {background-color: #ddd;}
+            table tr:hover {
+                background-color: #ddd;
+            }
 
-        table th {
-            padding-top: 12px;
-            padding-bottom: 12px;
-            text-align: left;
-            background-color: #333;
-            color: white;
-        }
+            table th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color: #333;
+                color: white;
+            }
 
-        .back-button {
-            margin-top: 20px;
-            text-align: center;
-        }
+            .back-button {
+                margin-top: 20px;
+                text-align: center;
+            }
 
-        .back-button a {
-            background-color: #333;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 16px;
-        }
+            .back-button a {
+                background-color: #333;
+                color: #fff;
+                padding: 10px 20px;
+                border-radius: 5px;
+                text-decoration: none;
+                font-size: 16px;
+            }
 
-        .back-button a:hover {
-            background-color: #555;
-        }
-    </style>
-</head>
+            .back-button a:hover {
+                background-color: #555;
+            }
 
-<body>
-<div class="header">
-    <h1>Driver Request</h1>
-</div>
+            img {
+                width: 100px;
+                height: 100px;
+            }
+        </style>
+    </head>
 
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Metric Number</th>
-        <th>Metric Picture</th>
-        <th>License Picture</th>
-        <th>Status</th>
-        <th>Action</th>
-    </tr>
-    <tr>
-        <td>John Doe</td>
-        <td>B22EC0001</td>
-        <td>Picture</td>
-        <td>Picture</td>
-        <td>Pending</td>
-        <td>
-            <button>Approve</button>
-            <button>Reject</button>
-        </td>
-    </tr>
-    <!-- Add more rows for each driver request -->
-</table>
+    <body>
+        <div class="header">
+            <h1>Driver Request</h1>
+        </div>
 
-<div class="back-button">
-    <a href="adminmain.html">Back</a>
-</div>
+        <table id="requestTable"></table>
 
-</body>
+        <div class="back-button">
+            <a href="adminmain.html">Back</a>
+        </div>
+    </body>
 </html>
