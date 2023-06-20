@@ -35,6 +35,7 @@ main.onAuthStateChanged(main.auth, (user) => {
                 driverBookhistory.style.display = "block";
                 redirectBtn.href = "driver-home.html";
                 redirectBtn.text = "Driver dashboard";
+                document.getElementById("driverForm").style.display = "block";
 
                 //UPDATE FORM WITH USER FOR DRIVER
                 detailsForm.vehicleColour.value = userData.driverDetails.vehicle.colour;
