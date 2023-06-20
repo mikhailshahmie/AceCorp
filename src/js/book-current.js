@@ -2,6 +2,7 @@
 const main = require("./main.js");
 let userData;
 let currentBooking;
+const bookingStatus = document.querySelector("#bookingStatus");
 
 //GOOGLE MAP SETTINGS
 main.loader.load().then(async () => {
@@ -65,7 +66,6 @@ main.loader.load().then(async () => {
                     currentBooking = bookingQuery[0];
 
                     const bookingDetails = document.querySelector("#bookingDetails");
-                    const bookingStatus = document.querySelector("#bookingStatus");
 
                     bookingDetails.from.value = currentBooking.from;
                     bookingDetails.to.value = currentBooking.destination;
@@ -136,7 +136,12 @@ main.loader.load().then(async () => {
             if (status == google.maps.DirectionsStatus.OK) {
                 directionDisplay.setDirections(result);
                 let distance = result.routes[0].legs[0].distance;
-                console.log(distance);
+                let minPrice = ((distance.value / 1000) * 1).toFixed();
+                let maxPrice = ((distance.value / 1000) * 1 + 4).toFixed();
+                let estimatePrice = "RM " + minPrice + "  ~ RM " + maxPrice;
+
+                bookingStatus.price.value = estimatePrice;
+                console.log(estimatePrice);
             } else {
                 directionDisplay.setDirections({ routes: [] });
                 map.setCenter(center);
