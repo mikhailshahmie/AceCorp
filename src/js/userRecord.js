@@ -1,4 +1,5 @@
 ////////////////////////////MUST HAVE////////////////////////////
+import $ from "jquery";
 const main = require("./main.js");
 
 main.onAuthStateChanged(main.auth, (user) => {
@@ -16,7 +17,7 @@ main.onAuthStateChanged(main.auth, (user) => {
         }
 
         const q = main.query(main.usersDB);
-        main.getDocs(q).then((snapshot) => {
+        main.onSnapshot(q, (snapshot) => {
             let userT = [];
             const userTable = document.querySelector("#userTable");
             if (!snapshot.empty) {
@@ -47,9 +48,9 @@ main.onAuthStateChanged(main.auth, (user) => {
             ${filteredUsers
                 .map(
                     (user) => `
-                <tr class="${user.userId}">
+                <tr id="${user.userId}">
                   <td>${user.personalDetails.fullname}</td>
-                  <td><span class="editable" data-field="matric">${user.personalDetails.matric}</span></td>
+                  <td><span class="editable matric" data-field="matric">${user.personalDetails.matric}</span></td>
                   <td>${user.personalDetails.email}</td>
                   <td>${user.personalDetails.phoneNumber}</td>
                   ${
@@ -75,37 +76,11 @@ main.onAuthStateChanged(main.auth, (user) => {
                     editableFields.forEach((field) => {
                         field.addEventListener("click", handleFieldClick);
                     });
-
-                    // Add event listeners to update buttons
-                    const updateButtons = document.querySelectorAll(".updateBtn");
-                    updateButtons.forEach((button) => {
-                        button.addEventListener("click", handleUpdateButtonClick);
-                    });
                 }
 
                 function handleFieldClick(event) {
                     event.target.contentEditable = true;
                     event.target.focus();
-                }
-
-                function handleUpdateButtonClick(event) {
-                    const userId = event.target.closest("tr").classList[0];
-                    const editableFields = event.target.closest("tr").querySelectorAll(".editable");
-
-                    editableFields.forEach((field) => {
-                        field.contentEditable = false;
-                        const updatedValue = field.innerText.trim();
-                        const fieldName = field.getAttribute("data-field");
-
-                        // Update the user's data in the database
-                        main.updateDoc(main.usersDB, userId, fieldName, updatedValue)
-                            .then(() => {
-                                console.log(`User ${userId} ${fieldName} updated to ${updatedValue}`);
-                            })
-                            .catch((error) => {
-                                console.error(`Error updating user ${userId} ${fieldName}:`, error);
-                            });
-                    });
                 }
 
                 // Initial rendering
@@ -116,3 +91,45 @@ main.onAuthStateChanged(main.auth, (user) => {
         window.location.href = "/loginadmin.html";
     }
 });
+
+$(document).on("click", ".updateBtn", function (e) {
+    let userDetails = null;
+    let userId = $(this).closest("tr")[0].id;
+    let rowId = $(this).closest("tr");
+    let matric = rowId.find(".matric").text();
+    let matricRegEx = /[A-Za-z]\d\d[A-Za-z][A-Za-z]\d\d\d\d\i*$/;
+    if (!matricRegEx.test(matric)) {
+        alert("Please make sure metric number is in UTM format");
+        location.reload();
+        return;
+    }
+    console.log(getUserDetails(userId));
+    main.getDoc(main.doc(main.db, "users", userId)).then((userDoc) => {
+        let personalDetails = userDoc.data().personalDetails;
+
+        userDetails = {
+            email: personalDetails.email,
+            fullname: personalDetails.fullname,
+            matric: matric,
+            phoneNumber: personalDetails.phoneNumber,
+        };
+
+        updateMatric(userId, userDetails);
+    });
+});
+
+function updateMatric(userId, userDetails) {
+    main.updateDoc(main.doc(main.db, "users", userId), {
+        personalDetails: userDetails,
+    }).then(() => {
+        alert("Update successful");
+    });
+}
+
+function getUserDetails(id) {
+    let personalDetails = null;
+    main.getDoc(main.doc(main.db, "users", id)).then((userDoc) => {
+        personalDetails = userDoc.data().personalDetails;
+    });
+    return personalDetails;
+}
