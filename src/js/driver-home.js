@@ -38,9 +38,8 @@ main.onAuthStateChanged(main.auth, (user) => {
         main.onSnapshot(q2, (snapshot) => {
             if (!snapshot.empty) {
                 setTimeout(function () {
-                    alert("Got booking ongoing");
                     //go to current booking driver page
-                    //window.location.href = "/book-current.html";
+                    window.location.href = "/driver-book.html";
                 }, 500);
             }
         });
