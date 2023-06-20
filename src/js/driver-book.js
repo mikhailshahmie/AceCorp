@@ -2,6 +2,7 @@
 const main = require("./main.js");
 let userData;
 let currentBooking;
+var img = document.getElementById("qrImg");
 
 //GOOGLE MAP SETTINGS
 main.loader.load().then(async () => {
@@ -32,6 +33,7 @@ main.loader.load().then(async () => {
     directionDisplay.setMap(map);
     ///////////////////////////////////////////////////////////////////////////// END GOOGLE MAP SETTINGS
     const cancelbtn = document.querySelector("#cancelbtn");
+    const settlebtn = document.querySelector("#settlebtn");
 
     main.onAuthStateChanged(main.auth, (user) => {
         if (user) {
@@ -43,47 +45,45 @@ main.loader.load().then(async () => {
                 userData = doc.data();
                 const redirectBtn = document.querySelector("#redirect");
                 if (userData.type == "passenger") {
-                    redirectBtn.href = "driver-application.html";
-                    redirectBtn.text = "Be a Driver";
+                    window.location.href = "/home.html";
                 } else if (userData.type == "driver") {
                     //NEED CHANGING
                     redirectBtn.href = "driver-home.html";
                     redirectBtn.text = "Driver dashboard";
-                }
-            });
 
-            //CHECK IF THE CURRENT USER HAVE AN ACTIVE BOOKING
-            const q = main.query(main.bookingDB, main.where("passengerId", "==", user.uid), main.where("status", "in", ["waiting", "ongoing"]));
-            main.onSnapshot(q, (snapshot) => {
-                if (!snapshot.empty) {
-                    let bookingQuery = [];
-                    snapshot.docs.forEach((doc) => {
-                        bookingQuery.push({ ...doc.data(), id: doc.id });
+                    //CHECK IF THE CURRENT DRIVER HAVE AN ACTIVE BOOKING
+                    const q = main.query(main.bookingDB, main.where("driverId", "==", user.uid), main.where("status", "==", "ongoing"));
+                    main.onSnapshot(q, (snapshot) => {
+                        if (!snapshot.empty) {
+                            let bookingQuery = [];
+                            snapshot.docs.forEach((doc) => {
+                                bookingQuery.push({ ...doc.data(), id: doc.id });
+                            });
+
+                            currentBooking = bookingQuery[0];
+
+                            const bookingDetails = document.querySelector("#bookingDetails");
+                            const bookingStatus = document.querySelector("#bookingStatus");
+                            const bookingIdView = document.querySelector("#bookingId");
+                            getRoute(currentBooking.from, currentBooking.destination);
+
+                            bookingIdView.innerText = "#" + currentBooking.id;
+                            bookingDetails.from.value = currentBooking.from;
+                            bookingDetails.to.value = currentBooking.destination;
+                            bookingDetails.person.value = currentBooking.person;
+                            bookingDetails.datetime.value = currentBooking.datetime;
+                            bookingDetails.notes.value = currentBooking.notes;
+                            bookingStatus.status.value = currentBooking.status.toUpperCase();
+                            bookingStatus.price.value = currentBooking.price;
+                            img.src = userData.driverDetails.documents.paymentQR;
+
+                            main.getDoc;
+                        } else {
+                            setTimeout(function () {
+                                window.location.href = "/driver-home.html";
+                            }, 500);
+                        }
                     });
-
-                    currentBooking = bookingQuery[0];
-
-                    const bookingDetails = document.querySelector("#bookingDetails");
-                    const bookingStatus = document.querySelector("#bookingStatus");
-
-                    bookingDetails.from.value = currentBooking.from;
-                    bookingDetails.to.value = currentBooking.destination;
-                    bookingDetails.person.value = currentBooking.person;
-                    bookingDetails.datetime.value = currentBooking.datetime;
-                    bookingDetails.notes.value = currentBooking.notes;
-                    bookingStatus.status.value = currentBooking.status.toUpperCase();
-
-                    //IF CURRENT STATUS IS ONGOING, DISABLE CANCEL BUTTON
-                    if (currentBooking.status == "ongoing") {
-                        cancelbtn.disabled = true;
-                    } else {
-                        getRoute(currentBooking.from, currentBooking.destination);
-                        cancelbtn.disabled = false;
-                    }
-                } else {
-                    setTimeout(function () {
-                        window.location.href = "/book-ride.html";
-                    }, 500);
                 }
             });
         } else {
@@ -98,8 +98,21 @@ main.loader.load().then(async () => {
         const cancelRef = main.doc(main.db, "bookings", currentBooking.id);
         if (confirm("Are you sure you want to cancel?")) {
             main.updateDoc(cancelRef, {
-                status: "cancelled",
+                status: "waiting",
             });
+        }
+    });
+
+    //SETTLE BOOKING
+    settlebtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        const settleRef = main.doc(main.db, "bookings", currentBooking.id);
+        if (confirm("Have the driver paid for the ride?")) {
+            if (confirm("Double confirm?")) {
+                main.updateDoc(settleRef, {
+                    status: "completed",
+                });
+            }
         }
     });
 
@@ -122,6 +135,8 @@ main.loader.load().then(async () => {
 
     //UPDATE ROUTE WHEN ORIGIN AND DESTINATION ADDRESS IS SUBMITTED
     function getRoute(origin, destination) {
+        const durationText = document.querySelector("#duration");
+
         let request = {
             origin: origin,
             destination: destination,
@@ -132,13 +147,23 @@ main.loader.load().then(async () => {
         directionService.route(request, (result, status) => {
             if (status == google.maps.DirectionsStatus.OK) {
                 directionDisplay.setDirections(result);
-            } else {
-                directionDisplay.setDirections({ routes: [] });
-                map.setCenter(center);
-                map.setZoom(zoom);
-                alert("Invalid addresses");
+                let duration = result.routes[0].legs[0].duration;
+                durationText.innerText = duration.text;
             }
         });
     }
-});
 
+    //MODAL FOR QR
+    // Get the modal
+    var modal = document.getElementById("myModal");
+    // Get the image and insert it inside the modal - use its "alt" text as a caption
+    var modalImg = document.getElementById("img01");
+    img.onclick = function () {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+    };
+    // When the user clicks on <span> (x), close the modal
+    modal.onclick = function () {
+        modal.style.display = "none";
+    };
+});
