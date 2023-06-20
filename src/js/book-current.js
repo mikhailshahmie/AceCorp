@@ -32,6 +32,7 @@ main.loader.load().then(async () => {
     directionDisplay.setMap(map);
     ///////////////////////////////////////////////////////////////////////////// END GOOGLE MAP SETTINGS
     const cancelbtn = document.querySelector("#cancelbtn");
+    const driverDetails = document.querySelector("#driverDetails");
 
     main.onAuthStateChanged(main.auth, (user) => {
         if (user) {
@@ -73,12 +74,14 @@ main.loader.load().then(async () => {
                     bookingDetails.notes.value = currentBooking.notes;
                     bookingStatus.status.value = currentBooking.status.toUpperCase();
 
+                    getRoute(currentBooking.from, currentBooking.destination);
                     //IF CURRENT STATUS IS ONGOING, DISABLE CANCEL BUTTON
                     if (currentBooking.status == "ongoing") {
-                        cancelbtn.disabled = true;
+                        cancelbtn.style.display = "none";
+                        driverDetails.style.display = "block";
                     } else {
-                        getRoute(currentBooking.from, currentBooking.destination);
-                        cancelbtn.disabled = false;
+                        cancelbtn.style.display = "block";
+                        driverDetails.style.display = "none";
                     }
                 } else {
                     setTimeout(function () {
@@ -126,12 +129,14 @@ main.loader.load().then(async () => {
             origin: origin,
             destination: destination,
             travelMode: google.maps.TravelMode.DRIVING,
-            unitSystem: google.maps.UnitSystem.IMPERIAL,
+            unitSystem: google.maps.UnitSystem.METRIC,
         };
 
         directionService.route(request, (result, status) => {
             if (status == google.maps.DirectionsStatus.OK) {
                 directionDisplay.setDirections(result);
+                let distance = result.routes[0].legs[0].distance;
+                console.log(distance);
             } else {
                 directionDisplay.setDirections({ routes: [] });
                 map.setCenter(center);

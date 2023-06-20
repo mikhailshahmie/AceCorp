@@ -114,10 +114,29 @@
           <div class="col-lg-4 col-md-6 col-sm-8">            
             <div class="border p-3">
               <form id="bookingStatus">
+                <div class="form-group">
+                  <label for="person" >Estimate price :</label>
+                  <input type="text" class="form-control" name="price" placeholder="" disabled><br>
+                </div>
                   <div class="form-group">
                     <label for="person" >Status :</label>
                     <input type="text" class="form-control" name="status" placeholder="" disabled><br>
                   </div>
+                  <div id="driverDetails" style="display: none">
+                    <div class="form-group">
+                      <label for="person" >Driver :</label>
+                      <input type="text" class="form-control" name="driverName" placeholder="" disabled><br>
+                    </div>
+                    <div class="form-group">
+                      <label for="person" >Vehicle :</label>
+                      <input type="text" class="form-control" name="vehicle" placeholder="" disabled><br>
+                    </div>
+                    <div class="form-group">
+                      <label for="person" >Plate Number :</label>
+                      <input type="text" class="form-control" name="plateNumber" placeholder="" disabled><br>
+                    </div>
+                  </div>
+                  
                 <button type="submit" style="color: rgb(255, 255, 255); background-color: red;" class="btn btn-primary btn-block rounded-pill" name="cancelbtn" id="cancelbtn">Cancel Booking</button>
                 </form>
             </div>
