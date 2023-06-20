@@ -58,6 +58,8 @@ main.loader.load().then(async () => {
 
                     //CHECK IF THE CURRENT DRIVER HAVE AN ACTIVE BOOKING
                     const q = main.query(main.bookingDB, main.where("driverId", "==", user.uid), main.where("status", "==", "ongoing"));
+                    const contactbtn = document.querySelector("#contactbtn");
+
                     main.onSnapshot(q, (snapshot) => {
                         if (!snapshot.empty) {
                             let bookingQuery = [];
@@ -66,6 +68,12 @@ main.loader.load().then(async () => {
                             });
 
                             currentBooking = bookingQuery[0];
+
+                            main.getDoc(main.doc(main.db, "users", currentBooking.passengerId)).then((userDoc) => {
+                                let phoneNumber = "+6" + userDoc.data().personalDetails.phoneNumber;
+                                let contactLink = "https://wa.me/" + phoneNumber;
+                                contactbtn.href = contactLink;
+                            });
 
                             const bookingDetails = document.querySelector("#bookingDetails");
                             const bookingStatus = document.querySelector("#bookingStatus");
@@ -81,8 +89,6 @@ main.loader.load().then(async () => {
                             bookingStatus.status.value = currentBooking.status.toUpperCase();
                             bookingStatus.price.value = currentBooking.price;
                             img.src = userData.driverDetails.documents.paymentQR;
-
-                            main.getDoc;
                         } else {
                             setTimeout(function () {
                                 window.location.href = "/driver-home.html";
