@@ -29,8 +29,12 @@ main.loader.load().then(async () => {
 
     let map = new Map(document.getElementById("currentgooglemap"), mapOptions);
     let directionService = new DirectionsService();
-    let directionDisplay = new DirectionsRenderer();
-    directionDisplay.setMap(map);
+
+    const rendererOptions = {
+        map: map,
+        suppressMarkers: false,
+    };
+    let directionDisplay = new DirectionsRenderer(rendererOptions);
     ///////////////////////////////////////////////////////////////////////////// END GOOGLE MAP SETTINGS
     const cancelbtn = document.querySelector("#cancelbtn");
     const driverDetails = document.querySelector("#driverDetails");
@@ -66,17 +70,26 @@ main.loader.load().then(async () => {
                     currentBooking = bookingQuery[0];
 
                     const bookingDetails = document.querySelector("#bookingDetails");
+                    const bookingIdView = document.querySelector("#bookingId");
 
+                    bookingIdView.innerText = "#" + currentBooking.id;
                     bookingDetails.from.value = currentBooking.from;
                     bookingDetails.to.value = currentBooking.destination;
                     bookingDetails.person.value = currentBooking.person;
                     bookingDetails.datetime.value = currentBooking.datetime;
                     bookingDetails.notes.value = currentBooking.notes;
                     bookingStatus.status.value = currentBooking.status.toUpperCase();
+                    bookingStatus.price.value = currentBooking.price;
 
                     getRoute(currentBooking.from, currentBooking.destination);
                     //IF CURRENT STATUS IS ONGOING, DISABLE CANCEL BUTTON
                     if (currentBooking.status == "ongoing") {
+                        main.getDoc(main.doc(main.db, "users", currentBooking.driverId)).then((doc) => {
+                            driverData = doc.data();
+                            bookingStatus.driverName.value = driverData.personalDetails.fullname;
+                            bookingStatus.vehicle.value = driverData.driverDetails.vehicle.colour + " " + driverData.driverDetails.vehicle.type;
+                            bookingStatus.plateNumber.value = driverData.driverDetails.vehicle.plateNumber;
+                        });
                         cancelbtn.style.display = "none";
                         driverDetails.style.display = "block";
                     } else {
@@ -135,13 +148,6 @@ main.loader.load().then(async () => {
         directionService.route(request, (result, status) => {
             if (status == google.maps.DirectionsStatus.OK) {
                 directionDisplay.setDirections(result);
-                let distance = result.routes[0].legs[0].distance;
-                let minPrice = ((distance.value / 1000) * 1).toFixed();
-                let maxPrice = ((distance.value / 1000) * 1 + 4).toFixed();
-                let estimatePrice = "RM " + minPrice + "  ~ RM " + maxPrice;
-
-                bookingStatus.price.value = estimatePrice;
-                console.log(estimatePrice);
             } else {
                 directionDisplay.setDirections({ routes: [] });
                 map.setCenter(center);

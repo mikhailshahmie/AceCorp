@@ -104,6 +104,7 @@ main.loader.load().then(async () => {
         const person = bookingForm.person.value;
         const datetime = bookingForm.datetime.value.replace("T", " ");
         const notes = bookingForm.notes.value;
+        const price = bookingForm.price.value;
         const passengerId = main.auth.currentUser.uid;
         //ADD PRICE VARIABLE HERE
 
@@ -115,8 +116,7 @@ main.loader.load().then(async () => {
             notes: notes,
             passengerId: passengerId,
             driverId: "",
-            preStatus: "",
-            price: "",
+            price: price,
             status: "waiting",
         })
             .then((success) => {
@@ -149,6 +149,7 @@ main.loader.load().then(async () => {
 
     //UPDATE ROUTE WHEN ORIGIN AND DESTINATION ADDRESS IS SUBMITTED
     function getRoute() {
+        const priceView = document.querySelector("#priceView");
         if (bookingForm.from.value == "" || bookingForm.to.value == "") {
         } else {
             let request = {
@@ -161,7 +162,14 @@ main.loader.load().then(async () => {
             directionService.route(request, (result, status) => {
                 if (status == google.maps.DirectionsStatus.OK) {
                     directionDisplay.setDirections(result);
+                    let distance = result.routes[0].legs[0].distance;
+                    let minPrice = ((distance.value / 1000) * 1).toFixed();
+                    let maxPrice = ((distance.value / 1000) * 1 + 4).toFixed();
+                    let estimatePrice = "RM " + minPrice + "  ~ RM " + maxPrice;
+                    priceView.style.display = "block";
+                    bookingForm.price.value = estimatePrice;
                 } else {
+                    priceView.style.display = "none";
                     directionDisplay.setDirections({ routes: [] });
                     map.setCenter(center);
                     map.setZoom(zoom);

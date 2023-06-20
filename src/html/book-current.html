@@ -1,150 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-    <title>UTM TRANSPORTER</title>
-    <meta content="" name="description" />
-    <meta content="" name="keywords" />
+        <title>UTM TRANSPORTER</title>
+        <meta content="" name="description" />
+        <meta content="" name="keywords" />
 
-    <!-- Favicons -->
-    <link href="../img/favicon.png" rel="icon" />
-    <link href="../img/apple-touch-icon.png" rel="apple-touch-icon" />
+        <!-- Favicons -->
+        <link href="../img/favicon.png" rel="icon" />
+        <link href="../img/apple-touch-icon.png" rel="apple-touch-icon" />
 
-    <!-- Google Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-      rel="stylesheet"
-    />
-  </head>
-  <style>
-    .btn-primary {
-      background-color: skyblue;
-      color: white;
-      display: block;
-      margin: 0 auto;
-    }
-  </style>
-  
-  <body>
-    <!-- ======= Header ======= -->
-    <header id="header" class="fixed-top header-inner-pages">
-      <div class="container d-flex align-items-center">
-        <h1 class="logo me-auto"><a href="home.html">UTM TRANSPORTER</a></h1>
-        <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html" class="logo me-auto"><img src="../img/logo.png" alt="" class="img-fluid"></a>-->
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet" />
+    </head>
+    <style>
+        .btn-primary {
+            background-color: skyblue;
+            color: white;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
 
-        <nav id="navbar" class="navbar">
-            <ul>
-              <li><a class="nav-link scrollto active" href="home.html">Home</a></li>
-              <li><a class="nav-link scrollto" href="#about">About</a></li>
-              <li><a class="nav-link scrollto" href="#services">Services</a></li>
-              <li><a class="nav-link scrollto" href="#team">Team</a></li>
-              <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-              <li class="dropdown">
-                <a href="#"
-                  ><span>Activity</span> <i class="bi bi-chevron-down"></i
-                ></a>
-                <ul>
-                  <li><a href="profile.html">User Profile</a></li>
-                  <li><a href="book-history.html">User Record</a></li>
-                  <li><a id="redirect"></a></li>
-                  <li><a id="signoutbtn" style="color: red">Sign Out</a></li>
-                </ul>
-              </li>
-              <!--<li>
+    <body>
+        <!-- ======= Header ======= -->
+        <header id="header" class="fixed-top header-inner-pages">
+            <div class="container d-flex align-items-center">
+                <h1 class="logo me-auto"><a href="home.html">UTM TRANSPORTER</a></h1>
+                <!-- Uncomment below if you prefer to use an image logo -->
+                <!-- <a href="index.html" class="logo me-auto"><img src="../img/logo.png" alt="" class="img-fluid"></a>-->
+
+                <nav id="navbar" class="navbar">
+                    <ul>
+                        <li><a class="nav-link scrollto active" href="home.html">Home</a></li>
+                        <li><a class="nav-link scrollto" href="#about">About</a></li>
+                        <li><a class="nav-link scrollto" href="#services">Services</a></li>
+                        <li><a class="nav-link scrollto" href="#team">Team</a></li>
+                        <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+                        <li class="dropdown">
+                            <a href="#"><span>Activity</span> <i class="bi bi-chevron-down"></i></a>
+                            <ul>
+                                <li><a href="profile.html">User Profile</a></li>
+                                <li><a href="book-history.html">User Record</a></li>
+                                <li><a id="redirect"></a></li>
+                                <li><a id="signoutbtn" style="color: red">Sign Out</a></li>
+                            </ul>
+                        </li>
+                        <!--<li>
                               <a class="getstarted scrollto" id="signoutbtn" style="color: red">Sign Out</a>
                           </li>-->
-            </ul>
-            <i class="bi bi-list mobile-nav-toggle"></i>
-          </nav>
-        <!-- .navbar -->
-      </div>
-    </header>
-    <!-- End Header -->
-  
-  <section id="breadcrumbs" class="breadcrumbs">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-6">
-         <h1 style="text-align: center;">Your Booking</h1>
-      </div>
-    </div>
-  </div>
-    </section>
-    <body>
-      <div class="container mt-10"> 
-        <div class="row justify-content-center">
-          
-          <hr>
-          <div class="col-lg-4 col-md-6 col-sm-8">            
-            <div class="border p-3">
-              <div id="currentgooglemap"></div>
+                    </ul>
+                    <i class="bi bi-list mobile-nav-toggle"></i>
+                </nav>
+                <!-- .navbar -->
             </div>
-            
-          </div>
-          <div class="col-lg-4 col-md-6 col-sm-8">            
-            <div class="border p-3">
-              <form id="bookingDetails">
-                <div class="form-group">
-                  <label for="from" >From :</label>
-                  <input type="text" class="form-control" name="from" disabled><br>
+        </header>
+        <!-- End Header -->
+
+        <section id="breadcrumbs" class="breadcrumbs">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <h1 style="text-align: center">Your Booking</h1>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="to" >To :</label>
-                    <input type="text" class="form-control" name="to" disabled><br>
-                  </div>
-                  <div class="form-group">
-                    <label for="person" >Number of Person :</label>
-                    <input type="number" class="form-control" name="person"  min="1" max="5" disabled><br>
-                  </div>
-                  <div class="form-group">
-                    <label for="datetime" >Date & Time :</label>
-                    <input type="datetime-local" class="form-control" name="datetime" disabled><br>
-                  </div>
-                  <div class="form-group">
-                    <label for="person" >Extra notes :</label>
-                    <input type="text" class="form-control" name="notes" disabled ><br>
-                  </div>
-              </form>
             </div>
-            
-          </div>
-          <div class="col-lg-4 col-md-6 col-sm-8">            
-            <div class="border p-3">
-              <form id="bookingStatus">
-                <div class="form-group">
-                  <label for="person" >Estimate price :</label>
-                  <input type="text" class="form-control" name="price" placeholder="" disabled><br>
+        </section>
+        <div class="container mt-10">
+            <div class="row justify-content-center">
+                <hr />
+                <p id="bookingId"></p>
+
+                <div class="col-lg-4 col-md-6 col-sm-8">
+                    <div class="border p-3">
+                        <div id="currentgooglemap"></div>
+                    </div>
                 </div>
-                  <div class="form-group">
-                    <label for="person" >Status :</label>
-                    <input type="text" class="form-control" name="status" placeholder="" disabled><br>
-                  </div>
-                  <div id="driverDetails" style="display: none">
-                    <div class="form-group">
-                      <label for="person" >Driver :</label>
-                      <input type="text" class="form-control" name="driverName" placeholder="" disabled><br>
+                <div class="col-lg-4 col-md-6 col-sm-8">
+                    <div class="border p-3">
+                        <form id="bookingDetails">
+                            <div class="form-group">
+                                <label for="from">From :</label>
+                                <input type="text" class="form-control" name="from" disabled /><br />
+                            </div>
+                            <div class="form-group">
+                                <label for="to">To :</label>
+                                <input type="text" class="form-control" name="to" disabled /><br />
+                            </div>
+                            <div class="form-group">
+                                <label for="person">Number of Person :</label>
+                                <input type="number" class="form-control" name="person" min="1" max="5" disabled /><br />
+                            </div>
+                            <div class="form-group">
+                                <label for="datetime">Date & Time :</label>
+                                <input type="datetime-local" class="form-control" name="datetime" disabled /><br />
+                            </div>
+                            <div class="form-group">
+                                <label for="person">Extra notes :</label>
+                                <input type="text" class="form-control" name="notes" disabled /><br />
+                            </div>
+                        </form>
                     </div>
-                    <div class="form-group">
-                      <label for="person" >Vehicle :</label>
-                      <input type="text" class="form-control" name="vehicle" placeholder="" disabled><br>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-8">
+                    <div class="border p-3">
+                        <form id="bookingStatus">
+                            <div class="form-group">
+                                <label for="person">Estimate price :</label>
+                                <input type="text" class="form-control" name="price" placeholder="" disabled /><br />
+                            </div>
+                            <div class="form-group">
+                                <label for="person">Status :</label>
+                                <input type="text" class="form-control" name="status" placeholder="" disabled /><br />
+                            </div>
+                            <div id="driverDetails" style="display: none">
+                                <div class="form-group">
+                                    <label for="person">Driver :</label>
+                                    <input type="text" class="form-control" name="driverName" placeholder="" disabled /><br />
+                                </div>
+                                <div class="form-group">
+                                    <label for="person">Vehicle :</label>
+                                    <input type="text" class="form-control" name="vehicle" placeholder="" disabled /><br />
+                                </div>
+                                <div class="form-group">
+                                    <label for="person">Plate Number :</label>
+                                    <input type="text" class="form-control" name="plateNumber" placeholder="" disabled /><br />
+                                </div>
+                            </div>
+
+                            <button type="submit" style="color: rgb(255, 255, 255); background-color: red" class="btn btn-primary btn-block rounded-pill" name="cancelbtn" id="cancelbtn">Cancel Booking</button>
+                        </form>
                     </div>
-                    <div class="form-group">
-                      <label for="person" >Plate Number :</label>
-                      <input type="text" class="form-control" name="plateNumber" placeholder="" disabled><br>
-                    </div>
-                  </div>
-                  
-                <button type="submit" style="color: rgb(255, 255, 255); background-color: red;" class="btn btn-primary btn-block rounded-pill" name="cancelbtn" id="cancelbtn">Cancel Booking</button>
-                </form>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </body>
-  
-  </body>
-  </form>
-  
+</html>
