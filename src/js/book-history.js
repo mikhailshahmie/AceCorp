@@ -25,7 +25,7 @@ main.onAuthStateChanged(main.auth, (user) => {
             }
         });
 
-        //CHECK IF THE CURRENT USER HAVE AN ACTIVE BOOKING
+        //LIST ALL CURRENT USER BOOKING HISTORY
         const q = main.query(main.bookingDB, main.where("passengerId", "==", main.auth.currentUser.uid));
         main.onSnapshot(q, (snapshot) => {
             let history = [];

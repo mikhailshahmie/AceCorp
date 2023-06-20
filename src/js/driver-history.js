@@ -25,7 +25,7 @@ main.onAuthStateChanged(main.auth, (user) => {
             }
         });
 
-        //CHECK IF THE CURRENT USER HAVE AN ACTIVE BOOKING
+        //LIST ALL CURRENT DRIVER BOOKING HISTORY
         const q = main.query(main.bookingDB, main.where("driverId", "==", main.auth.currentUser.uid));
         main.onSnapshot(q, (snapshot) => {
             let history = [];

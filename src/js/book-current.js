@@ -106,6 +106,17 @@ main.loader.load().then(async () => {
                     }, 500);
                 }
             });
+
+            //CHECK IF THE CURRENT DRIVER HAVE AN ACTIVE BOOKING
+            const q2 = main.query(main.bookingDB, main.where("driverId", "==", user.uid), main.where("status", "==", "ongoing"));
+            main.onSnapshot(q2, (snapshot) => {
+                if (!snapshot.empty) {
+                    setTimeout(function () {
+                        //go to current booking driver page
+                        window.location.href = "/driver-book.html";
+                    }, 500);
+                }
+            });
         } else {
             window.location.href = "/signin.html";
         }
