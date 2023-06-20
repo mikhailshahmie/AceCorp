@@ -60,6 +60,23 @@ $(function () {
             }
             updateCurrentList(bookingList[index]);
         });
+
+        //ACCEPT RIDE
+        $("#requestBtn").click((e) => {
+            let bookingId = bookingList[index].bookingId;
+            let driverId = main.auth.currentUser.uid;
+            main.updateDoc(main.doc(main.db, "bookings", bookingId), {
+                driverId: driverId,
+                status: "ongoing",
+            })
+                .then(() => {
+                    //NEED CHANGING
+                    alert("Ride accepted");
+                })
+                .catch((err) => {
+                    alert("Something went wrong:" + err.message);
+                });
+        });
     });
 });
 
