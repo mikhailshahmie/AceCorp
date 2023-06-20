@@ -97,6 +97,12 @@ $(document).on("click", ".updateBtn", function (e) {
     let userId = $(this).closest("tr")[0].id;
     let rowId = $(this).closest("tr");
     let matric = rowId.find(".matric").text();
+    let matricRegEx = /[A-Za-z]\d\d[A-Za-z][A-Za-z]\d\d\d\d\i*$/;
+    if (!matricRegEx.test(matric)) {
+        alert("Please make sure metric number is in UTM format");
+        location.reload();
+        return;
+    }
     console.log(getUserDetails(userId));
     main.getDoc(main.doc(main.db, "users", userId)).then((userDoc) => {
         let personalDetails = userDoc.data().personalDetails;
