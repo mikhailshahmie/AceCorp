@@ -24,15 +24,17 @@ main.onAuthStateChanged(main.auth, (user) => {
             detailsForm.phoneNumber.value = userData.personalDetails.phoneNumber;
             profileImg.src = user.photoURL;
 
+            const driverBookhistory = document.querySelector("#driverBookhistory");
+
             if (userData.type == "passenger") {
                 redirectBtn.href = "driver-application.html";
                 redirectBtn.text = "Be a Driver";
-                document.getElementById("driverForm").style.display = "none";
+                driverBookhistory.style.display = "none";
             } else if (userData.type == "driver") {
                 //NEED CHANGING
+                driverBookhistory.style.display = "block";
                 redirectBtn.href = "driver-home.html";
                 redirectBtn.text = "Driver dashboard";
-                document.getElementById("driverForm").style.display = "block";
 
                 //UPDATE FORM WITH USER FOR DRIVER
                 detailsForm.vehicleColour.value = userData.driverDetails.vehicle.colour;

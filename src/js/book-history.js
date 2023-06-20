@@ -11,11 +11,15 @@ main.onAuthStateChanged(main.auth, (user) => {
         main.getDoc(main.doc(main.db, "users", user.uid)).then((doc) => {
             userData = doc.data();
             const redirectBtn = document.querySelector("#redirect");
+            const driverBookhistory = document.querySelector("#driverBookhistory");
+
             if (userData.type == "passenger") {
                 redirectBtn.href = "driver-application.html";
                 redirectBtn.text = "Be a Driver";
+                driverBookhistory.style.display = "none";
             } else if (userData.type == "driver") {
                 //NEED CHANGING
+                driverBookhistory.style.display = "block";
                 redirectBtn.href = "driver-home.html";
                 redirectBtn.text = "Driver dashboard";
             }
@@ -23,13 +27,14 @@ main.onAuthStateChanged(main.auth, (user) => {
 
         //CHECK IF THE CURRENT USER HAVE AN ACTIVE BOOKING
         const q = main.query(main.bookingDB, main.where("passengerId", "==", main.auth.currentUser.uid));
-        main.getDocs(q).then((snapshot) => {
+        main.onSnapshot(q, (snapshot) => {
             let history = [];
             const historyList = document.querySelector("#historyList");
             if (!snapshot.empty) {
                 snapshot.docs.forEach((doc) => {
                     history.push({ ...doc.data(), bookingId: doc.id });
                 });
+                historyList.innerHTML = "";
                 history.forEach((booking) => {
                     historyList.innerHTML +=
                         '<div class="' +
@@ -69,6 +74,8 @@ main.onAuthStateChanged(main.auth, (user) => {
                     //     </div>
                     // </div>;
                 });
+            } else {
+                historyList.innerHTML = "";
             }
         });
     } else {

@@ -48,11 +48,15 @@ main.loader.load().then(async () => {
             main.getDoc(main.doc(main.db, "users", user.uid)).then((doc) => {
                 userData = doc.data();
                 const redirectBtn = document.querySelector("#redirect");
+                const driverBookhistory = document.querySelector("#driverBookhistory");
+
                 if (userData.type == "passenger") {
                     redirectBtn.href = "driver-application.html";
                     redirectBtn.text = "Be a Driver";
+                    driverBookhistory.style.display = "none";
                 } else if (userData.type == "driver") {
                     //NEED CHANGING
+                    driverBookhistory.style.display = "block";
                     redirectBtn.href = "driver-home.html";
                     redirectBtn.text = "Driver dashboard";
                 }

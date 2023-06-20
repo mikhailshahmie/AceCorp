@@ -44,10 +44,15 @@ main.loader.load().then(async () => {
             main.getDoc(main.doc(main.db, "users", user.uid)).then((doc) => {
                 userData = doc.data();
                 const redirectBtn = document.querySelector("#redirect");
+                const driverBookhistory = document.querySelector("#driverBookhistory");
+
                 if (userData.type == "passenger") {
-                    window.location.href = "/home.html";
+                    redirectBtn.href = "driver-application.html";
+                    redirectBtn.text = "Be a Driver";
+                    driverBookhistory.style.display = "none";
                 } else if (userData.type == "driver") {
                     //NEED CHANGING
+                    driverBookhistory.style.display = "block";
                     redirectBtn.href = "driver-home.html";
                     redirectBtn.text = "Driver dashboard";
 
@@ -98,6 +103,7 @@ main.loader.load().then(async () => {
         const cancelRef = main.doc(main.db, "bookings", currentBooking.id);
         if (confirm("Are you sure you want to cancel?")) {
             main.updateDoc(cancelRef, {
+                driverId: "",
                 status: "waiting",
             });
         }
