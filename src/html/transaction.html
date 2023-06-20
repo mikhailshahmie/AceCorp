@@ -3,12 +3,38 @@
     <head>
         <title>Transaction List</title>
         <style>
-
             .header {
                 background-color: #333;
                 color: #fff;
                 padding: 20px;
                 text-align: center;
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            table td,
+            table th {
+                border: 1px solid #ddd;
+                padding: 8px;
+            }
+
+            table tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+
+            table tr:hover {
+                background-color: #ddd;
+            }
+
+            table th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color: #333;
+                color: white;
             }
             .back-button {
                 margin-top: 20px;
@@ -37,18 +63,19 @@
         <div class="button-container">
             <span>Status Filter:</span>
             <select id="Filter">
-              <option value="all">All</option>
-              <option value="waiting">Waiting</option>
-              <option value="ongoing">Ongoing</option>
-              <option value="completed">Completed</option>
-              <option value="cancelled">Cancelled</option>
+                <option value="all">All</option>
+                <option value="waiting">Waiting</option>
+                <option value="ongoing">Ongoing</option>
+                <option value="completed">Completed</option>
+                <option value="cancelled">Cancelled</option>
             </select>
-          </div>
-        <div id="TRecordTable"></div>
+        </div>
+        <div>
+            <table id="TRecordTable"></table>
+        </div>
 
         <div class="back-button">
             <a href="adminmain.html">Back</a>
         </div>
-
     </body>
 </html>

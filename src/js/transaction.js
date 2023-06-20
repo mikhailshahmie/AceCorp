@@ -32,8 +32,6 @@ main.onAuthStateChanged(main.auth, (user) => {
 
                 const renderTable = (data) => {
                     TRecordTable.innerHTML = `
-                        <table class="table table-bordered">
-                            <thead>
                                 <tr>
                                     <th>Date and Time</th>
                                     <th>Passenger ID</th>
@@ -41,26 +39,32 @@ main.onAuthStateChanged(main.auth, (user) => {
                                     <th>Status</th>
                                     <th>Origin</th>
                                     <th>Destination</th>
+                                </tr>`;
+                    if (data.length <= 0) {
+                        TRecordTable.innerHTML += `
+                                <tr">
+                                    <td colspan="6" style="text-align: center">NO TRANSACTION FOUND</td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                ${data
-                                    .map(
-                                        (booking) => `
-                                            <tr class="${booking.bookingId}">
-                                                <td>${booking.datetime}</td>
-                                                <td>${booking.passengerId}</td>
-                                                <td>${booking.driverId}</td>
-                                                <td>${booking.status.toUpperCase()}</td>
-                                                <td>${booking.from}</td>
-                                                <td>${booking.destination}</td>
-                                            </tr>
-                                        `
-                                    )
-                                    .join("")}
-                            </tbody>
-                        </table>
-                    `;
+                            `;
+                    }
+                    data.forEach((booking) => {
+                        main.getDoc(main.doc(main.db, "users", booking.passengerId)).then((passengerDoc) => {
+                            let passengerEmail = passengerDoc.data().personalDetails.email;
+                            main.getDoc(main.doc(main.db, "users", booking.driverId)).then((driverDoc) => {
+                                let driverEmail = driverDoc.data().personalDetails.email;
+                                TRecordTable.innerHTML += `
+                                <tr class="${booking.bookingId}">
+                                    <td>${booking.datetime}</td>
+                                    <td>${passengerEmail}</td>
+                                    <td>${driverEmail}</td>
+                                    <td>${booking.status.toUpperCase()}</td>
+                                    <td>${booking.from}</td>
+                                    <td>${booking.destination}</td>
+                                </tr>
+                            `;
+                            });
+                        });
+                    });
                 };
 
                 const filterData = (status) => {
