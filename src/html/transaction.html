@@ -1,81 +1,81 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Transaction List</title>
-        <style>
-            .header {
-                background-color: #333;
-                color: #fff;
-                padding: 20px;
-                text-align: center;
-            }
+  <head>
+    <title>Transaction List</title>
+    <style>
+      .header {
+        background-color: #333;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+      }
 
-            table {
-                width: 100%;
-                border-collapse: collapse;
-            }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
 
-            table td,
-            table th {
-                border: 1px solid #ddd;
-                padding: 8px;
-            }
+      table td,
+      table th {
+        border: 1px solid #ddd;
+        padding: 8px;
+      }
 
-            table tr:nth-child(even) {
-                background-color: #f2f2f2;
-            }
+      table tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
 
-            table tr:hover {
-                background-color: #ddd;
-            }
+      table tr:hover {
+        background-color: #ddd;
+      }
 
-            table th {
-                padding-top: 12px;
-                padding-bottom: 12px;
-                text-align: left;
-                background-color: #333;
-                color: white;
-            }
-            .back-button {
-                margin-top: 20px;
-                text-align: center;
-            }
+      table th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #333;
+        color: white;
+      }
+      .back-button {
+        margin-top: 20px;
+        text-align: center;
+      }
 
-            .back-button a {
-                background-color: #333;
-                color: #fff;
-                padding: 10px 20px;
-                border-radius: 5px;
-                text-decoration: none;
-                font-size: 16px;
-            }
+      .back-button a {
+        background-color: #333;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 16px;
+      }
 
-            .back-button a:hover {
-                background-color: #555;
-            }
-        </style>
-    </head>
+      .back-button a:hover {
+        background-color: #555;
+      }
+    </style>
+  </head>
 
-    <body>
-        <div class="header">
-            <h1>Transaction List</h1>
-        </div>
-        <div class="button-container">
-            <span>Status Filter:</span>
-            <select id="Filter">
-                <option value="all">All</option>
-                <option value="waiting">Waiting</option>
-                <option value="ongoing">Ongoing</option>
-                <option value="completed">Completed</option>
-                <option value="cancelled">Cancelled</option>
-            </select>
-        </div>
-        <div>
-            <table id="TRecordTable"></table>
-        </div>
+  <body>
+    <div class="header">
+      <h1>Transaction List</h1>
+    </div>
+    <div class="button-container">
+      <span>Status Filter:</span>
+      <select id="Filter">
+        <option value="all">All</option>
+        <option value="waiting">Waiting</option>
+        <option value="ongoing">Ongoing</option>
+        <option value="completed">Completed</option>
+        <option value="cancelled">Cancelled</option>
+      </select>
+    </div>
+    <div>
+      <table id="TRecordTable"></table>
+    </div>
 
-        <div class="back-button">
-            <a href="adminmain.html">Back</a>
-        </div>
-    </body>
+    <div class="back-button">
+      <a href="adminmain.html">Back</a>
+    </div>
+  </body>
 </html>
