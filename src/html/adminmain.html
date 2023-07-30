@@ -1,298 +1,304 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Admin Panel</title>
+    <head>
+        <title>Admin Panel</title>
 
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f1f1f1;
-        }
-    
-        .header {
-            background-color: #333;
-            padding: 20px;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-    
-        .header .header-icon {
-            font-size: 28px;
-            color: #fff;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
-            margin-right: 10px;
-        }
-    
-        .header h1 {
-            font-size: 28px;
-            color: #fff;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
-            margin: 0;
-        }
-        
-        .header .header-icon-left,
-        .header .header-icon-right {
-            font-size: 28px;
-            color: #fff;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
-            margin-right: 10px;
-        }
-    
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            margin: 20px;
-        }
-    
-        .sidebar {
-            flex: 0 0 200px;
-            background-color: #333;
-            color: #fff;
-            padding: 20px;
-            height: calc(100vh - 84px);
-            overflow-y: auto;
-        }
-    
-        .sidebar a {
-            display: table;
-            width: 100%;
-            padding: 10px 0;
-            color: #fff;
-            text-decoration: none;
-        }
-    
-        .sidebar a:hover {
-            background-color: #555;
-        }
-    
-        .sidebar .sidebar-link {
-            display: table-row;
-        }
-    
-        .sidebar .sidebar-link .sidebar-icon,
-        .sidebar .sidebar-link .sidebar-text {
-            display: table-cell;
-            vertical-align: middle;
-            padding-right: 10px;
-        }
-    
-        .sidebar .sidebar-link .sidebar-icon {
-            font-size: 18px;
-        }
-    
-        .sidebar .sidebar-link .sidebar-text {
-            font-size: 16px;
-        }
-    
-        .sidebar .sidebar-link:hover .sidebar-text {
-            text-decoration: underline;
-        }
-    
-        .content {
-            flex: 1;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            margin: 10px;
-            padding: 20px;
-            position: relative;
-            overflow: auto;
-        }
-    
-        .content-inner {
-            position: relative;
-        }
-    
-        .content h2 {
-            margin-top: 0;
-            font-size: 24px;
-            font-weight: bold;
-            color: #333;
-        }
-    
-        .content p {
-            margin: 10px 0;
-            font-size: 16px;
-            color: #666;
-        }
-    
-        .btn {
-            display: inline-block;
-            background-color: #333;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            margin-top: 10px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-    
-        .btn:hover {
-            background-color: #555;
-        }
-    
-        .new-admin-form {
-            display: none;
-        }
-    
-        .new-admin-form.show {
-            display: block;
-        }
-    
-        .content form {
-            max-width: 400px;
-            margin: auto;
-        }
-    
-        .content form label {
-            margin-bottom: 10px;
-            font-weight: bold;
-            display: block;
-        }
-    
-        .content form input[type="text"],
-        .content form input[type="email"] {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 10px;
-            border-radius: 3px;
-            border: 1px solid #ccc;
-        }
-    
-        .content form .btn {
-            margin-top: 20px;
-            align-self: flex-start;
-        }
-        
-        /* Updated CSS */
-        .content .admin-section {
-            margin-bottom: 30px;
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 20px;
-        }
-    
-        .content .admin-section:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-    
-        .content .admin-section h2 {
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
-    
-        .content .admin-section p {
-            margin-bottom: 15px;
-        }
-        
-        /* Back Button CSS */
-        .back-btn,
-        .btn-back,
-        .btn-add-admin {
-            display: inline-block;
-            background-color: #333;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 16px;
-            cursor: pointer;
-        }
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: Arial, sans-serif;
+                background-color: #f1f1f1;
+            }
 
-        .back-btn:hover,
-        .btn-back:hover,
-        .btn-add-admin:hover {
-            background-color: #555;
-        }
-    </style>
-    
+            .header {
+                background-color: #333;
+                padding: 20px;
+                text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
 
-</head>
+            .header .header-icon {
+                font-size: 28px;
+                color: #fff;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+                margin-right: 10px;
+            }
 
-<body>
-<div class="header">
-    <span class="header-icon-left">&#x1F680;</span>
-    <h1><span class="header-icon-left">&#x1F680;</span>Admin Panel<span class="header-icon-right">&#x1F680;</span></h1>
-    <span class="header-icon-right">&#x1F680;</span>
-</div>
+            .header h1 {
+                font-size: 28px;
+                color: #fff;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+                margin: 0;
+            }
 
-<div class="container">
-    <div class="sidebar">
-        <a href="adminmain.html" class="sidebar-link">
-            <span class="sidebar-icon">&#x1F3E0;</span>
-            <span class="sidebar-text">Dashboard</span>
-        </a>
-        <a href="adminprofile.html" class="sidebar-link">
-            <span class="sidebar-icon">&#x1F464;</span>
-            <span class="sidebar-text">View My Profile</span>
-        </a>
-        <a href="userRecord.html" class="sidebar-link">
-            <span class="sidebar-icon">&#x1F464;</span>
-            <span class="sidebar-text">User List</span>
-        </a>
-        <a href="transaction.html" class="sidebar-link">
-            <span class="sidebar-icon">&#x1F4B8;</span>
-            <span class="sidebar-text">Transaction List</span>
-        </a>
-        <a href="adminlist.html" class="sidebar-link">
-            <span class="sidebar-icon">&#x1F464;</span>
-            <span class="sidebar-text">Admin List</span>
-        </a>
-        <a href="driverrequest.html" class="sidebar-link">
-            <span class="sidebar-icon">&#x1F697;</span>
-            <span class="sidebar-text">Driver Request</span>
-        </a>
-        <a href="#" id="signoutbtn" class="sidebar-link">
-            <span class="sidebar-icon">&#x1F6AA;</span>
-            <span class="sidebar-text">Logout</span>
-        </a>
-    </div>
+            .header .header-icon-left,
+            .header .header-icon-right {
+                font-size: 28px;
+                color: #fff;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+                margin-right: 10px;
+            }
 
-    <div class="content">
-        <div class="content-inner">
-            <div class="admin-section">
-                <h2>Add New Admin</h2>
-                <p>Click this button to add a new admin to the system.</p>
-                <a href="#" class="btn-add-admin" id="newAdminBtn">Add New Admin</a>
-                <form class="new-admin-form" id="newAdminForm">
-                    <label for="adminName">Username:</label>
-                    <input type="text" name="username" placeholder="Enter admin username" required />
-                    <br /><br />
-                    <label for="adminEmail">Email:</label>
-                    <input type="email" name="email" placeholder="Enter admin email" required />
-                    <br /><br />
-                    <button type="submit" class="btn-back">Save Admin</button>
-                    <a href="adminmain.html" class="back-btn" id="backBtn">Back</a>
-                </form>
+            .container {
+                display: flex;
+                flex-wrap: wrap;
+                margin: 20px;
+            }
+
+            .sidebar {
+                flex: 0 0 200px;
+                background-color: #333;
+                color: #fff;
+                padding: 20px;
+                height: calc(100vh - 84px);
+                overflow-y: auto;
+            }
+
+            .sidebar a {
+                display: table;
+                width: 100%;
+                padding: 10px 0;
+                color: #fff;
+                text-decoration: none;
+            }
+
+            .sidebar a:hover {
+                background-color: #555;
+            }
+
+            .sidebar .sidebar-link {
+                display: table-row;
+            }
+
+            .sidebar .sidebar-link .sidebar-icon,
+            .sidebar .sidebar-link .sidebar-text {
+                display: table-cell;
+                vertical-align: middle;
+                padding-right: 10px;
+            }
+
+            .sidebar .sidebar-link .sidebar-icon {
+                font-size: 18px;
+            }
+
+            .sidebar .sidebar-link .sidebar-text {
+                font-size: 16px;
+            }
+
+            .sidebar .sidebar-link:hover .sidebar-text {
+                text-decoration: underline;
+            }
+
+            .content {
+                flex: 1;
+                background-color: #fff;
+                border-radius: 5px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                margin: 10px;
+                padding: 20px;
+                position: relative;
+                overflow: auto;
+            }
+
+            .content-inner {
+                position: relative;
+            }
+
+            .content h2 {
+                margin-top: 0;
+                font-size: 24px;
+                font-weight: bold;
+                color: #333;
+            }
+
+            .content p {
+                margin: 10px 0;
+                font-size: 16px;
+                color: #666;
+            }
+
+            .btn {
+                display: inline-block;
+                background-color: #333;
+                color: #fff;
+                padding: 10px 20px;
+                border-radius: 5px;
+                text-decoration: none;
+                margin-top: 10px;
+                font-size: 16px;
+                cursor: pointer;
+            }
+
+            .btn:hover {
+                background-color: #555;
+            }
+
+            .new-admin-form {
+                display: none;
+            }
+
+            .new-admin-form.show {
+                display: block;
+            }
+
+            .content form {
+                max-width: 400px;
+                margin: auto;
+            }
+
+            .content form label {
+                margin-bottom: 10px;
+                font-weight: bold;
+                display: block;
+            }
+
+            .content form input[type="text"],
+            .content form input[type="email"] {
+                width: 100%;
+                padding: 8px;
+                margin-bottom: 10px;
+                border-radius: 3px;
+                border: 1px solid #ccc;
+            }
+
+            .input-text {
+                width: 100%;
+                padding: 8px;
+                margin-bottom: 10px;
+                border-radius: 3px;
+                border: 1px solid #ccc;
+            }
+
+            .content form .btn {
+                margin-top: 20px;
+                align-self: flex-start;
+            }
+
+            /* Updated CSS */
+            .content .admin-section {
+                margin-bottom: 30px;
+                border-bottom: 1px solid #ddd;
+                padding-bottom: 20px;
+            }
+
+            .content .admin-section:last-child {
+                border-bottom: none;
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+
+            .content .admin-section h2 {
+                font-size: 20px;
+                margin-bottom: 10px;
+            }
+
+            .content .admin-section p {
+                margin-bottom: 15px;
+            }
+
+            /* Back Button CSS */
+            .back-btn,
+            .btn-back,
+            .btn-add-admin {
+                display: inline-block;
+                background-color: #333;
+                color: #fff;
+                padding: 10px 20px;
+                border-radius: 5px;
+                text-decoration: none;
+                font-size: 16px;
+                cursor: pointer;
+            }
+
+            .back-btn:hover,
+            .btn-back:hover,
+            .btn-add-admin:hover {
+                background-color: #555;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="header">
+            <span class="header-icon-left">&#x1F680;</span>
+            <h1><span class="header-icon-left">&#x1F680;</span>Admin Panel<span class="header-icon-right">&#x1F680;</span></h1>
+            <span class="header-icon-right">&#x1F680;</span>
+        </div>
+
+        <div class="container">
+            <div class="sidebar">
+                <a href="adminmain.html" class="sidebar-link">
+                    <span class="sidebar-icon">&#x1F3E0;</span>
+                    <span class="sidebar-text">Dashboard</span>
+                </a>
+                <a href="adminprofile.html" class="sidebar-link">
+                    <span class="sidebar-icon">&#x1F464;</span>
+                    <span class="sidebar-text">View My Profile</span>
+                </a>
+                <a href="userRecord.html" class="sidebar-link">
+                    <span class="sidebar-icon">&#x1F464;</span>
+                    <span class="sidebar-text">User List</span>
+                </a>
+                <a href="transaction.html" class="sidebar-link">
+                    <span class="sidebar-icon">&#x1F4B8;</span>
+                    <span class="sidebar-text">Transaction List</span>
+                </a>
+                <a href="adminlist.html" class="sidebar-link">
+                    <span class="sidebar-icon">&#x1F464;</span>
+                    <span class="sidebar-text">Admin List</span>
+                </a>
+                <a href="driverrequest.html" class="sidebar-link">
+                    <span class="sidebar-icon">&#x1F697;</span>
+                    <span class="sidebar-text">Driver Request</span>
+                </a>
+                <a href="#" id="signoutbtn" class="sidebar-link">
+                    <span class="sidebar-icon">&#x1F6AA;</span>
+                    <span class="sidebar-text">Logout</span>
+                </a>
             </div>
-            <div class="admin-section">
-                <h2>User List</h2>
-                <p>Click this button to see the user list.</p>
-                <a href="userRecord.html" class="btn-back">View User List</a>
-            </div>
-            <div class="admin-section">
-                <h2>Transaction List</h2>
-                <p>Click this button to see the transaction list.</p>
-                <a href="transaction.html" class="btn-back">View Transaction List</a>
-            </div>
-            <div class="admin-section">
-                <h2>Admin List</h2>
-                <p>Click this button to see the admin list.</p>
-                <a href="adminlist.html" class="btn-back">View Admin List</a>
-            </div>
-            <div class="admin-section">
-                <h2>Driver Request</h2>
-                <p>Click this button to see the driver request list.</p>
-                <a href="driverrequest.html" class="btn-back">View Driver Request List</a>
+
+            <div class="content">
+                <div class="content-inner">
+                    <div class="admin-section">
+                        <h2>Add New Admin</h2>
+                        <p>Click this button to add a new admin to the system.</p>
+                        <a href="#" class="btn-add-admin" id="newAdminBtn">Add New Admin</a>
+                        <form class="new-admin-form" id="newAdminForm">
+                            <label for="adminName">Username:</label>
+                            <input type="text" class="input-text" name="username" placeholder="Enter admin username" required />
+                            <br /><br />
+                            <label for="adminEmail">Email:</label>
+                            <input type="email" name="email" placeholder="Enter admin email" required />
+                            <br /><br />
+                            <button type="submit" class="btn-back">Save Admin</button>
+                            <a href="adminmain.html" class="back-btn" id="backBtn">Back</a>
+                        </form>
+                    </div>
+                    <div class="admin-section">
+                        <h2>User List</h2>
+                        <p>Click this button to see the user list.</p>
+                        <a href="userRecord.html" class="btn-back">View User List</a>
+                    </div>
+                    <div class="admin-section">
+                        <h2>Transaction List</h2>
+                        <p>Click this button to see the transaction list.</p>
+                        <a href="transaction.html" class="btn-back">View Transaction List</a>
+                    </div>
+                    <div class="admin-section">
+                        <h2>Admin List</h2>
+                        <p>Click this button to see the admin list.</p>
+                        <a href="adminlist.html" class="btn-back">View Admin List</a>
+                    </div>
+                    <div class="admin-section">
+                        <h2>Driver Request</h2>
+                        <p>Click this button to see the driver request list.</p>
+                        <a href="driverrequest.html" class="btn-back">View Driver Request List</a>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-</body>
+    </body>
 </html>

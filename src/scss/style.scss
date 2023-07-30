@@ -16,20 +16,20 @@ $bootstrap-icons-font-dir: "~bootstrap-icons/font/fonts";
 @import "footer";
 
 #googlemap {
-  width: 100%;
-  height: 465px;
+    width: 100%;
+    height: 465px;
 }
 
 #currentgooglemap {
-  width: 100%;
-  height: 425px;
+    width: 100%;
+    height: 425px;
 }
 
 //////////////////////////////PROFILE PICTURE//////////////////////////////
 @mixin object-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 $circleSize: 165px;
@@ -38,204 +38,204 @@ $shadow: 0 0 10px 0 rgba(255, 255, 255, 0.35);
 $fontColor: rgb(250, 250, 250);
 
 .profile-pic {
-  color: transparent;
-  transition: all 0.3s ease;
-  @include object-center;
-  position: relative;
-  transition: all 0.3s ease;
+    color: transparent;
+    transition: all 0.3s ease;
+    @include object-center;
+    position: relative;
+    transition: all 0.3s ease;
 
-  input {
-    display: none;
-  }
-
-  img {
-    position: absolute;
-    object-fit: cover;
-    width: $circleSize;
-    height: $circleSize;
-    box-shadow: $shadow;
-    border-radius: $radius;
-    z-index: 0;
-  }
-
-  .-label {
-    cursor: pointer;
-    height: $circleSize;
-    width: $circleSize;
-  }
-
-  &:hover {
-    .-label {
-      @include object-center;
-      background-color: rgba(0, 0, 0, 0.8);
-      z-index: 10000;
-      color: $fontColor;
-      transition: background-color 0.2s ease-in-out;
-      border-radius: $radius;
-      margin-bottom: 0;
+    input {
+        display: none;
     }
-  }
 
-  span {
-    display: inline-flex;
-    padding: 0.2em;
-    height: 2em;
-  }
+    img {
+        position: absolute;
+        object-fit: cover;
+        width: $circleSize;
+        height: $circleSize;
+        box-shadow: $shadow;
+        border-radius: $radius;
+        z-index: 0;
+    }
+
+    .-label {
+        cursor: pointer;
+        height: $circleSize;
+        width: $circleSize;
+    }
+
+    &:hover {
+        .-label {
+            @include object-center;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 10000;
+            color: $fontColor;
+            transition: background-color 0.2s ease-in-out;
+            border-radius: $radius;
+            margin-bottom: 0;
+        }
+    }
+
+    span {
+        display: inline-flex;
+        padding: 0.2em;
+        height: 2em;
+    }
 }
 
 .qr {
-  color: transparent;
-  transition: all 0.3s ease;
-  @include object-center;
-  position: relative;
-  transition: all 0.3s ease;
+    color: transparent;
+    transition: all 0.3s ease;
+    @include object-center;
+    position: relative;
+    transition: all 0.3s ease;
 
-  input {
-    display: none;
-  }
-
-  img {
-    position: absolute;
-    object-fit: cover;
-    width: $circleSize;
-    height: $circleSize;
-    box-shadow: $shadow;
-    z-index: 0;
-  }
-
-  .-label {
-    cursor: pointer;
-    height: $circleSize;
-    width: $circleSize;
-  }
-
-  &:hover {
-    .-label {
-      @include object-center;
-      background-color: rgba(0, 0, 0, 0.8);
-      z-index: 10000;
-      color: $fontColor;
-      transition: background-color 0.2s ease-in-out;
-      margin-bottom: 0;
+    input {
+        display: none;
     }
-  }
 
-  span {
-    display: inline-flex;
-    padding: 0.2em;
-    height: 2em;
-  }
+    img {
+        position: absolute;
+        object-fit: cover;
+        width: $circleSize;
+        height: $circleSize;
+        box-shadow: $shadow;
+        z-index: 0;
+    }
+
+    .-label {
+        cursor: pointer;
+        height: $circleSize;
+        width: $circleSize;
+    }
+
+    &:hover {
+        .-label {
+            @include object-center;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 10000;
+            color: $fontColor;
+            transition: background-color 0.2s ease-in-out;
+            margin-bottom: 0;
+        }
+    }
+
+    span {
+        display: inline-flex;
+        padding: 0.2em;
+        height: 2em;
+    }
 }
 ///////////////////////////////////////////////////////////////////////////
 
 .accept-button {
-  font-family: $font-primary;
-  font-weight: 500;
-  font-size: 16px;
-  letter-spacing: 1px;
-  //display: flex;
-  //align-items: center;
-  //text-align: center;
-  width: 20vh;
-  height: 8vh;
-  background-color: #00830f;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 20px;
-  margin: 5px;
-  cursor: pointer;
+    font-family: $font-primary;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 1px;
+    //display: flex;
+    //align-items: center;
+    //text-align: center;
+    width: 20vh;
+    height: 8vh;
+    background-color: #00830f;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    margin: 5px;
+    cursor: pointer;
 }
 
 .accept-button:hover {
-  background-color: #276700;
+    background-color: #276700;
 }
 
 //////////////////////////////IMAGE POPUP//////////////////////////////
 /* Style the Image Used to Trigger the Modal */
 #myImg {
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.3s;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
 #myImg:hover {
-  opacity: 0.7;
+    opacity: 0.7;
 }
 
 /* The Modal (background) */
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
 }
 
 /* Modal Content (Image) */
 .modal-content {
-  margin: auto;
-  display: block;
-  width: 80%;
-  max-width: 700px;
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
 }
 
 /* Caption of Modal Image (Image Text) - Same Width as the Image */
 #caption {
-  margin: auto;
-  display: block;
-  width: 80%;
-  max-width: 700px;
-  text-align: center;
-  color: #ccc;
-  padding: 10px 0;
-  height: 150px;
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
 }
 
 /* Add Animation - Zoom in the Modal */
 .modal-content,
 #caption {
-  animation-name: zoom;
-  animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
 }
 
 @keyframes zoom {
-  from {
-    transform: scale(0);
-  }
-  to {
-    transform: scale(1);
-  }
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
 }
 
 /* The Close Button */
 .close {
-  position: absolute;
-  top: 15px;
-  right: 35px;
-  color: #f1f1f1;
-  font-size: 40px;
-  font-weight: bold;
-  transition: 0.3s;
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
 }
 
 .close:hover,
 .close:focus {
-  color: #bbb;
-  text-decoration: none;
-  cursor: pointer;
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 /* 100% Image Width on Smaller Screens */
 @media only screen and (max-width: 700px) {
-  .modal-content {
-    width: 100%;
-  }
+    .modal-content {
+        width: 100%;
+    }
 }
 ///////////////////////////////////////////////////////////////////////////
