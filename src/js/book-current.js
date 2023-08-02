@@ -64,6 +64,8 @@ main.loader.load().then(async () => {
 
             //CHECK IF THE CURRENT USER HAVE AN ACTIVE BOOKING
             const q = main.query(main.bookingDB, main.where("passengerId", "==", user.uid), main.where("status", "in", ["waiting", "ongoing"]));
+            const contactbtn = document.querySelector("#contactbtn");
+
             main.onSnapshot(q, (snapshot) => {
                 if (!snapshot.empty) {
                     let bookingQuery = [];
@@ -90,6 +92,10 @@ main.loader.load().then(async () => {
                     if (currentBooking.status == "ongoing") {
                         main.getDoc(main.doc(main.db, "users", currentBooking.driverId)).then((doc) => {
                             driverData = doc.data();
+                            let phoneNumber = "+6" + driverData.personalDetails.phoneNumber;
+                            let contactLink = "https://wa.me/" + phoneNumber;
+                            contactbtn.href = contactLink;
+
                             bookingStatus.driverName.value = driverData.personalDetails.fullname;
                             bookingStatus.vehicle.value = driverData.driverDetails.vehicle.colour + " " + driverData.driverDetails.vehicle.type;
                             bookingStatus.plateNumber.value = driverData.driverDetails.vehicle.plateNumber;
